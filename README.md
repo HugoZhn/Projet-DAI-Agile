@@ -33,4 +33,4 @@ Commentaire obligatoire pour chaque commit
 
 Ne **JAMAIS** push sur Master
 
-> Indiquer la fréquence / l'heure / le responsable du build
+> A 17h l’intégrateur regroupe l’ensemble des fonctionnalités développées jusqu’alors (Done / qui ont été push). Puis il s’occupe des tests d’intégrations. Les fonctionnalités qui passent ces tests passent de Done à Integrated, sinon elles retournent en To-do. Si l’intégration échoue il faut corriger les erreurs et il y a une nouvelle tentative d’intégration le lendemain matin. Si elle réussit la version intégrée passe sur la branche master.
