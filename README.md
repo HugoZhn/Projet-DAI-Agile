@@ -5,14 +5,14 @@ Dépôt pour la semaine de projet DAI-Agile
 1 - Il faut utiliser l’écriture en chameau (CamelCase) pour les noms de variables/constantes…
 
 2 - Commentaires obligatoires pour les méthodes : 
-Courte description de ce à quoi elle sert (sauf méthodes standards : getters, setters, hashCode, equals, toString, constructeurs...)
-Paramètres d’entrée
-Sorties possibles
+*Courte description de ce à quoi elle sert (sauf méthodes standards : getters, setters, hashCode, equals, toString, constructeurs...)
+*Paramètres d’entrée
+*Sorties possibles
 
 En utilisant les tags javadoc : 
-@param
-@return 
-@exception
+*@param
+*@return 
+*@exception
 
 3 - Commentaires obligatoires pour les classes :
 Auteur (@author)
