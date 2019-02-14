@@ -8,8 +8,7 @@ Dépôt pour la semaine de projet DAI-Agile
 * Courte description de ce à quoi elle sert (sauf méthodes standards : getters, setters, hashCode, equals, toString, constructeurs...)
 * Paramètres d’entrée
 * Sorties possibles
-
-En utilisant les tags javadoc : @param @return @exception
+_En utilisant les tags javadoc : @param @return @exception_
 
 3. Commentaires obligatoires pour les classes :
 Auteur (@author)
@@ -23,4 +22,5 @@ Courte description de ce qu’elle fait (ex : “Représente un employé de la B
 
 7. Utiliser l’indentation automatique de NetBeans
 
+## Pratiques liées au dépôt
 > Indiquer la fréquence / l'heure / le responsable du build
