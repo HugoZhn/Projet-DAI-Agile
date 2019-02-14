@@ -31,6 +31,6 @@ Gérer les conflits de fichier avec la personne chargée de sa programmation
 
 Commentaire obligatoire pour chaque commit
 
-Ne *JAMAIS* push sur Master
+Ne **JAMAIS** push sur Master
 
 > Indiquer la fréquence / l'heure / le responsable du build
