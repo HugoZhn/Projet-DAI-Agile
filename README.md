@@ -24,4 +24,13 @@ Courte description de ce qu’elle fait (ex : “Représente un employé de la B
 7. Utiliser l’indentation automatique de NetBeans
 
 ## Pratiques liées au dépôt
+
+Annoncer à l'oral toute manipulation sur le dépôt (Push / Pull)
+
+Gérer les conflits de fichier avec la personne chargée de sa programmation
+
+Commentaire obligatoire pour chaque commit
+
+Ne *JAMAIS* push sur Master
+
 > Indiquer la fréquence / l'heure / le responsable du build
