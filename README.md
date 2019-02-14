@@ -8,6 +8,7 @@ Dépôt pour la semaine de projet DAI-Agile
 * Courte description de ce à quoi elle sert (sauf méthodes standards : getters, setters, hashCode, equals, toString, constructeurs...)
 * Paramètres d’entrée
 * Sorties possibles
+
 _En utilisant les tags javadoc : @param @return @exception_
 
 3. Commentaires obligatoires pour les classes :
