@@ -9,10 +9,7 @@ Dépôt pour la semaine de projet DAI-Agile
 * Paramètres d’entrée
 * Sorties possibles
 
-En utilisant les tags javadoc : 
-* @param
-* @return 
-* @exception
+En utilisant les tags javadoc : @param @return @exception
 
 3. Commentaires obligatoires pour les classes :
 Auteur (@author)
