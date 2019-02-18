@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18 f?vr. 2019 15:54:13 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojo.Programme" table="Programme" catalog="db_21400055" optimistic-lock="version">
+        <id name="codePrgrm" type="java.lang.Integer">
+            <column name="CodePrgrm" />
+            <generator class="identity" />
+        </id>
+        <discriminator column="EstProgrammeClient" type="boolean"/>
+        <many-to-one name="profilClient" class="pojo.ProfilClient" fetch="select">
+            <column name="CodeProfil" not-null="false" />
+        </many-to-one>
+        <property name="libellePrgrm" type="string">
+            <column name="LibellePrgrm" length="32" not-null="true" />
+        </property>
+        <set name="semaines" table="Semaine" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CodePrgrm" not-null="true" />
+            </key>
+            <one-to-many class="pojo.Semaine" />
+        </set>
+        <subclass name="pojo.ProgrammeClient" extends="pojo.Programme" discriminator-value="true">
+            <many-to-one name="client" class="pojo.Client" fetch="select">
+                <column name="CodeUser" not-null="true" />
+            </many-to-one>
+        </subclass>
+    </class>
+</hibernate-mapping>

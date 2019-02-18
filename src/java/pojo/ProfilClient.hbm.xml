@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18 f?vr. 2019 15:54:13 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojo.ProfilClient" table="ProfilClient" catalog="db_21400055" optimistic-lock="version">
+        <id name="codeProfil" type="java.lang.Integer">
+            <column name="CodeProfil" />
+            <generator class="identity" />
+        </id>
+        <property name="nomProfil" type="string">
+            <column name="NomProfil" length="16" not-null="true" />
+        </property>
+        <set name="programmes" table="Programme" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CodeProfil" not-null="true" />
+            </key>
+            <one-to-many class="pojo.Programme" />
+        </set>
+        <set name="utilisateurs" table="Utilisateur" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CodeProfil" />
+            </key>
+            <one-to-many class="pojo.Utilisateur" />
+        </set>
+        <set name="seances" table="Seance" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CodeProfil" not-null="true" />
+            </key>
+            <one-to-many class="pojo.Seance" />
+        </set>
+    </class>
+</hibernate-mapping>
