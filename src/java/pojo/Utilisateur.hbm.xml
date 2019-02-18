@@ -51,10 +51,10 @@
             </set>
         </subclass>
         <subclass name="pojo.CoachAdmin" extends="pojo.Utilisateur" discriminator-value="coachadmin">
-            <property name="mailCoach" type="java.lang.Integer">
+            <property name="mailCoach" type="string">
                 <column name="MailCoach" />
             </property>
-            <property name="mailAdmin" type="java.lang.Integer">
+            <property name="mailAdmin" type="string">
                 <column name="MailAdmin" />
             </property>
         </subclass>

@@ -20,7 +20,7 @@
         <property name="tempsBaseEx" type="java.lang.Double">
             <column name="TempsBaseEx" precision="22" scale="0" />
         </property>
-        <property name="repsBaseEx" type="java.lang.Integer">
+        <property name="repsBaseEx" type="java.lang.String">
             <column name="RepsBaseEx" />
         </property>
         <property name="typeEx" type="string">

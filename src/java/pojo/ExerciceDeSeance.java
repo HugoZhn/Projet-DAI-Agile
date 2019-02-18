@@ -1,5 +1,5 @@
 package pojo;
-// Generated 18 févr. 2019 15:54:11 by Hibernate Tools 4.3.1
+// Generated 18 fï¿½vr. 2019 15:54:11 by Hibernate Tools 4.3.1
 
 
 
@@ -12,7 +12,7 @@ public class ExerciceDeSeance  implements java.io.Serializable {
      private ExerciceDeSeanceId id;
      private Exercice exercice;
      private Seance seance;
-     private int tempsExSc;
+     private double tempsExSc;
      private int repsExSc;
      private String evaluation;
      private String avisLibre;
@@ -21,7 +21,7 @@ public class ExerciceDeSeance  implements java.io.Serializable {
     }
 
 	
-    public ExerciceDeSeance(ExerciceDeSeanceId id, Exercice exercice, Seance seance, int tempsExSc, int repsExSc, String avisLibre) {
+    public ExerciceDeSeance(ExerciceDeSeanceId id, Exercice exercice, Seance seance, double tempsExSc, int repsExSc, String avisLibre) {
         this.id = id;
         this.exercice = exercice;
         this.seance = seance;
@@ -29,7 +29,7 @@ public class ExerciceDeSeance  implements java.io.Serializable {
         this.repsExSc = repsExSc;
         this.avisLibre = avisLibre;
     }
-    public ExerciceDeSeance(ExerciceDeSeanceId id, Exercice exercice, Seance seance, int tempsExSc, int repsExSc, String evaluation, String avisLibre) {
+    public ExerciceDeSeance(ExerciceDeSeanceId id, Exercice exercice, Seance seance, double tempsExSc, int repsExSc, String evaluation, String avisLibre) {
        this.id = id;
        this.exercice = exercice;
        this.seance = seance;
@@ -60,11 +60,11 @@ public class ExerciceDeSeance  implements java.io.Serializable {
     public void setSeance(Seance seance) {
         this.seance = seance;
     }
-    public int getTempsExSc() {
+    public double getTempsExSc() {
         return this.tempsExSc;
     }
     
-    public void setTempsExSc(int tempsExSc) {
+    public void setTempsExSc(double tempsExSc) {
         this.tempsExSc = tempsExSc;
     }
     public int getRepsExSc() {

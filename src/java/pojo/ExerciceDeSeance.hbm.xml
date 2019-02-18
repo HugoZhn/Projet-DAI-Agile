@@ -18,7 +18,7 @@
         <many-to-one name="seance" class="pojo.Seance" update="false" insert="false" fetch="select">
             <column name="CodeSc" not-null="true" />
         </many-to-one>
-        <property name="tempsExSc" type="int">
+        <property name="tempsExSc" type="double">
             <column name="TempsExSc" not-null="true" />
         </property>
         <property name="repsExSc" type="int">

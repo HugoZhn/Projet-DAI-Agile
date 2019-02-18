@@ -1,5 +1,5 @@
 package pojo;
-// Generated 18 févr. 2019 15:54:11 by Hibernate Tools 4.3.1
+// Generated 18 fï¿½vr. 2019 15:54:11 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -16,7 +16,7 @@ public class Exercice  implements java.io.Serializable {
      private String descriptionEx;
      private String ressourceEx;
      private Double tempsBaseEx;
-     private Integer repsBaseEx;
+     private String repsBaseEx;
      private String typeEx;
      private String objectifsEx;
      private Set exerciceDeSeances = new HashSet(0);
@@ -30,7 +30,7 @@ public class Exercice  implements java.io.Serializable {
         this.nomEx = nomEx;
         this.objectifsEx = objectifsEx;
     }
-    public Exercice(String nomEx, String descriptionEx, String ressourceEx, Double tempsBaseEx, Integer repsBaseEx, String typeEx, String objectifsEx, Set exerciceDeSeances, Set exerciceDeBilans) {
+    public Exercice(String nomEx, String descriptionEx, String ressourceEx, Double tempsBaseEx, String repsBaseEx, String typeEx, String objectifsEx, Set exerciceDeSeances, Set exerciceDeBilans) {
        this.nomEx = nomEx;
        this.descriptionEx = descriptionEx;
        this.ressourceEx = ressourceEx;
@@ -77,11 +77,11 @@ public class Exercice  implements java.io.Serializable {
     public void setTempsBaseEx(Double tempsBaseEx) {
         this.tempsBaseEx = tempsBaseEx;
     }
-    public Integer getRepsBaseEx() {
+    public String getRepsBaseEx() {
         return this.repsBaseEx;
     }
     
-    public void setRepsBaseEx(Integer repsBaseEx) {
+    public void setRepsBaseEx(String repsBaseEx) {
         this.repsBaseEx = repsBaseEx;
     }
     public String getTypeEx() {

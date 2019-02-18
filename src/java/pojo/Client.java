@@ -32,7 +32,7 @@ public class Client extends Utilisateur implements java.io.Serializable {
     }
 
     public Client(ProfilClient profilClient, String nom, String prenom, Date dateNaissance, String mailClient, String telephone,
-            String typeAbonnement, Integer mailCoach, Integer mailAdmin, String login, String password, Set programmes, Set documentses) {
+            String typeAbonnement, String login, String password, Set programmes, Set documentses) {
 
         super("client", nom, prenom, dateNaissance, login, password);
         this.mailClient = mailClient;

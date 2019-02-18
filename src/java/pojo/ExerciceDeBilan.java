@@ -1,5 +1,5 @@
 package pojo;
-// Generated 18 févr. 2019 15:54:11 by Hibernate Tools 4.3.1
+// Generated 18 fï¿½vr. 2019 15:54:11 by Hibernate Tools 4.3.1
 
 
 
@@ -12,7 +12,7 @@ public class ExerciceDeBilan  implements java.io.Serializable {
      private ExerciceDeBilanId id;
      private Exercice exercice;
      private SeanceBilan seanceBilan;
-     private Integer tempsMax;
+     private Double tempsMax;
      private Integer repsMax;
 
     public ExerciceDeBilan() {
@@ -24,7 +24,7 @@ public class ExerciceDeBilan  implements java.io.Serializable {
         this.exercice = exercice;
         this.seanceBilan = seanceBilan;
     }
-    public ExerciceDeBilan(ExerciceDeBilanId id, Exercice exercice, SeanceBilan seanceBilan, Integer tempsMax, Integer repsMax) {
+    public ExerciceDeBilan(ExerciceDeBilanId id, Exercice exercice, SeanceBilan seanceBilan, Double tempsMax, Integer repsMax) {
        this.id = id;
        this.exercice = exercice;
        this.seanceBilan = seanceBilan;
@@ -53,11 +53,11 @@ public class ExerciceDeBilan  implements java.io.Serializable {
     public void setSeanceBilan(SeanceBilan seanceBilan) {
         this.seanceBilan = seanceBilan;
     }
-    public Integer getTempsMax() {
+    public Double getTempsMax() {
         return this.tempsMax;
     }
     
-    public void setTempsMax(Integer tempsMax) {
+    public void setTempsMax(Double tempsMax) {
         this.tempsMax = tempsMax;
     }
     public Integer getRepsMax() {
