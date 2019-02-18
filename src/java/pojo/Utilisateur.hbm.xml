@@ -24,6 +24,9 @@
         <property name="password" type="string">
             <column name="Password" length="64" not-null="true" />
         </property>
+        <property name="sexe" type="string">
+            <column name="Sexe" length="8" />
+        </property>
         <subclass name="pojo.Client" extends="pojo.Utilisateur" discriminator-value="client">
             <many-to-one name="profilClient" class="pojo.ProfilClient" fetch="select">
             <column name="CodeProfil" />

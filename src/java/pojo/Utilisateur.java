@@ -18,6 +18,7 @@ public class Utilisateur implements java.io.Serializable {
     private Date dateNaissance;
     private String login;
     private String password;
+    private String sexe;
 
     public Utilisateur() {
     }
@@ -28,7 +29,7 @@ public class Utilisateur implements java.io.Serializable {
         this.password = password;
     }
 
-    public Utilisateur(String type, String nom, String prenom, Date dateNaissance, String login, String password) {
+    public Utilisateur(String type, String nom, String prenom, Date dateNaissance, String login, String password, String sexe) {
 
         this.type = type;
         this.nom = nom;
@@ -36,7 +37,7 @@ public class Utilisateur implements java.io.Serializable {
         this.dateNaissance = dateNaissance;
         this.login = login;
         this.password = password;
-
+        this.sexe = sexe;
     }
 
     public Integer getNumUser() {
@@ -95,4 +96,11 @@ public class Utilisateur implements java.io.Serializable {
         this.password = password;
     }
 
+    public String getSexe() {
+        return sexe;
+    }
+
+    public void setSexe(String sexe) {
+        this.sexe = sexe;
+    }
 }
