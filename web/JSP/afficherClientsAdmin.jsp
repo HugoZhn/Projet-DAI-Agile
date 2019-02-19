@@ -4,6 +4,8 @@
     Author     : fhamzaoui
 --%>
 
+<%@page import="pojo.ProfilClient"%>
+<%@page import="pojo.ProgrammeClient"%>
 <%@page import="pojo.Client"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -47,20 +49,46 @@
             </thead>
 
             <tbody>
-         <% //Requête : affichage toutes les demandes
-         
-        List<Client> listeClients = (List<Client>)request.getAttribute("listeClients");
-        
+         <% //Requête : affichage toutes les demandes         
+        List<Client> listeClients = (List<Client>)request.getAttribute("listeClients");        
         for(Client unClient : listeClients){
-            out.print("<tr><td class=\"body-item mbr-fonts-style display-7\">" + unClient.getNom() + "</td>"
-                    + " <td \"body-item mbr-fonts-style display-7\">" + unClient.getPrenom() + "</td>"
-                            + " <td \"body-item mbr-fonts-style display-7\">" + unClient.getProgrammes().toString() + "</td>"
-                                    + "<td \"body-item mbr-fonts-style display-7\">" + unClient.getProfilClient().getNomProfil() + "</td>"
-                                            + "<td \"body-item mbr-fonts-style display-7\">" + unClient.getDateInscritpion() + "</td></tr>");
+            out.println("<tr>");
+            out.println("<td class=\"body-item mbr-fonts-style display-7\">" + unClient.getNom() + "</td>");
+            out.println(" <td class=\"body-item mbr-fonts-style display-7\">" + unClient.getPrenom() + "</td>");            
+            ProgrammeClient currentProgramme = unClient.getCurrentProgramme();
+            if (currentProgramme != null){
+                out.println("<td class=\"body-item mbr-fonts-style display-7\">" + currentProgramme.getLibellePrgrm() + "</td>");
+            }else{out.println("<td></td>");}            
+            ProfilClient profilDuClient = unClient.getProfilClient();
+            if (profilDuClient != null){
+                out.println("<td class=\"body-item mbr-fonts-style display-7\">" + profilDuClient.getNomProfil() + "</td>");
+            }else{
+                out.println("<td></td>");
+            }
+             out.println(" <td class=\"body-item mbr-fonts-style display-7\">" + unClient.getDateInscritpion() + "</td>");
+             out.println("<td> <button type=\"button\" class=\"btn btn-outline-primary btn-sm\" type=\"submit\">"
+                                                    + " <span class=\"mbri-italic mbr-iconfont mbr-iconfont-btn\"></span>"
+                                                    + "</button><button type=\"button\" class=\"btn btn-outline-success btn-sm\" type=\"submit\"> "
+                                                    + "<span class=\"mbri-success mbr-iconfont mbr-iconfont-btn\">"
+                                                    + "</span></button><button type=\"button\" class=\"btn btn-outline-danger btn-sm\" type=\"submit\"> "
+                                                    + "<span class=\"mbri-close mbr-iconfont mbr-iconfont-btn\"></span></button></td>");
+            out.println("</tr>");
         }
+        
          %>
+         
             </tbody>
              </table>
         </center>
     </body>
+    <script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/popper/popper.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/dropdown/js/script.min.js"></script>
+  <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/as-pie-progress/jquery-as-pie-progress.min.js"></script>
+  <script src="assets/datatables/jquery.data-tables.min.js"></script>
+  <script src="assets/datatables/data-tables.bootstrap4.min.js"></script>
 </html>
