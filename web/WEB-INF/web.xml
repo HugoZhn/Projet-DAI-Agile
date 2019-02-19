@@ -4,9 +4,49 @@
         <servlet-name>NewServlet</servlet-name>
         <servlet-class>controlers.NewServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CtrlInscriptionAdminClient</servlet-name>
+        <servlet-class>controlers.CtrlInscriptionAdminClient</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CtrlListeClients</servlet-name>
+        <servlet-class>controlers.CtrlListeClients</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>formInscriptionAdminClient</servlet-name>
+        <jsp-file>/JSP/formInscriptionAdminClient.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>afficherClientsAdmin</servlet-name>
+        <jsp-file>/JSP/afficherClientsAdmin.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>Index</servlet-name>
+        <jsp-file>/HTML/index.html</jsp-file>
+    </servlet>
     <servlet-mapping>
         <servlet-name>NewServlet</servlet-name>
         <url-pattern>/NewServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlInscriptionAdminClient</servlet-name>
+        <url-pattern>/CtrlInscriptionAdminClient</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlListeClients</servlet-name>
+        <url-pattern>/CtrlListeClients</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>formInscriptionAdminClient</servlet-name>
+        <url-pattern>/formInscriptionAdminClient</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>afficherClientsAdmin</servlet-name>
+        <url-pattern>/afficherClientsAdmin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Index</servlet-name>
+        <url-pattern>/Index</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
