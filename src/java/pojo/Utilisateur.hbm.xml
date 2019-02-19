@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 18 f?vr. 2019 15:54:13 by Hibernate Tools 4.3.1 -->
+<!-- Generated 18 fvr. 2019 15:54:13 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="pojo.Utilisateur" table="Utilisateur" catalog="db_21400055" optimistic-lock="version">
         <id name="numUser" type="java.lang.Integer">
