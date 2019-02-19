@@ -27,6 +27,9 @@
         <property name="sexe" type="string">
             <column name="Sexe" length="8" />
         </property>
+		<property name="dateInscritpion" type="date">
+            <column name="DateInscritpion" length="10" not-null="true" />
+        </property>
         <subclass name="pojo.Client" extends="pojo.Utilisateur" discriminator-value="client">
             <many-to-one name="profilClient" class="pojo.ProfilClient" fetch="select">
             <column name="CodeProfil" />

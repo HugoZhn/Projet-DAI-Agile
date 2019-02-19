@@ -1,5 +1,5 @@
 package pojo;
-// Generated 18 f�vr. 2019 15:54:11 by Hibernate Tools 4.3.1
+// Generated 19 f�vr. 2019 12:13:51 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -14,7 +14,9 @@ public class Programme  implements java.io.Serializable {
      private Integer codePrgrm;
      private ProfilClient profilClient;
      private String libellePrgrm;
-     private Set semaines = new HashSet(0);
+     private Boolean estProgrammeClient;
+     private Set seanceBilanAppartenirs = new HashSet(0);
+     private Set seanceAppartenirs = new HashSet(0);
 
     public Programme() {
     }
@@ -23,10 +25,13 @@ public class Programme  implements java.io.Serializable {
     public Programme(String libellePrgrm) {
         this.libellePrgrm = libellePrgrm;
     }
-    public Programme(ProfilClient profilClient, String libellePrgrm, Set semaines) {
+    
+    public Programme(ProfilClient profilClient, String libellePrgrm, Boolean estProgrammeClient, Set seanceBilanAppartenirs, Set seanceAppartenirs) {
        this.profilClient = profilClient;
        this.libellePrgrm = libellePrgrm;
-       this.semaines = semaines;
+       this.estProgrammeClient = estProgrammeClient;
+       this.seanceBilanAppartenirs = seanceBilanAppartenirs;
+       this.seanceAppartenirs = seanceAppartenirs;
     }
    
     public Integer getCodePrgrm() {
@@ -43,7 +48,7 @@ public class Programme  implements java.io.Serializable {
     public void setProfilClient(ProfilClient profilClient) {
         this.profilClient = profilClient;
     }
-    
+
     public String getLibellePrgrm() {
         return this.libellePrgrm;
     }
@@ -51,12 +56,26 @@ public class Programme  implements java.io.Serializable {
     public void setLibellePrgrm(String libellePrgrm) {
         this.libellePrgrm = libellePrgrm;
     }
-    public Set getSemaines() {
-        return this.semaines;
+    public Boolean getEstProgrammeClient() {
+        return this.estProgrammeClient;
     }
     
-    public void setSemaines(Set semaines) {
-        this.semaines = semaines;
+    public void setEstProgrammeClient(Boolean estProgrammeClient) {
+        this.estProgrammeClient = estProgrammeClient;
+    }
+    public Set getSeanceBilanAppartenirs() {
+        return this.seanceBilanAppartenirs;
+    }
+    
+    public void setSeanceBilanAppartenirs(Set seanceBilanAppartenirs) {
+        this.seanceBilanAppartenirs = seanceBilanAppartenirs;
+    }
+    public Set getSeanceAppartenirs() {
+        return this.seanceAppartenirs;
+    }
+    
+    public void setSeanceAppartenirs(Set seanceAppartenirs) {
+        this.seanceAppartenirs = seanceAppartenirs;
     }
 }
 

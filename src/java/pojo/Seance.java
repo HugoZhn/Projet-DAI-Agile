@@ -1,5 +1,5 @@
 package pojo;
-// Generated 18 févr. 2019 15:54:11 by Hibernate Tools 4.3.1
+// Generated 19 févr. 2019 12:38:57 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -17,7 +17,7 @@ public class Seance  implements java.io.Serializable {
      private String recupSc;
      private String echauffement;
      private Set exerciceDeSeances = new HashSet(0);
-     private Set semaines = new HashSet(0);
+     private Set seanceAppartenirs = new HashSet(0);
 
     public Seance() {
     }
@@ -29,13 +29,13 @@ public class Seance  implements java.io.Serializable {
         this.recupSc = recupSc;
         this.echauffement = echauffement;
     }
-    public Seance(ProfilClient profilClient, String libelleSc, String recupSc, String echauffement, Set exerciceDeSeances, Set semaines) {
+    public Seance(ProfilClient profilClient, String libelleSc, String recupSc, String echauffement, Set exerciceDeSeances, Set seanceAppartenirs) {
        this.profilClient = profilClient;
        this.libelleSc = libelleSc;
        this.recupSc = recupSc;
        this.echauffement = echauffement;
        this.exerciceDeSeances = exerciceDeSeances;
-       this.semaines = semaines;
+       this.seanceAppartenirs = seanceAppartenirs;
     }
    
     public Integer getCodeSc() {
@@ -80,12 +80,12 @@ public class Seance  implements java.io.Serializable {
     public void setExerciceDeSeances(Set exerciceDeSeances) {
         this.exerciceDeSeances = exerciceDeSeances;
     }
-    public Set getSemaines() {
-        return this.semaines;
+    public Set getSeanceAppartenirs() {
+        return this.seanceAppartenirs;
     }
     
-    public void setSemaines(Set semaines) {
-        this.semaines = semaines;
+    public void setSeanceAppartenirs(Set seanceAppartenirs) {
+        this.seanceAppartenirs = seanceAppartenirs;
     }
 
 

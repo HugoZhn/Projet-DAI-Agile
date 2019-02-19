@@ -36,14 +36,14 @@ public class CoachAdmin extends Utilisateur implements java.io.Serializable{
         public CoachAdmin(){
     }
     
-    public CoachAdmin(String login, String password) {
-        super("coachadmin", login, password);
+    public CoachAdmin(String login, String password, Date dateInscritpion) {
+        super("coachadmin", login, password, dateInscritpion);
     }
 
     public CoachAdmin(String nom, String prenom, Date dateNaissance, String mailCoach, String mailAdmin, 
-            String login, String password, String sexe) {
+            String login, String password, String sexe, Date dateInscritpion) {
 
-        super("coachadmin", nom, prenom, dateNaissance, login, password, sexe);
+        super("coachadmin", nom, prenom, dateNaissance, login, password, sexe, dateInscritpion);
         this.mailAdmin=mailAdmin;
         this.mailCoach=mailCoach;
     }

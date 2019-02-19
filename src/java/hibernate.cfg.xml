@@ -54,10 +54,12 @@ Contributor(s):
     <mapping resource="pojo/Utilisateur.hbm.xml"/>
     <mapping resource="pojo/ExerciceDeBilan.hbm.xml"/>
     <mapping resource="pojo/ProfilClient.hbm.xml"/>
+    <mapping resource="pojo/TypeExercice.hbm.xml"/>
+    <mapping resource="pojo/SeanceBilanAppartenir.hbm.xml"/>
     <mapping resource="pojo/Seance.hbm.xml"/>
     <mapping resource="pojo/SeanceBilan.hbm.xml"/>
-    <mapping resource="pojo/Semaine.hbm.xml"/>
     <mapping resource="pojo/Exercice.hbm.xml"/>
     <mapping resource="pojo/Programme.hbm.xml"/>
+    <mapping resource="pojo/SeanceAppartenir.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>
