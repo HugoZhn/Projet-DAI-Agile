@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19 fvr. 2019 12:38:57 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojo.SeanceBilanAppartenir" table="SeanceBilanAppartenir" catalog="db_21400055" optimistic-lock="version">
+        <composite-id name="id" class="pojo.SeanceBilanAppartenirId">
+            <key-property name="codeScBilan" type="int">
+                <column name="CodeScBilan" />
+            </key-property>
+            <key-property name="codePrgrm" type="int">
+                <column name="CodePrgrm" />
+            </key-property>
+            <key-property name="codeSemaine" type="int">
+                <column name="CodeSemaine" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="programme" class="pojo.Programme" update="false" insert="false" fetch="select">
+            <column name="CodePrgrm" not-null="true" />
+        </many-to-one>
+        <many-to-one name="seanceBilan" class="pojo.SeanceBilan" update="false" insert="false" fetch="select">
+            <column name="CodeScBilan" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19 fvr. 2019 12:38:57 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojo.Exercice" table="Exercice" catalog="db_21400055" optimistic-lock="version">
+        <id name="codeEx" type="java.lang.Integer">
+            <column name="CodeEx" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="typeExercice" class="pojo.TypeExercice" fetch="select">
+            <column name="TypeEx" not-null="true" />
+        </many-to-one>
+        <property name="nomEx" type="string">
+            <column name="NomEx" length="64" not-null="true" />
+        </property>
+        <property name="descriptionEx" type="string">
+            <column name="DescriptionEx" length="256" />
+        </property>
+        <property name="ressourceEx" type="string">
+            <column name="RessourceEx" length="128" />
+        </property>
+        <property name="tempsBaseEx" type="java.lang.Double">
+            <column name="TempsBaseEx" precision="22" scale="0" />
+        </property>
+        <property name="repsBaseEx" type="string">
+            <column name="RepsBaseEx" length="128" />
+        </property>
+        <property name="objectifsEx" type="string">
+            <column name="ObjectifsEx" length="128" />
+        </property>
+        <set name="exerciceDeSeances" table="ExerciceDeSeance" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CodeEx" not-null="true" />
+            </key>
+            <one-to-many class="pojo.ExerciceDeSeance" />
+        </set>
+        <set name="exerciceDeBilans" table="ExerciceDeBilan" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CodeEx" not-null="true" />
+            </key>
+            <one-to-many class="pojo.ExerciceDeBilan" />
+        </set>
+    </class>
+</hibernate-mapping>

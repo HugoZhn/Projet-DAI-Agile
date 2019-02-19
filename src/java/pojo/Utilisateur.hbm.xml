@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18 fvr. 2019 15:54:13 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojo.Utilisateur" table="Utilisateur" catalog="db_21400055" optimistic-lock="version">
+        <id name="numUser" type="java.lang.Integer">
+            <column name="NumUser" />
+            <generator class="identity" />
+        </id>
+        <discriminator column="Type" type="string"/>
+        <property name="nom" type="string">
+            <column name="Nom" length="64" />
+        </property>
+        <property name="prenom" type="string">
+            <column name="Prenom" length="64" />
+        </property>
+        <property name="dateNaissance" type="date">
+            <column name="DateNaissance" length="10" />
+        </property>
+        <property name="login" type="string">
+            <column name="Login" length="64" not-null="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="Password" length="64" not-null="true" />
+        </property>
+        <property name="sexe" type="string">
+            <column name="Sexe" length="8" />
+        </property>
+		<property name="dateInscritpion" type="date">
+            <column name="DateInscritpion" length="10" not-null="true" />
+        </property>
+        <subclass name="pojo.Client" extends="pojo.Utilisateur" discriminator-value="client">
+            <many-to-one name="profilClient" class="pojo.ProfilClient" lazy="false" fetch="select">
+            <column name="CodeProfil" />
+        </many-to-one>
+            <property name="mailClient" type="string">
+                <column name="MailClient" length="128" />
+            </property>
+            <property name="telephone" type="string">
+                <column name="Telephone" length="10" />
+            </property>
+            <property name="typeAbonnement" type="string">
+                <column name="TypeAbonnement" length="64" />
+            </property>
+            <set name="programmes" table="Programme" inverse="true" lazy="false" fetch="select">
+                <key>
+                    <column name="CodeUser" not-null="true" />
+                </key>
+                <one-to-many class="pojo.Programme" />
+            </set>
+            <set name="documentses" table="Documents" inverse="true" lazy="true" fetch="select">
+                <key>
+                    <column name="CodeUser" not-null="true" />
+                </key>
+                <one-to-many class="pojo.Documents" />
+            </set>
+        </subclass>
+        <subclass name="pojo.CoachAdmin" extends="pojo.Utilisateur" discriminator-value="coachadmin">
+            <property name="mailCoach" type="string">
+                <column name="MailCoach" />
+            </property>
+            <property name="mailAdmin" type="string">
+                <column name="MailAdmin" />
+            </property>
+        </subclass>
+    </class>
+</hibernate-mapping>

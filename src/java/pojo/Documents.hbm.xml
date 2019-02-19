@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19 fvr. 2019 12:38:57 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojo.Documents" table="Documents" catalog="db_21400055" optimistic-lock="version">
+        <id name="codeDoc" type="java.lang.Integer">
+            <column name="CodeDoc" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="utilisateur" class="pojo.Utilisateur" fetch="select">
+            <column name="CodeUser" not-null="true" />
+        </many-to-one>
+        <property name="lienDoc" type="string">
+            <column name="LienDoc" length="256" not-null="true" />
+        </property>
+        <property name="libelleDoc" type="string">
+            <column name="LibelleDoc" length="128" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

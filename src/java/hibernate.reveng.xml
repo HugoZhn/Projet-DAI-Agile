@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
 <!--
 DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
 
@@ -39,27 +39,18 @@ made subject to such option by the copyright holder.
 
 Contributor(s):
 -->
-<hibernate-configuration>
-  <session-factory>
-    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://etu-web2.ut-capitole.fr:3306/db_21400055?zeroDateTimeBehavior=convertToNull</property>
-    <property name="hibernate.connection.username">21400055</property>
-    <property name="hibernate.connection.password">23027K</property>
-    <property name="hibernate.show_sql">true</property>
-    <property name="hibernate.current_session_context_class">thread</property>
-    <property name="hibernate.query.factory_class">org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory</property>
-    <mapping resource="pojo/ExerciceDeSeance.hbm.xml"/>
-    <mapping resource="pojo/Documents.hbm.xml"/>
-    <mapping resource="pojo/Utilisateur.hbm.xml"/>
-    <mapping resource="pojo/ExerciceDeBilan.hbm.xml"/>
-    <mapping resource="pojo/ProfilClient.hbm.xml"/>
-    <mapping resource="pojo/TypeExercice.hbm.xml"/>
-    <mapping resource="pojo/SeanceBilanAppartenir.hbm.xml"/>
-    <mapping resource="pojo/Seance.hbm.xml"/>
-    <mapping resource="pojo/SeanceBilan.hbm.xml"/>
-    <mapping resource="pojo/Exercice.hbm.xml"/>
-    <mapping resource="pojo/Programme.hbm.xml"/>
-    <mapping resource="pojo/SeanceAppartenir.hbm.xml"/>
-  </session-factory>
-</hibernate-configuration>
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="db_21400055"/>
+  <table-filter match-name="ExerciceDeBilan"/>
+  <table-filter match-name="TypeExercice"/>
+  <table-filter match-name="ExerciceDeSeance"/>
+  <table-filter match-name="SeanceAppartenir"/>
+  <table-filter match-name="SeanceBilanAppartenir"/>
+  <table-filter match-name="Programme"/>
+  <table-filter match-name="SeanceBilan"/>
+  <table-filter match-name="ProfilClient"/>
+  <table-filter match-name="Seance"/>
+  <table-filter match-name="Utilisateur"/>
+  <table-filter match-name="Exercice"/>
+  <table-filter match-name="Documents"/>
+</hibernate-reverse-engineering>

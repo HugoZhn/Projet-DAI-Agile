@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 19 fvr. 2019 12:38:57 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojo.SeanceBilan" table="SeanceBilan" catalog="db_21400055" optimistic-lock="version">
+        <id name="codeScBilan" type="java.lang.Integer">
+            <column name="CodeScBilan" />
+            <generator class="identity" />
+        </id>
+        <property name="age" type="java.lang.Integer">
+            <column name="Age" />
+        </property>
+        <property name="poids" type="java.lang.Double">
+            <column name="Poids" precision="22" scale="0" />
+        </property>
+        <property name="fcCinqminAll" type="java.lang.Integer">
+            <column name="Fc_cinqmin_all" />
+        </property>
+        <property name="fcTrenteflexions" type="java.lang.Integer">
+            <column name="Fc_trenteflexions" />
+        </property>
+        <property name="fcUneminApexAll" type="java.lang.Integer">
+            <column name="Fc_unemin_apex_all" />
+        </property>
+        <property name="objectifMinceur" type="java.lang.Boolean">
+            <column name="ObjectifMinceur" />
+        </property>
+        <property name="mensBras" type="java.lang.Double">
+            <column name="MensBras" precision="22" scale="0" />
+        </property>
+        <property name="mensPoitrine" type="java.lang.Double">
+            <column name="MensPoitrine" precision="22" scale="0" />
+        </property>
+        <property name="mensTaille" type="java.lang.Double">
+            <column name="MensTaille" precision="22" scale="0" />
+        </property>
+        <property name="mensHanches" type="java.lang.Double">
+            <column name="MensHanches" precision="22" scale="0" />
+        </property>
+        <property name="mensCuisses" type="java.lang.Double">
+            <column name="MensCuisses" precision="22" scale="0" />
+        </property>
+        <set name="exerciceDeBilans" table="ExerciceDeBilan" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CodeScBilan" not-null="true" />
+            </key>
+            <one-to-many class="pojo.ExerciceDeBilan" />
+        </set>
+        <set name="seanceBilanAppartenirs" table="SeanceBilanAppartenir" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CodeScBilan" not-null="true" />
+            </key>
+            <one-to-many class="pojo.SeanceBilanAppartenir" />
+        </set>
+    </class>
+</hibernate-mapping>
