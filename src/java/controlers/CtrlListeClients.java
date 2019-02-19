@@ -41,8 +41,8 @@ public class CtrlListeClients extends HttpServlet {
         Session session = (Session) HibernateUtilProjetDAI.getSessionFactory().getCurrentSession();
         Transaction t = session.beginTransaction();
         List<Client> listeClients = (List<Client>) session.createQuery("from Client c order by c.nom asc").list();
-
-        request.setAttribute("listeClients", listeClients);
+        request.setAttribute("listeClients", listeClients);        
+        t.commit();        
         RequestDispatcher rd = request.getRequestDispatcher("afficherClientsAdmin"); //importer requestdispatcher
         rd.forward(request,response);
         
