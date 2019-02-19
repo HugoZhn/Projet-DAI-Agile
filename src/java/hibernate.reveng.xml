@@ -41,14 +41,16 @@ Contributor(s):
 -->
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="db_21400055"/>
-  <table-filter match-name="Programme"/>
-  <table-filter match-name="ExerciceDeSeance"/>
-  <table-filter match-name="SeanceBilan"/>
   <table-filter match-name="ExerciceDeBilan"/>
-  <table-filter match-name="Utilisateur"/>
-  <table-filter match-name="Documents"/>
-  <table-filter match-name="Seance"/>
+  <table-filter match-name="TypeExercice"/>
+  <table-filter match-name="ExerciceDeSeance"/>
+  <table-filter match-name="SeanceAppartenir"/>
+  <table-filter match-name="SeanceBilanAppartenir"/>
+  <table-filter match-name="Programme"/>
+  <table-filter match-name="SeanceBilan"/>
   <table-filter match-name="ProfilClient"/>
-  <table-filter match-name="Semaine"/>
+  <table-filter match-name="Seance"/>
+  <table-filter match-name="Utilisateur"/>
   <table-filter match-name="Exercice"/>
+  <table-filter match-name="Documents"/>
 </hibernate-reverse-engineering>

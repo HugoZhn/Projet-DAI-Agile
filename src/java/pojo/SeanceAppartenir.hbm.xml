@@ -1,18 +1,21 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 18 f?vr. 2019 15:54:13 by Hibernate Tools 4.3.1 -->
+<!-- Generated 19 f?vr. 2019 12:38:57 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="pojo.Semaine" table="Semaine" catalog="db_21400055" optimistic-lock="version">
-        <composite-id name="id" class="pojo.SemaineId">
+    <class name="pojo.SeanceAppartenir" table="SeanceAppartenir" catalog="db_21400055" optimistic-lock="version">
+        <composite-id name="id" class="pojo.SeanceAppartenirId">
             <key-property name="codePrgrm" type="int">
                 <column name="CodePrgrm" />
             </key-property>
             <key-property name="codeSc" type="int">
                 <column name="CodeSc" />
             </key-property>
-            <key-property name="numero" type="int">
-                <column name="Numero" />
+            <key-property name="codeSemaine" type="int">
+                <column name="CodeSemaine" />
+            </key-property>
+            <key-property name="ordre" type="int">
+                <column name="Ordre" />
             </key-property>
         </composite-id>
         <many-to-one name="programme" class="pojo.Programme" update="false" insert="false" fetch="select">

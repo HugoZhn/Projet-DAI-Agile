@@ -23,8 +23,8 @@ public class ProgrammeClient extends Programme{
         this.client = client;
     }
 
-    public ProgrammeClient(ProfilClient profilClient, Client client, String libellePrgrm, Set semaines) {
-        super(profilClient, libellePrgrm, semaines);
+    public ProgrammeClient(Client client, ProfilClient profilClient, String libellePrgrm, Set seanceBilanAppartenirs, Set seanceAppartenirs) {
+        super(profilClient, libellePrgrm, true, seanceBilanAppartenirs, seanceAppartenirs);
         this.client = client;
     }
 

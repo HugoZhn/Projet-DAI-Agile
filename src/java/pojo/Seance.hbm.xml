@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 18 f?vr. 2019 15:54:13 by Hibernate Tools 4.3.1 -->
+<!-- Generated 19 f?vr. 2019 12:38:57 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="pojo.Seance" table="Seance" catalog="db_21400055" optimistic-lock="version">
         <id name="codeSc" type="java.lang.Integer">
@@ -26,11 +26,11 @@
             </key>
             <one-to-many class="pojo.ExerciceDeSeance" />
         </set>
-        <set name="semaines" table="Semaine" inverse="true" lazy="true" fetch="select">
+        <set name="seanceAppartenirs" table="SeanceAppartenir" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="CodeSc" not-null="true" />
             </key>
-            <one-to-many class="pojo.Semaine" />
+            <one-to-many class="pojo.SeanceAppartenir" />
         </set>
     </class>
 </hibernate-mapping>

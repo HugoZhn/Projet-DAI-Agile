@@ -27,14 +27,14 @@ public class Client extends Utilisateur implements java.io.Serializable {
     public Client(){
     }
     
-    public Client(String login, String password) {
-        super("client", login, password);
+    public Client(String login, String password, Date dateInscritpion) {
+        super("client", login, password, dateInscritpion);
     }
 
     public Client(ProfilClient profilClient, String nom, String prenom, Date dateNaissance, String mailClient, String telephone,
-            String typeAbonnement, String login, String password, String sexe, Set programmes, Set documentses) {
+            String typeAbonnement, String login, String password, String sexe, Date dateInscritpion, Set programmes, Set documentses) {
 
-        super("client", nom, prenom, dateNaissance, login, password, sexe);
+        super("client", nom, prenom, dateNaissance, login, password, sexe, dateInscritpion);
         this.mailClient = mailClient;
         this.telephone = telephone;
         this.typeAbonnement = typeAbonnement;

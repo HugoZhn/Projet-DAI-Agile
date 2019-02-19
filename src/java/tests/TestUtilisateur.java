@@ -8,6 +8,8 @@ package tests;
 import org.hibernate.Transaction;
 import pojo.Client;
 import hibernateutils.HibernateUtilProjetDAI;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import org.hibernate.Session;
 import pojo.CoachAdmin;
 import pojo.Programme;
@@ -25,16 +27,20 @@ public class TestUtilisateur {
             /*----- Ouverture de la session et de la transaction -----*/
             Session session = HibernateUtilProjetDAI.getSessionFactory().getCurrentSession();
             Transaction t = session.beginTransaction();
-
-//            Client c = new Client("LOGIN", "MPD");
+            
+//
+//            Client c = new Client("LOGIN", "MPD", new Date());
 //            session.save(c);
 //
 //
-//            CoachAdmin cadm = new CoachAdmin( "LOGIN", "MPD");
+//            CoachAdmin cadm = new CoachAdmin( "LOGIN", "MPD", new Date());
 //            session.save(cadm);
 
-            Client c = (Client)session.get(Client.class, 1);
-            System.out.println(c.getProgrammes());
+//            Client c = (Client)session.get(Client.class, 15);
+//            ProgrammeClient test = new ProgrammeClient(c, "ProTest");
+//            session.save(test);
+//            System.out.println(c.getProgrammes());
+            
             
             
             t.commit();

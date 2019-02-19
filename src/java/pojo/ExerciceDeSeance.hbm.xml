@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 18 f?vr. 2019 15:54:13 by Hibernate Tools 4.3.1 -->
+<!-- Generated 19 f?vr. 2019 12:38:57 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="pojo.ExerciceDeSeance" table="ExerciceDeSeance" catalog="db_21400055" optimistic-lock="version">
         <composite-id name="id" class="pojo.ExerciceDeSeanceId">
@@ -19,7 +19,7 @@
             <column name="CodeSc" not-null="true" />
         </many-to-one>
         <property name="tempsExSc" type="double">
-            <column name="TempsExSc" not-null="true" />
+            <column name="TempsExSc" precision="22" scale="0" not-null="true" />
         </property>
         <property name="repsExSc" type="int">
             <column name="RepsExSc" not-null="true" />

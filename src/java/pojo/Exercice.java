@@ -1,5 +1,5 @@
 package pojo;
-// Generated 18 fï¿½vr. 2019 15:54:11 by Hibernate Tools 4.3.1
+// Generated 19 févr. 2019 12:38:57 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -12,12 +12,12 @@ public class Exercice  implements java.io.Serializable {
 
 
      private Integer codeEx;
+     private TypeExercice typeExercice;
      private String nomEx;
      private String descriptionEx;
      private String ressourceEx;
      private Double tempsBaseEx;
      private String repsBaseEx;
-     private String typeEx;
      private String objectifsEx;
      private Set exerciceDeSeances = new HashSet(0);
      private Set exerciceDeBilans = new HashSet(0);
@@ -26,17 +26,17 @@ public class Exercice  implements java.io.Serializable {
     }
 
 	
-    public Exercice(String nomEx, String objectifsEx) {
+    public Exercice(TypeExercice typeExercice, String nomEx) {
+        this.typeExercice = typeExercice;
         this.nomEx = nomEx;
-        this.objectifsEx = objectifsEx;
     }
-    public Exercice(String nomEx, String descriptionEx, String ressourceEx, Double tempsBaseEx, String repsBaseEx, String typeEx, String objectifsEx, Set exerciceDeSeances, Set exerciceDeBilans) {
+    public Exercice(TypeExercice typeExercice, String nomEx, String descriptionEx, String ressourceEx, Double tempsBaseEx, String repsBaseEx, String objectifsEx, Set exerciceDeSeances, Set exerciceDeBilans) {
+       this.typeExercice = typeExercice;
        this.nomEx = nomEx;
        this.descriptionEx = descriptionEx;
        this.ressourceEx = ressourceEx;
        this.tempsBaseEx = tempsBaseEx;
        this.repsBaseEx = repsBaseEx;
-       this.typeEx = typeEx;
        this.objectifsEx = objectifsEx;
        this.exerciceDeSeances = exerciceDeSeances;
        this.exerciceDeBilans = exerciceDeBilans;
@@ -48,6 +48,13 @@ public class Exercice  implements java.io.Serializable {
     
     public void setCodeEx(Integer codeEx) {
         this.codeEx = codeEx;
+    }
+    public TypeExercice getTypeExercice() {
+        return this.typeExercice;
+    }
+    
+    public void setTypeExercice(TypeExercice typeExercice) {
+        this.typeExercice = typeExercice;
     }
     public String getNomEx() {
         return this.nomEx;
@@ -83,13 +90,6 @@ public class Exercice  implements java.io.Serializable {
     
     public void setRepsBaseEx(String repsBaseEx) {
         this.repsBaseEx = repsBaseEx;
-    }
-    public String getTypeEx() {
-        return this.typeEx;
-    }
-    
-    public void setTypeEx(String typeEx) {
-        this.typeEx = typeEx;
     }
     public String getObjectifsEx() {
         return this.objectifsEx;
