@@ -5,12 +5,17 @@
  */
 package controlers;
 
+import hibernateutils.HibernateUtilProjetDAI;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import pojo.ProgrammeClient;
 
 /**
  *
@@ -31,16 +36,16 @@ public class CtrlVoirProgrammeClient extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet CtrlVoirProgrammeClient</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet CtrlVoirProgrammeClient at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            Integer codeProgramme = Integer.parseInt(request.getParameter("idProgramme"));
+            
+            Session sessionHibernate = HibernateUtilProjetDAI.getSessionFactory().getCurrentSession();
+            Transaction t = sessionHibernate.beginTransaction();
+            
+            ProgrammeClient programmeCourantClient = (ProgrammeClient) sessionHibernate.get(ProgrammeClient.class, codeProgramme);
+            
+            request.setAttribute("programmeAAfficher", programmeCourantClient);
+            
+            
         }
     }
 
