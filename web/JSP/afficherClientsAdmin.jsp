@@ -28,6 +28,13 @@
     <body>
     <center>
         <h1>Affichage clients Validés</h1>
+        
+        <div class="col-md-6">
+                <div class="dataTables_filter">
+                  <label class="searchInfo mbr-fonts-style display-7">Rechercher : </label>
+                  <input class="form-control input-sm" disabled="">
+                </div>
+            </div>
              <table class="table isSearch" cellspacing="0">
             <thead>
               <tr class="table-heads ">                 
@@ -48,8 +55,8 @@
             out.print("<tr><td class=\"body-item mbr-fonts-style display-7\">" + unClient.getNom() + "</td>"
                     + " <td \"body-item mbr-fonts-style display-7\">" + unClient.getPrenom() + "</td>"
                             + " <td \"body-item mbr-fonts-style display-7\">" + unClient.getProgrammes().toString() + "</td>"
-                                    + "<td \"body-item mbr-fonts-style display-7\">" + unClient.getPrenom() + "</td>"
-                                            + "<td \"body-item mbr-fonts-style display-7\">" + unClient.getPrenom() + "</td></tr>");
+                                    + "<td \"body-item mbr-fonts-style display-7\">" + unClient.getProfilClient().getNomProfil() + "</td>"
+                                            + "<td \"body-item mbr-fonts-style display-7\">" + unClient.getDateInscritpion() + "</td></tr>");
         }
          %>
             </tbody>
