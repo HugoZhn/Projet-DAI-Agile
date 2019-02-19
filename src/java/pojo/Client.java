@@ -89,4 +89,13 @@ public class Client extends Utilisateur implements java.io.Serializable {
     public void setProfilClient(ProfilClient profilClient) {
         this.profilClient = profilClient;
     }
+    
+    public ProgrammeClient getCurrentProgramme(){
+        for (ProgrammeClient programme : (Set<ProgrammeClient>) this.programmes){
+            if (!programme.isFini()){
+                return programme;
+            }
+        }
+        return null;
+    }
 }
