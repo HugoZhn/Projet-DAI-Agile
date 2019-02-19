@@ -14,6 +14,7 @@ import java.util.Set;
 public class ProgrammeClient extends Programme{
     
          private Client client;
+         private boolean fini=false;
 
     public ProgrammeClient() {
     }
@@ -36,4 +37,11 @@ public class ProgrammeClient extends Programme{
         this.client = client;
     }
          
+    public boolean isFini() {
+        return fini;
+    }
+
+    public void setFini(boolean fini) {
+        this.fini = fini;
+    }
 }

@@ -1,8 +1,9 @@
 package pojo;
-// Generated 19 févr. 2019 12:38:57 by Hibernate Tools 4.3.1
+// Generated 19 fï¿½vr. 2019 12:38:57 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -47,6 +48,35 @@ public class TypeExercice  implements java.io.Serializable {
     
     public void setExercices(Set exercices) {
         this.exercices = exercices;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.codeTypeEx);
+        hash = 97 * hash + Objects.hashCode(this.libTypeEx);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final TypeExercice other = (TypeExercice) obj;
+        if (!Objects.equals(this.libTypeEx, other.libTypeEx)) {
+            return false;
+        }
+        if (!Objects.equals(this.codeTypeEx, other.codeTypeEx)) {
+            return false;
+        }
+        return true;
     }
 
 

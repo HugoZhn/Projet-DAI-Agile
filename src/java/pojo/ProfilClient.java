@@ -1,8 +1,9 @@
 package pojo;
-// Generated 19 févr. 2019 12:38:57 by Hibernate Tools 4.3.1
+// Generated 19 fï¿½vr. 2019 12:38:57 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -65,6 +66,35 @@ public class ProfilClient  implements java.io.Serializable {
     
     public void setSeances(Set seances) {
         this.seances = seances;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 59 * hash + Objects.hashCode(this.codeProfil);
+        hash = 59 * hash + Objects.hashCode(this.nomProfil);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ProfilClient other = (ProfilClient) obj;
+        if (!Objects.equals(this.nomProfil, other.nomProfil)) {
+            return false;
+        }
+        if (!Objects.equals(this.codeProfil, other.codeProfil)) {
+            return false;
+        }
+        return true;
     }
 
 

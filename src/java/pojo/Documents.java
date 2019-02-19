@@ -1,5 +1,8 @@
 package pojo;
-// Generated 19 févr. 2019 12:38:57 by Hibernate Tools 4.3.1
+// Generated 19 fï¿½vr. 2019 12:38:57 by Hibernate Tools 4.3.1
+
+import java.util.Objects;
+
 
 
 
@@ -50,6 +53,35 @@ public class Documents  implements java.io.Serializable {
     
     public void setLibelleDoc(String libelleDoc) {
         this.libelleDoc = libelleDoc;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 73 * hash + Objects.hashCode(this.codeDoc);
+        hash = 73 * hash + Objects.hashCode(this.libelleDoc);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Documents other = (Documents) obj;
+        if (!Objects.equals(this.libelleDoc, other.libelleDoc)) {
+            return false;
+        }
+        if (!Objects.equals(this.codeDoc, other.codeDoc)) {
+            return false;
+        }
+        return true;
     }
 
 

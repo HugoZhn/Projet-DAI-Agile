@@ -3,6 +3,7 @@ package pojo;
 
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -77,6 +78,41 @@ public class Programme  implements java.io.Serializable {
     public void setSeanceAppartenirs(Set seanceAppartenirs) {
         this.seanceAppartenirs = seanceAppartenirs;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 37 * hash + Objects.hashCode(this.codePrgrm);
+        hash = 37 * hash + Objects.hashCode(this.libellePrgrm);
+        hash = 37 * hash + Objects.hashCode(this.estProgrammeClient);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Programme other = (Programme) obj;
+        if (!Objects.equals(this.libellePrgrm, other.libellePrgrm)) {
+            return false;
+        }
+        if (!Objects.equals(this.codePrgrm, other.codePrgrm)) {
+            return false;
+        }
+        if (!Objects.equals(this.estProgrammeClient, other.estProgrammeClient)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
 }
 
 

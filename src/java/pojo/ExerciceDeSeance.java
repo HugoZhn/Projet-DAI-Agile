@@ -1,5 +1,8 @@
 package pojo;
-// Generated 19 févr. 2019 12:38:57 by Hibernate Tools 4.3.1
+// Generated 19 fï¿½vr. 2019 12:38:57 by Hibernate Tools 4.3.1
+
+import java.util.Objects;
+
 
 
 
@@ -89,7 +92,30 @@ public class ExerciceDeSeance  implements java.io.Serializable {
         this.avisLibre = avisLibre;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 29 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ExerciceDeSeance other = (ExerciceDeSeance) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
+    }
 
 
 }
