@@ -28,6 +28,10 @@
         <servlet-name>menuClient</servlet-name>
         <jsp-file>/JSP/menuClient.jsp</jsp-file>
     </servlet>
+    <servlet>
+        <servlet-name>afficherProgramme</servlet-name>
+        <jsp-file>/JSP/afficherProgramme.jsp</jsp-file>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CtrlVoirProgrammeClient</servlet-name>
         <url-pattern>/CtrlVoirProgrammeClient</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>menuClient</servlet-name>
         <url-pattern>/menuClient</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>afficherProgramme</servlet-name>
+        <url-pattern>/afficherProgramme</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
