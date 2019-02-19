@@ -24,7 +24,7 @@
     </head>
     <body>
         <h1>Page temporaire pour le menu du client</h1>
-        <a href="/CtrlVoirProgrammeClient?idProgramme=<%= clientSession.getCurrentProgramme().getCodePrgrm()%>">Voir mon programme</a>
+        <a href="CtrlVoirProgrammeClient?idProgramme=<%= clientSession.getCurrentProgramme().getCodePrgrm()%>">Voir mon programme</a>
         
     </body>
     <%
