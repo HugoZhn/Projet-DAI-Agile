@@ -1,5 +1,5 @@
 package pojo;
-// Generated 19 f�vr. 2019 12:38:57 by Hibernate Tools 4.3.1
+// Generated 20 fvr. 2019 11:34:49 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -15,9 +15,10 @@ public class Exercice  implements java.io.Serializable {
      private TypeExercice typeExercice;
      private String nomEx;
      private String descriptionEx;
+     private String precisionsEx;
      private String ressourceEx;
      private Double tempsBaseEx;
-     private String repsBaseEx;
+     private Integer repsBaseEx;
      private String objectifsEx;
      private Set exerciceDeSeances = new HashSet(0);
      private Set exerciceDeBilans = new HashSet(0);
@@ -30,10 +31,11 @@ public class Exercice  implements java.io.Serializable {
         this.typeExercice = typeExercice;
         this.nomEx = nomEx;
     }
-    public Exercice(TypeExercice typeExercice, String nomEx, String descriptionEx, String ressourceEx, Double tempsBaseEx, String repsBaseEx, String objectifsEx, Set exerciceDeSeances, Set exerciceDeBilans) {
+    public Exercice(TypeExercice typeExercice, String nomEx, String descriptionEx, String precisionsEx, String ressourceEx, Double tempsBaseEx, Integer repsBaseEx, String objectifsEx, Set exerciceDeSeances, Set exerciceDeBilans) {
        this.typeExercice = typeExercice;
        this.nomEx = nomEx;
        this.descriptionEx = descriptionEx;
+       this.precisionsEx = precisionsEx;
        this.ressourceEx = ressourceEx;
        this.tempsBaseEx = tempsBaseEx;
        this.repsBaseEx = repsBaseEx;
@@ -70,6 +72,13 @@ public class Exercice  implements java.io.Serializable {
     public void setDescriptionEx(String descriptionEx) {
         this.descriptionEx = descriptionEx;
     }
+    public String getPrecisionsEx() {
+        return this.precisionsEx;
+    }
+    
+    public void setPrecisionsEx(String precisionsEx) {
+        this.precisionsEx = precisionsEx;
+    }
     public String getRessourceEx() {
         return this.ressourceEx;
     }
@@ -84,11 +93,11 @@ public class Exercice  implements java.io.Serializable {
     public void setTempsBaseEx(Double tempsBaseEx) {
         this.tempsBaseEx = tempsBaseEx;
     }
-    public String getRepsBaseEx() {
+    public Integer getRepsBaseEx() {
         return this.repsBaseEx;
     }
     
-    public void setRepsBaseEx(String repsBaseEx) {
+    public void setRepsBaseEx(Integer repsBaseEx) {
         this.repsBaseEx = repsBaseEx;
     }
     public String getObjectifsEx() {
