@@ -19,8 +19,16 @@
             
             <form>
             <%
-                // Récupère le message d'avertissement ou d'erreur
-               
+            // Récupère le message d'avertissement ou d'erreur
+
+            String Confirmation = request.getParameter("msg_avrt");
+
+            if (Confirmation != null) {
+
+                out.println("<p>" + Confirmation + "</p>");
+
+            }
+
                 Exercice ex = (Exercice) session.getAttribute("exercice");
 
                 out.println("<h3>" + ex.getNomEx() + "</h3>");
@@ -57,8 +65,25 @@
                     out.println("</tr>");
                     }
                 out.println("</table>");
+
             %>       
             <a href = "modifExercice"> Modifier </a>
-        </form>
+        </form> 
+        
+        <button id ="boutonDeleteExercice"> Supprimer </button> 
+        
+        <p id = "phraseSupprimer" hidden = "true">Confirmez-vous la suppression ?<p>
+
+        <%
+            out.println("<form action = \"CtrlSupprimerExercice\">");   
+                out.println("<input hidden = \"true\" type=\"text\" name = \"codeEx\" value ="  + ex.getCodeEx() + "></input>");
+                out.println("<button type = \"submit\" id =\"ouiSupprimer\" hidden = \"true\">Oui</button>");
+            out.println("</form>");
+        %>
+        
+        <button id ="nonSupprimer" hidden = "true"> Non </button> 
+        
+        <script type="text/JavaScript" charset="utf-8" src="jsSuppExercice"></script>
+        
     </body>
 </html>

@@ -34,11 +34,9 @@
 
             }
 
-            System.out.println("Confirmation : " + Confirmation);
-
         %>
 
-        <form action ="ctrl_CreationExercice" method = "GET">
+        <form action ="CtrlCreationExercice" method = "GET">
             <table>
                 <tr>
                     <td>Nom :</td>
@@ -47,7 +45,8 @@
                 </tr>
                 <tr>
                     <td>Type :</td>
-                    <%                        try {
+                    <%  
+                        try {
 
                             Session ses = HibernateUtilProjetDAI.getSessionFactory().getCurrentSession();
                             Transaction t = ses.beginTransaction();
@@ -67,6 +66,7 @@
                             out.println("</select></td>");
 
                             t.commit();
+
                         } catch (Exception ex) {
 
                             out.println("<td>Erreur de chargement des types d'exercice. " + ex.getMessage() + "</td>");
@@ -79,8 +79,12 @@
                     <td><input type="text" name = "objectifsEx" required></td>
                 </tr>
                 <tr>                        
+                    <td>Précisions :</td>
+                    <td><input type="text" name = "precisionEx" required></td>
+                </tr>
+                <tr>                        
                     <td>Description :</td>
-                    <td><input type="text" name = "descriptionEx" required></td>
+                    <td><input type="text" name = "descriptionEx"></td>
                 </tr>
                 <tr>                        
                     <td>Illustration :</td>
@@ -99,6 +103,6 @@
             <input id="exerciceUpdate" type="submit" name="exerciceUpdate" value = "Confirmer">
         </form>
 
-        <script type="text/JavaScript" charset="utf-8" src="jsExercice"></script>
+        <script type="text/JavaScript" charset="utf-8" src="jsCreaExercice"></script>
     </body>
 </html>
