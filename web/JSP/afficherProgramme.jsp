@@ -22,10 +22,12 @@
     %>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Programme <%= programmeAAfficher.getLibellePrgrm()%></title>
+        <title>Mon programme</title>
     </head>
     <body>
         <h1>Programme <%= programmeAAfficher.getLibellePrgrm()%></h1>
+        <h2>Mes scéances actives</h2>
+        
         <p>TO-DO</p>
     </body>
     <% t.commit(); %>

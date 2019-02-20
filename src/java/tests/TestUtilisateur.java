@@ -29,16 +29,16 @@ public class TestUtilisateur {
             Transaction t = session.beginTransaction();
             
 //
-//            Client c = new Client("LOGIN", "MPD", new Date());
-//            session.save(c);
+////            Client c = new Client("LOGIN", "MPD", new Date());
+////            session.save(c);
+////
+////
+////            CoachAdmin cadm = new CoachAdmin( "LOGIN", "MPD", new Date());
+////            session.save(cadm);
 //
-//
-//            CoachAdmin cadm = new CoachAdmin( "LOGIN", "MPD", new Date());
-//            session.save(cadm);
-
-//            Client c = (Client)session.get(Client.class, 15);
-//            ProgrammeClient test = new ProgrammeClient(c, "ProTest");
-//            session.save(test);
+//            Client c = (Client)session.get(Client.class, 32);
+////            ProgrammeClient test = new ProgrammeClient(c, "ProTest");
+////            session.save(test);
 //            System.out.println(c.getProgrammes());
             
             

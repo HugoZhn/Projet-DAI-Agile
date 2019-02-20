@@ -1,5 +1,5 @@
 package pojo;
-// Generated 19 f�vr. 2019 12:13:51 by Hibernate Tools 4.3.1
+// Generated 19 fvr. 2019 12:13:51 by Hibernate Tools 4.3.1
 
 
 import pojo.ProfilClient;
@@ -152,5 +152,3 @@ public class Utilisateur  implements java.io.Serializable {
     
     
 }
-
-
