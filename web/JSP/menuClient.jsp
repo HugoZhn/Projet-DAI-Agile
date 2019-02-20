@@ -26,12 +26,6 @@
         <h1>Page temporaire pour le menu du client</h1>
         <a href="CtrlVoirProgrammeClient?idProgramme=<%= clientSession.getCurrentProgramme().getCodePrgrm()%>">Voir mon programme</a>
         
-        <h2>Exercices<h2>
-        <ul>
-            <li><a href = "editionExercice">Édition exercice</a></li> 
-            <li><a href = "CtrlListExercice">Liste des exercices</a></li> 
-            <li><a href = "CtrlSupprimerExercice?codeEx=22">Test Servlet</a></li> 
-        </ul>
     </body>
     <%
         t.commit();

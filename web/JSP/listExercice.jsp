@@ -28,7 +28,7 @@
 
         <%
                 // Récupère le message d'avertissement ou d'erreur
-                String Confirmation = request.getParameter("msg_avrt");
+                 String Confirmation = request.getParameter("msg_avrt");
 
                 if (Confirmation != null) {
                     if (Confirmation.equals("Ok")) {

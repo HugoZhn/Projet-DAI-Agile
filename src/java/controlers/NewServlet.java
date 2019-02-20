@@ -5,23 +5,18 @@
  */
 package controlers;
 
-import hibernateutils.HibernateUtilProjetDAI;
 import java.io.IOException;
-import javax.servlet.RequestDispatcher;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-import pojo.Exercice;
 
 /**
  *
- * @author 21607860
+ * @author hzahn
  */
-public class CtrlSupprimerExercice extends HttpServlet {
+public class NewServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,30 +29,19 @@ public class CtrlSupprimerExercice extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        String codeEx = request.getParameter("codeEx");
-
-        try {
-
-            Session sessionHibernate = HibernateUtilProjetDAI.getSessionFactory().getCurrentSession();
-            Transaction t = sessionHibernate.beginTransaction();
-
-            Exercice ex = (Exercice) sessionHibernate.get(Exercice.class, Integer.parseInt(codeEx));
-
-            sessionHibernate.delete(ex);
-            t.commit();
-
-            RequestDispatcher rd = request.getRequestDispatcher("CtrlListExercice");
-            rd.forward(request, response);
-
-        } catch (IOException | HibernateException ex) {
-
-            RequestDispatcher rd = request.getRequestDispatcher("voirExercice");
-            request.setAttribute("msg_avrt", ex.getMessage());
-            rd.forward(request, response);
-
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet NewServlet</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet NewServlet at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

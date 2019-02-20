@@ -33,12 +33,16 @@
         <jsp-file>/JSP/afficherProgramme.jsp</jsp-file>
     </servlet>
     <servlet>
-        <servlet-name>CtrlCreationExercice</servlet-name>
+        <servlet-name>ctrl_CreationExercice</servlet-name>
         <servlet-class>controlers.CtrlCreationExercice</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>editionExercice</servlet-name>
         <jsp-file>/JSP/editionExercice.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>Index</servlet-name>
+        <jsp-file>/HTML/index.html</jsp-file>
     </servlet>
     <servlet>
         <servlet-name>listExercice</servlet-name>
@@ -69,16 +73,8 @@
         <servlet-class>controlers.CtrlModifExercice</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>jsCreaExercice</servlet-name>
-        <jsp-file>/JS/jsCreaExercice.js</jsp-file>
-    </servlet>
-    <servlet>
-        <servlet-name>jsSuppExercice</servlet-name>
-        <jsp-file>/JS/jsSuppExercice.js</jsp-file>
-    </servlet>
-    <servlet>
-        <servlet-name>CtrlSupprimerExercice</servlet-name>
-        <servlet-class>controlers.CtrlSupprimerExercice</servlet-class>
+        <servlet-name>jsExercice</servlet-name>
+        <jsp-file>/JS/jsExercice.js</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>CtrlVoirProgrammeClient</servlet-name>
@@ -109,6 +105,10 @@
         <url-pattern>/afficherProgramme</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>ctrl_CreationExercice</servlet-name>
+        <url-pattern>/ctrl_CreationExercice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>editionExercice</servlet-name>
         <url-pattern>/editionExercice</url-pattern>
     </servlet-mapping>
@@ -133,6 +133,10 @@
         <url-pattern>/modifExercice</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>Index</servlet-name>
+        <url-pattern>/Index</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>CtrlVerifNomExercice</servlet-name>
         <url-pattern>/CtrlVerifNomExercice</url-pattern>
     </servlet-mapping>
@@ -141,20 +145,8 @@
         <url-pattern>/CtrlModifExercice</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>CtrlCreationExercice</servlet-name>
-        <url-pattern>/CtrlCreationExercice</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>jsCreaExercice</servlet-name>
-        <url-pattern>/jsCreaExercice</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>jsSuppExercice</servlet-name>
-        <url-pattern>/jsSuppExercice</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>CtrlSupprimerExercice</servlet-name>
-        <url-pattern>/CtrlSupprimerExercice</url-pattern>
+        <servlet-name>jsExercice</servlet-name>
+        <url-pattern>/jsExercice</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Index</servlet-name>
