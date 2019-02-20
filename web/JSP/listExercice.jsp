@@ -44,7 +44,7 @@
 
                 try {
                     
-                    List<Exercice> listeExercice = (List<Exercice>) request.getAttribute("listeExercice");
+                    List<Exercice> listeExercice = (List<Exercice>) session.getAttribute("listeExercice");
 
                     if (listeExercice.isEmpty()) {
 

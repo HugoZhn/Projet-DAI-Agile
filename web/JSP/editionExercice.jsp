@@ -41,14 +41,14 @@
         <form action ="ctrl_CreationExercice" method = "GET">
             <table>
                 <tr>
-                    <td>Intitulé :</td>
-                    <td><input type="text" name = "nomEx" required></td>
+                    <td>Nom :</td>
+                    <td><input id = "nomUpdateExercice" type="text" name = "nomEx" required></td>
+                    <td><p id = "verifExiste" ></p></td>
                 </tr>
                 <tr>
                     <td>Type :</td>
-                    <%                            
-                        try {
-                            
+                    <%                        try {
+
                             Session ses = HibernateUtilProjetDAI.getSessionFactory().getCurrentSession();
                             Transaction t = ses.beginTransaction();
 
@@ -60,7 +60,7 @@
 
                             for (TypeExercice TE : listeTypeExercice) {
 
-                                out.println("<option selected value= " + TE.getCodeTypeEx() + "> " + TE.getLibTypeEx() + "</option>");
+                                out.println("<option value= " + TE.getCodeTypeEx() + "> " + TE.getLibTypeEx() + "</option>");
 
                             }
 
@@ -92,11 +92,13 @@
                 </tr>
                 <tr>                        
                     <td>Répétitions :</td>
-                    <td><input type="text" name = "repsBaseEx"></td>
+                    <td><input type="int" name = "repsBaseEx"></td>
                 </tr>
 
             </table>
-            <input type ="submit" name="creerExercice" value = "Confirmer">
+            <input id="exerciceUpdate" type="submit" name="exerciceUpdate" value = "Confirmer">
         </form>
+
+        <script type="text/JavaScript" charset="utf-8" src="jsExercice"></script>
     </body>
 </html>

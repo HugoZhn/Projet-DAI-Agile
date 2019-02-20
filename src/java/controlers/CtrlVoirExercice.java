@@ -41,13 +41,9 @@ public class CtrlVoirExercice extends HttpServlet {
             throws ServletException, IOException {
 
         String codeEx = request.getParameter("action");
-        
-        System.out.println("Action : " + codeEx);
 
         try {
-            
-            System.out.println("Entrée try");
-            
+
             Session sessionHibernate = HibernateUtilProjetDAI.getSessionFactory().getCurrentSession();
 
             Transaction t = sessionHibernate.beginTransaction();
@@ -58,13 +54,13 @@ public class CtrlVoirExercice extends HttpServlet {
 
             t.commit();
 
+            HttpSession session = request.getSession(true);
+            session.setAttribute("exercice", ex);
+            
             RequestDispatcher rd = request.getRequestDispatcher("voirExercice");
-            request.setAttribute("exercice", ex);
             rd.forward(request, response);
 
         } catch (IOException | ServletException | HibernateException ex) {
-
-            System.out.println("Entrée catch");
 
             RequestDispatcher rd = request.getRequestDispatcher("listExercice");
             request.setAttribute("msg_avrt", ex.getMessage());

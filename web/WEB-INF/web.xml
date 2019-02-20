@@ -1,8 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
-        <servlet-name>NewServlet</servlet-name>
-        <servlet-class>controlers.NewServlet</servlet-class>
+        <servlet-name>CtrlVoirProgrammeClient</servlet-name>
+        <servlet-class>controlers.CtrlVoirProgrammeClient</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CtrlInscriptionAdminClient</servlet-name>
+        <servlet-class>controlers.CtrlInscriptionAdminClient</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CtrlListeClients</servlet-name>
+        <servlet-class>controlers.CtrlListeClients</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>formInscriptionAdminClient</servlet-name>
+        <jsp-file>/JSP/formInscriptionAdminClient.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>afficherClientsAdmin</servlet-name>
+        <jsp-file>/JSP/afficherClientsAdmin.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>Index</servlet-name>
+        <jsp-file>/HTML/index.html</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>menuClient</servlet-name>
+        <jsp-file>/JSP/menuClient.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>afficherProgramme</servlet-name>
+        <jsp-file>/JSP/afficherProgramme.jsp</jsp-file>
     </servlet>
     <servlet>
         <servlet-name>ctrl_CreationExercice</servlet-name>
@@ -36,9 +64,45 @@
         <servlet-name>modifExercice</servlet-name>
         <jsp-file>/JSP/modifExercice.jsp</jsp-file>
     </servlet>
+    <servlet>
+        <servlet-name>CtrlVerifNomExercice</servlet-name>
+        <servlet-class>controlers.CtrlVerifNomExercice</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CtrlModifExercice</servlet-name>
+        <servlet-class>controlers.CtrlModifExercice</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>jsExercice</servlet-name>
+        <jsp-file>/JS/jsExercice.js</jsp-file>
+    </servlet>
     <servlet-mapping>
-        <servlet-name>NewServlet</servlet-name>
-        <url-pattern>/NewServlet</url-pattern>
+        <servlet-name>CtrlVoirProgrammeClient</servlet-name>
+        <url-pattern>/CtrlVoirProgrammeClient</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlInscriptionAdminClient</servlet-name>
+        <url-pattern>/CtrlInscriptionAdminClient</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlListeClients</servlet-name>
+        <url-pattern>/CtrlListeClients</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>formInscriptionAdminClient</servlet-name>
+        <url-pattern>/formInscriptionAdminClient</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>afficherClientsAdmin</servlet-name>
+        <url-pattern>/afficherClientsAdmin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>menuClient</servlet-name>
+        <url-pattern>/menuClient</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>afficherProgramme</servlet-name>
+        <url-pattern>/afficherProgramme</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ctrl_CreationExercice</servlet-name>
@@ -47,10 +111,6 @@
     <servlet-mapping>
         <servlet-name>editionExercice</servlet-name>
         <url-pattern>/editionExercice</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Index</servlet-name>
-        <url-pattern>/Index</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>listExercice</servlet-name>
@@ -71,6 +131,22 @@
     <servlet-mapping>
         <servlet-name>modifExercice</servlet-name>
         <url-pattern>/modifExercice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Index</servlet-name>
+        <url-pattern>/Index</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlVerifNomExercice</servlet-name>
+        <url-pattern>/CtrlVerifNomExercice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlModifExercice</servlet-name>
+        <url-pattern>/CtrlModifExercice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>jsExercice</servlet-name>
+        <url-pattern>/jsExercice</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

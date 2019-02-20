@@ -5,26 +5,26 @@
  */
 package controlers;
 
-import hibernateutils.HibernateUtilProjetDAI;
 import java.io.IOException;
-import java.util.List;
-import javax.servlet.RequestDispatcher;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import org.hibernate.HibernateException;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import pojo.Exercice;
+import hibernateutils.HibernateUtilProjetDAI;
+import java.util.List;
+import javax.servlet.RequestDispatcher;
+import pojo.Client;
 
 /**
  *
- * @author 21607860
+ * @author fhamzaoui
  */
-public class CtrlListExercice extends HttpServlet {
+@WebServlet(name = "CtrlListeClients", urlPatterns = {"/CtrlListeClients"})
+public class CtrlListeClients extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,44 +38,28 @@ public class CtrlListExercice extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        try {
-
-            Session ses = HibernateUtilProjetDAI.getSessionFactory().getCurrentSession();
-            Transaction t = ses.beginTransaction();
-
-            Query q = ses.createQuery("from Exercice");
-
-            List<Exercice> listeExercice = (List<Exercice>) q.list();
-            
-            t.commit();
-            
-            HttpSession session = request.getSession(true);
-            session.setAttribute("listeExercice", listeExercice);
-            
-            RequestDispatcher rd = request.getRequestDispatcher("listExercice");
-            rd.forward(request, response);
-             
-        } catch (HibernateException ex) {
-
-            RequestDispatcher rd = request.getRequestDispatcher("listExercice");
-            request.setAttribute("msg_avrt", ex.getMessage());
-            rd.forward(request, response);
-
-        }
-
+        Session session = (Session) HibernateUtilProjetDAI.getSessionFactory().getCurrentSession();
+        Transaction t = session.beginTransaction();
+        List<Client> listeClients = (List<Client>) session.createQuery("from Client c order by c.nom asc").list();
+        request.setAttribute("listeClients", listeClients);        
+        t.commit();        
+        RequestDispatcher rd = request.getRequestDispatcher("afficherClientsAdmin"); //importer requestdispatcher
+        rd.forward(request,response);
+        
     }
 
+
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+/**
+ * Handles the HTTP <code>GET</code> method.
+ *
+ * @param request servlet request
+ * @param response servlet response
+ * @throws ServletException if a servlet-specific error occurs
+ * @throws IOException if an I/O error occurs
+ */
+@Override
+        protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -89,7 +73,7 @@ public class CtrlListExercice extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+        protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -100,7 +84,7 @@ public class CtrlListExercice extends HttpServlet {
      * @return a String containing servlet description
      */
     @Override
-    public String getServletInfo() {
+        public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
 

@@ -3,6 +3,7 @@ package pojo;
 
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -110,6 +111,35 @@ public class Exercice  implements java.io.Serializable {
     
     public void setExerciceDeBilans(Set exerciceDeBilans) {
         this.exerciceDeBilans = exerciceDeBilans;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 41 * hash + Objects.hashCode(this.codeEx);
+        hash = 41 * hash + Objects.hashCode(this.nomEx);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Exercice other = (Exercice) obj;
+        if (!Objects.equals(this.nomEx, other.nomEx)) {
+            return false;
+        }
+        if (!Objects.equals(this.codeEx, other.codeEx)) {
+            return false;
+        }
+        return true;
     }
 
 

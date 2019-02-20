@@ -1,34 +1,31 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controlers;
 
-import hibernateutils.HibernateUtilProjetDAI;
 import java.io.IOException;
-import java.util.List;
-import javax.servlet.RequestDispatcher;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import org.hibernate.HibernateException;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import pojo.Exercice;
+import pojo.Client;
+import pojo.ProfilClient;
+import static hibernateutils.HibernateUtilProjetDAI.getSessionFactory;
+import java.io.File;
+import java.text.ParseException;
+import org.hibernate.HibernateException;
 
 /**
  *
- * @author 21607860
+ * @author fhamzaoui
  */
-public class CtrlListExercice extends HttpServlet {
+public class CtrlInscriptionAdminClient extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
+     * methods. Enregistrement et Instanciation du Client avec les attributs
+     * récupérés
      *
      * @param request servlet request
      * @param response servlet response
@@ -38,34 +35,32 @@ public class CtrlListExercice extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        String login = request.getParameter("login");
+        String firstName = request.getParameter("firstName");
+        String lastName = request.getParameter("lastName");
+        String birthDay = request.getParameter("birthDay");
+        String email = request.getParameter("email");
+        String numberPhone = request.getParameter("numberPhone");
+        String sexe = request.getParameter("sexe");
+        String sportProfil = request.getParameter("sportProfil");
+        String typeAbo = request.getParameter("typeAbo");
+        String uploadFiles = request.getParameter("uploadFiles");
+        String passwordClient = request.getParameter("passwordClient");
         try {
-
-            Session ses = HibernateUtilProjetDAI.getSessionFactory().getCurrentSession();
-            Transaction t = ses.beginTransaction();
-
-            Query q = ses.createQuery("from Exercice");
-
-            List<Exercice> listeExercice = (List<Exercice>) q.list();
-            
+            Session s = (Session) getSessionFactory().getCurrentSession();
+            Transaction t = s.beginTransaction();
+            ProfilClient pc = new ProfilClient(sportProfil);
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+            Client c = new Client(pc, firstName, lastName, df.parse(birthDay), email, numberPhone, typeAbo, login, passwordClient, sexe, new Date(), null, null);
+            s.save(c);
             t.commit();
-            
-            HttpSession session = request.getSession(true);
-            session.setAttribute("listeExercice", listeExercice);
-            
-            RequestDispatcher rd = request.getRequestDispatcher("listExercice");
-            rd.forward(request, response);
-             
-        } catch (HibernateException ex) {
-
-            RequestDispatcher rd = request.getRequestDispatcher("listExercice");
-            request.setAttribute("msg_avrt", ex.getMessage());
-            rd.forward(request, response);
+            response.sendRedirect("Index");
+        } catch (IOException | ParseException | HibernateException e) {
+            System.out.println("Problème ma gueule !" + e.getMessage());
 
         }
-
     }
 
-// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

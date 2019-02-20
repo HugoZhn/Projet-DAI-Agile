@@ -10,45 +10,55 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Consultation exercice</title>
+        <title>Consulstation exercice</title>
     </head>
     <body>
-        <h1>Consultation d'un exercice</h1>
-
-        <%
-            // Récupère le message d'avertissement ou d'erreur
-            Exercice ex = (Exercice) request.getAttribute("exercice");
-
-            out.println("<h3> Exercice : " + ex.getNomEx() + "</h3>");
-            out.println("<table border = 1>");
-                out.println("<tr>");
-                    out.println("<td>Type</td>");
-                    out.println("<td>" + ex.getTypeExercice().getLibTypeEx() + "</td>");
-                out.println("</tr>");
-                out.println("<tr>");
-                    out.println("<td>Objectif</td>");
-                    out.println("<td>" + ex.getObjectifsEx() + "</td>");
-                out.println("</tr>");
-                out.println("<tr>");
-                    out.println("<td>Description</td>");
-                    out.println("<td>" + ex.getDescriptionEx() + "</td>");
-                out.println("</tr>");
-                out.println("<tr>");
-                    out.println("<td>Durée</td>");
-                    out.println("<td>" + ex.getTempsBaseEx() + "</td>");
-                out.println("</tr>");
-                out.println("<tr>");
-                    out.println("<td>Répétitions</td>");
-                    out.println("<td>" + ex.getRepsBaseEx() + "</td>");
-                out.println("</tr>");
-                out.println("<tr>");
-                    out.println("<td>Ressource</td>");
-                    out.println("<td>" + ex.getRessourceEx() + "</td>");
-                out.println("</tr>");
-            out.println("</table>");
-        %>
+        <h1>Consulstation d'un exercice</h1>     
         
-        <form action = "Index" ><button type = "submit" >Modifier</button></form>
-        
+            <a href = "Index">Retour Index</a>
+            
+            <form>
+            <%
+                // Récupère le message d'avertissement ou d'erreur
+               
+                Exercice ex = (Exercice) session.getAttribute("exercice");
+
+                out.println("<h3>" + ex.getNomEx() + "</h3>");
+                
+                out.println("<table border = 1>");
+                    out.println("<tr>");
+                        out.println("<td>Type</td>");
+                        out.println("<td>" + ex.getTypeExercice().getLibTypeEx() + "</td>");
+                    out.println("</tr>");
+                    out.println("<tr>");
+                        out.println("<td>Objectif</td>");
+                        out.println("<td>" + ex.getObjectifsEx() + "</td>");
+                    out.println("</tr>");
+                    out.println("<tr>");
+                        out.println("<td>Description</td>");
+                        out.println("<td>" + ex.getDescriptionEx() + "</td>");
+                    out.println("</tr>");
+                    if(ex.getTempsBaseEx() != null){
+                        out.println("<tr>");
+                            out.println("<td>Durée</td>");
+                            out.println("<td>" + ex.getTempsBaseEx() + "</td>");
+                        out.println("</tr>");
+                    }
+                    if(ex.getRepsBaseEx() != null){
+                    out.println("<tr>");
+                        out.println("<td>Répétitions</td>");
+                        out.println("<td>" + ex.getRepsBaseEx() + "</td>");
+                    out.println("</tr>");
+                    }
+                    if(ex.getRessourceEx() != null){
+                    out.println("<tr>");
+                        out.println("<td>Ressource</td>");
+                        out.println("<td>" + ex.getRessourceEx() + "</td>");
+                    out.println("</tr>");
+                    }
+                out.println("</table>");
+            %>       
+            <a href = "modifExercice"> Modifier </a>
+        </form>
     </body>
 </html>
