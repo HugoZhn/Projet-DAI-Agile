@@ -5,6 +5,7 @@
  */
 package pojo;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -12,34 +13,51 @@ import java.util.Set;
 /**
  * Cette classe represente un utilisateur du site.
  *
- * @author hzahn.
+ * @author hzahn
  */
-public class Client extends Utilisateur implements java.io.Serializable {
+public class Client extends Utilisateur implements Serializable {
 
+    private ProfilClient profilClient;
+    private SeanceBilan seanceBilan;
     private String mailClient;
     private String telephone;
     private String typeAbonnement;
     private Set programmes = new HashSet(0);
     private Set documentses = new HashSet(0);
-    private ProfilClient profilClient;
-    
-    
-    public Client(){
+
+    public Client() {
+        super();
     }
-    
+
     public Client(String login, String password, Date dateInscritpion) {
         super("client", login, password, dateInscritpion);
     }
 
-    public Client(ProfilClient profilClient, String nom, String prenom, Date dateNaissance, String mailClient, String telephone,
-            String typeAbonnement, String login, String password, String sexe, Date dateInscritpion, Set programmes, Set documentses) {
-
+    public Client(ProfilClient profilClient, SeanceBilan seanceBilan, String mailClient,
+            String telephone, String typeAbonnement, String nom, String prenom,
+            Date dateNaissance, String login, String password, String sexe, Date dateInscritpion) {
         super("client", nom, prenom, dateNaissance, login, password, sexe, dateInscritpion);
+        this.profilClient = profilClient;
+        this.seanceBilan = seanceBilan;
         this.mailClient = mailClient;
         this.telephone = telephone;
         this.typeAbonnement = typeAbonnement;
-        this.programmes = programmes;
-        this.documentses = documentses;
+    }
+
+    public ProfilClient getProfilClient() {
+        return this.profilClient;
+    }
+
+    public void setProfilClient(ProfilClient profilClient) {
+        this.profilClient = profilClient;
+    }
+
+    public SeanceBilan getSeanceBilan() {
+        return this.seanceBilan;
+    }
+
+    public void setSeanceBilan(SeanceBilan seanceBilan) {
+        this.seanceBilan = seanceBilan;
     }
 
     public String getMailClient() {
@@ -67,7 +85,7 @@ public class Client extends Utilisateur implements java.io.Serializable {
     }
 
     public Set getProgrammes() {
-        return programmes;
+        return this.programmes;
     }
 
     public void setProgrammes(Set programmes) {
@@ -75,19 +93,11 @@ public class Client extends Utilisateur implements java.io.Serializable {
     }
 
     public Set getDocumentses() {
-        return documentses;
+        return this.documentses;
     }
 
     public void setDocumentses(Set documentses) {
         this.documentses = documentses;
-    }
-
-    public ProfilClient getProfilClient() {
-        return profilClient;
-    }
-
-    public void setProfilClient(ProfilClient profilClient) {
-        this.profilClient = profilClient;
     }
     
     public ProgrammeClient getCurrentProgramme(){
@@ -98,4 +108,5 @@ public class Client extends Utilisateur implements java.io.Serializable {
         }
         return null;
     }
+
 }

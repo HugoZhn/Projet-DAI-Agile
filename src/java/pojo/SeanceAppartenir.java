@@ -1,9 +1,7 @@
 package pojo;
-// Generated 20 fvr. 2019 11:34:49 by Hibernate Tools 4.3.1
+// Generated 20 fvr. 2019 13:58:26 by Hibernate Tools 4.3.1
 
 import java.util.Objects;
-
-
 
 
 /**
@@ -16,15 +14,17 @@ public class SeanceAppartenir  implements java.io.Serializable {
      private Programme programme;
      private Seance seance;
      private boolean active;
+     private boolean fini;
 
     public SeanceAppartenir() {
     }
 
-    public SeanceAppartenir(SeanceAppartenirId id, Programme programme, Seance seance, boolean active) {
+    public SeanceAppartenir(SeanceAppartenirId id, Programme programme, Seance seance, boolean active, boolean fini) {
        this.id = id;
        this.programme = programme;
        this.seance = seance;
        this.active = active;
+       this.fini = fini;
     }
    
     public SeanceAppartenirId getId() {
@@ -55,11 +55,18 @@ public class SeanceAppartenir  implements java.io.Serializable {
     public void setActive(boolean active) {
         this.active = active;
     }
+    public boolean isFini() {
+        return this.fini;
+    }
+    
+    public void setFini(boolean fini) {
+        this.fini = fini;
+    }
 
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 53 * hash + Objects.hashCode(this.id);
+        hash = 31 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -81,7 +88,7 @@ public class SeanceAppartenir  implements java.io.Serializable {
         return true;
     }
 
-    
+
 
 
 }

@@ -28,7 +28,7 @@ public class TestUtilisateur {
             Session session = HibernateUtilProjetDAI.getSessionFactory().getCurrentSession();
             Transaction t = session.beginTransaction();
             
-//
+
 ////            Client c = new Client("LOGIN", "MPD", new Date());
 ////            session.save(c);
 ////
@@ -37,8 +37,8 @@ public class TestUtilisateur {
 ////            session.save(cadm);
 //
 //            Client c = (Client)session.get(Client.class, 32);
-////            ProgrammeClient test = new ProgrammeClient(c, "ProTest");
-////            session.save(test);
+//            ProgrammeClient test = new ProgrammeClient(c, "ProTest");
+//            session.save(test);
 //            System.out.println(c.getProgrammes());
             
             

@@ -7,24 +7,29 @@ package controlers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import pojo.ProfilClient;
+import pojo.Seance;
 import hibernateutils.HibernateUtilProjetDAI;
-import java.util.List;
-import javax.servlet.RequestDispatcher;
+import static hibernateutils.HibernateUtilProjetDAI.getSessionFactory;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import org.hibernate.HibernateException;
 import pojo.Client;
-
 /**
  *
- * @author fhamzaoui
+ * @author 21402458
  */
-@WebServlet(name = "CtrlListeClients", urlPatterns = {"/CtrlListeClients"})
-public class CtrlListeClients extends HttpServlet {
+public class CtrlCreationSeance extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,18 +42,41 @@ public class CtrlListeClients extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        Session session = (Session) HibernateUtilProjetDAI.getSessionFactory().getCurrentSession();
-        Transaction t = session.beginTransaction();
-        List<Client> listeClients = (List<Client>) session.createQuery("from Client c order by c.nom asc").list();
-        request.setAttribute("listeClients", listeClients);        
-        t.commit();        
-        RequestDispatcher rd = request.getRequestDispatcher("adminAfficherClients"); //importer requestdispatcher
-        rd.forward(request,response);
+      
+           
+        // récupération des éléments inscrits dans le formulaire
         
-    }
+        String profilClientSeance =request.getParameter("profilClientSeance");
+        String nameSeance = request.getParameter("nameSeance");
+        String recupSeance = request.getParameter("recupSeance");
+        String echauffementSeance = request.getParameter("echauffementSeance");
 
+                try {
+                    //pour tester si on récupère tout
+//                    System.out.println(profilClientSeance);
+//                    System.out.println(nameSeance);
+//                    System.out.println(recupSeance);
+//                    System.out.println(echauffementSeance);
 
+                   Session ses = (Session) HibernateUtilProjetDAI.getSessionFactory().getCurrentSession();
+                   Integer g = Integer.parseInt(profilClientSeance); //convertir string récupérer du formulaire en integer vu que c'est un code
+                   Transaction tc = ses.beginTransaction() ;
+                   ProfilClient profilc = (ProfilClient) ses.load(ProfilClient.class, g); //recuperation de l'objet à partir de son identifiant g
+
+                   Seance s1  = new Seance(nameSeance,recupSeance, echauffementSeance); //enregistrement de la séance
+                   s1.setProfilClient(profilc);
+                   ses.save(s1);
+                   tc.commit(); // Commit et flush automatique de la session       
+
+                    } 
+                    catch (HibernateException e){
+                    System.out.println("Problème :" + e.getMessage());
+                      }
+            }     
+    //}
+    
+    
+    
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
 /**
  * Handles the HTTP <code>GET</code> method.

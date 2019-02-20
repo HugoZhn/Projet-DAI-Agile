@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 20 fvr. 2019 11:34:51 by Hibernate Tools 4.3.1 -->
+<!-- Generated 20 fvr. 2019 13:58:27 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="pojo.ExerciceDeSeance" table="ExerciceDeSeance" catalog="db_21400055" optimistic-lock="version">
         <composite-id name="id" class="pojo.ExerciceDeSeanceId">
@@ -18,11 +18,11 @@
         <many-to-one name="seance" class="pojo.Seance" update="false" insert="false" fetch="select">
             <column name="CodeSc" not-null="true" />
         </many-to-one>
-        <property name="tempsExSc" type="double">
-            <column name="TempsExSc" precision="22" scale="0" not-null="true" />
+        <property name="tempsExSc" type="java.lang.Double">
+            <column name="TempsExSc" precision="22" scale="0" />
         </property>
-        <property name="repsExSc" type="int">
-            <column name="RepsExSc" not-null="true" />
+        <property name="repsExSc" type="java.lang.Integer">
+            <column name="RepsExSc" />
         </property>
         <property name="nbSeries" type="int">
             <column name="NbSeries" not-null="true" />
@@ -32,6 +32,9 @@
         </property>
         <property name="avisLibre" type="string">
             <column name="AvisLibre" length="256" />
+        </property>
+        <property name="fini" type="boolean">
+            <column name="Fini" not-null="true" />
         </property>
     </class>
 </hibernate-mapping>

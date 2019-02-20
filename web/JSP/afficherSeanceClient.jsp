@@ -1,34 +1,30 @@
 <%-- 
-    Document   : afficherProgramme
-    Created on : 19 févr. 2019, 18:12:07
+    Document   : afficherSeanceClient
+    Created on : 20 févr. 2019, 16:39:01
     Author     : hzahn
 --%>
 
 <%@page import="org.hibernate.Transaction"%>
 <%@page import="org.hibernate.Session"%>
 <%@page import="hibernateutils.HibernateUtilProjetDAI"%>
-<%@page import="pojo.Programme"%>
+<%@page import="pojo.Seance"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <%
-        Programme programmeAAfficher = (Programme) request.getAttribute("programmeAAfficher");
-        
+        Seance seanceAAfficher = (Seance) request.getAttribute("seanceAAfficher");
+            
         Session sessionHibernate = HibernateUtilProjetDAI.getSessionFactory().getCurrentSession();
         Transaction t = sessionHibernate.beginTransaction();
         
-        sessionHibernate.saveOrUpdate(programmeAAfficher);
+        sessionHibernate.saveOrUpdate(seanceAAfficher);
         
     %>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Mon programme</title>
+        <title>Ma seance</title>
     </head>
     <body>
-        <h1>Programme <%= programmeAAfficher.getLibellePrgrm()%></h1>
-        <h2>Mes scéances actives</h2>
-        
-        <p>TO-DO</p>
+        <h1>Seance n°<%= seanceAAfficher %></h1>
     </body>
-    <% t.commit(); %>
 </html>

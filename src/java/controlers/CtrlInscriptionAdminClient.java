@@ -13,7 +13,10 @@ import pojo.Client;
 import pojo.ProfilClient;
 import static hibernateutils.HibernateUtilProjetDAI.getSessionFactory;
 import java.text.ParseException;
+import java.util.List;
+import javax.servlet.RequestDispatcher;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 
 /**
  *
@@ -45,18 +48,43 @@ public class CtrlInscriptionAdminClient extends HttpServlet {
         String typeAbo = request.getParameter("typeAbo");
         String uploadFiles = request.getParameter("uploadFiles");
         String passwordClient = request.getParameter("passwordClient");
+        String passwordClient_Conf = request.getParameter("passwordClient_Conf");
+
         try {
-            Session s = (Session) getSessionFactory().getCurrentSession();
-            Transaction t = s.beginTransaction();
-            ProfilClient pc = new ProfilClient(sportProfil);
-            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-            Client c = new Client(pc, firstName, lastName, df.parse(birthDay), email, numberPhone, typeAbo, login, passwordClient, sexe, new Date(), null, null);
-            s.save(c);
-            t.commit();
-            response.sendRedirect("Index");
+                   if (!passwordClient.equals(passwordClient_Conf)) {
+                    RequestDispatcher rd = request.getRequestDispatcher("formBoostrap");
+                    request.setAttribute("msg_erreur", "Le mot de passe de confirmation ne correspond pas au mot de passe saisi. Veuillez re-saisir vos informations.");
+                    System.out.println("Probleme mots de passes");
+                    rd.forward(request, response);
+                } else {
+                    Session s = (Session) getSessionFactory().getCurrentSession();
+                    Transaction t = s.beginTransaction();
+                    Query q = s.createQuery("from Client c where c.login=? ");
+                    q.setString(0, login);
+                    String sortie = "";
+                    if (q.uniqueResult() != null) {
+                        sortie = "formBoostrap";
+                    } else {
+                        ProfilClient pc = new ProfilClient(sportProfil);
+                        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+                        Client c = new Client(pc, null,email, numberPhone, typeAbo, firstName, lastName, df.parse(birthDay), login, passwordClient, sexe, new Date());
+                        s.save(c);
+                        sortie = "Index";
+                    }
+                    t.commit();
+                    //on revient à la page saisir car l'enregistrement dans la BD n'a pas fonctionné
+                    RequestDispatcher rd = request.getRequestDispatcher(sortie);
+                    if (sortie == "formBoostrap") {
+                        request.setAttribute("msg_erreur", "Il y a déjà un utilisateur ayant ce login ! Veuillez changer ce dernier !");
+                        System.out.println("Probleme LOGIN EXISTANTS ");
+                    } else if (sortie == "CtrlListeClients") {
+                        //on revient à la page saisir car l'enregistrement dans la BD a fonctionné
+                        request.setAttribute("msg_enregistrement_ok", "Votre enregistrement a bien été pris en compte !");
+                    }
+                    rd.forward(request, response);                
+            }
         } catch (IOException | ParseException | HibernateException e) {
             System.out.println("Problème ma gueule !" + e.getMessage());
-
         }
     }
 

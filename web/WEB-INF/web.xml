@@ -13,14 +13,6 @@
         <servlet-class>controlers.CtrlListeClients</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>formInscriptionAdminClient</servlet-name>
-        <jsp-file>/JSP/formInscriptionAdminClient.jsp</jsp-file>
-    </servlet>
-    <servlet>
-        <servlet-name>afficherClientsAdmin</servlet-name>
-        <jsp-file>/JSP/afficherClientsAdmin.jsp</jsp-file>
-    </servlet>
-    <servlet>
         <servlet-name>Index</servlet-name>
         <jsp-file>/HTML/index.html</jsp-file>
     </servlet>
@@ -29,8 +21,44 @@
         <jsp-file>/JSP/menuClient.jsp</jsp-file>
     </servlet>
     <servlet>
-        <servlet-name>afficherProgramme</servlet-name>
-        <jsp-file>/JSP/afficherProgramme.jsp</jsp-file>
+        <servlet-name>afficherProgrammeClient</servlet-name>
+        <jsp-file>/JSP/afficherProgrammeClient.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>CtrlAfficherSeanceClient</servlet-name>
+        <servlet-class>controlers.CtrlAfficherSeanceClient</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>afficherSeanceClient</servlet-name>
+        <jsp-file>/JSP/afficherSeanceClient.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>CtrlLogin</servlet-name>
+        <servlet-class>controlers.CtrlLogin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CtrlLogOut</servlet-name>
+        <servlet-class>controlers.CtrlLogOut</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>loginClient</servlet-name>
+        <jsp-file>/JSP/loginClient.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>adminAfficherClients</servlet-name>
+        <jsp-file>/JSP/adminAfficherClients.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>formBoostrap</servlet-name>
+        <jsp-file>/JSP/formBoostrap.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>creerSeance</servlet-name>
+        <jsp-file>/JSP/creerSeance.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>CtrlCreationSeance</servlet-name>
+        <servlet-class>controlers.CtrlCreationSeance</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CtrlCreationExercice</servlet-name>
@@ -93,20 +121,52 @@
         <url-pattern>/CtrlListeClients</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>formInscriptionAdminClient</servlet-name>
-        <url-pattern>/formInscriptionAdminClient</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>afficherClientsAdmin</servlet-name>
-        <url-pattern>/afficherClientsAdmin</url-pattern>
+        <servlet-name>Index</servlet-name>
+        <url-pattern>/Index</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>menuClient</servlet-name>
         <url-pattern>/menuClient</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>afficherProgramme</servlet-name>
-        <url-pattern>/afficherProgramme</url-pattern>
+        <servlet-name>afficherProgrammeClient</servlet-name>
+        <url-pattern>/afficherProgrammeClient</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlAfficherSeanceClient</servlet-name>
+        <url-pattern>/CtrlAfficherSeanceClient</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>afficherSeanceClient</servlet-name>
+        <url-pattern>/afficherSeanceClient</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlLogin</servlet-name>
+        <url-pattern>/CtrlLogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlLogOut</servlet-name>
+        <url-pattern>/CtrlLogOut</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>loginClient</servlet-name>
+        <url-pattern>/loginClient</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>adminAfficherClients</servlet-name>
+        <url-pattern>/adminAfficherClients</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>formBoostrap</servlet-name>
+        <url-pattern>/formBoostrap</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>creerSeance</servlet-name>
+        <url-pattern>/creerSeance</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlCreationSeance</servlet-name>
+        <url-pattern>/CtrlCreationSeance</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>editionExercice</servlet-name>

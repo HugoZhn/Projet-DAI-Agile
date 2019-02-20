@@ -14,7 +14,7 @@
     <% //to-do : vérifier qu'on a un client en session 
         Session sessionHibernate = HibernateUtilProjetDAI.getSessionFactory().getCurrentSession();
         Transaction t = sessionHibernate.beginTransaction();
-        Client clientSession = (Client)sessionHibernate.get(Client.class, 15);
+        Client clientSession = (Client)sessionHibernate.get(Client.class, 25);
         session.setAttribute("clientSession", clientSession);
     %>
     

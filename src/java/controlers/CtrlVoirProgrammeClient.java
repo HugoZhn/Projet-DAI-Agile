@@ -47,7 +47,7 @@ public class CtrlVoirProgrammeClient extends HttpServlet {
             request.setAttribute("programmeAAfficher", programmeCourantClient);
             
             t.commit();
-            RequestDispatcher rd = request.getRequestDispatcher("afficherProgramme");
+            RequestDispatcher rd = request.getRequestDispatcher("afficherProgrammeClient");
             rd.forward(request, response);
         }
     }
