@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 19 fvr. 2019 12:38:57 by Hibernate Tools 4.3.1 -->
+<!-- Generated 20 fvr. 2019 11:34:51 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="pojo.SeanceAppartenir" table="SeanceAppartenir" catalog="db_21400055" optimistic-lock="version">
         <composite-id name="id" class="pojo.SeanceAppartenirId">
@@ -24,5 +24,8 @@
         <many-to-one name="seance" class="pojo.Seance" update="false" insert="false" fetch="select">
             <column name="CodeSc" not-null="true" />
         </many-to-one>
+        <property name="active" type="boolean">
+            <column name="Active" not-null="true" />
+        </property>
     </class>
 </hibernate-mapping>

@@ -1,5 +1,5 @@
 package pojo;
-// Generated 19 f�vr. 2019 12:38:57 by Hibernate Tools 4.3.1
+// Generated 20 f�vr. 2019 11:34:49 by Hibernate Tools 4.3.1
 
 import java.util.Objects;
 
@@ -17,6 +17,7 @@ public class ExerciceDeSeance  implements java.io.Serializable {
      private Seance seance;
      private double tempsExSc;
      private int repsExSc;
+     private int nbSeries;
      private String evaluation;
      private String avisLibre;
 
@@ -24,20 +25,21 @@ public class ExerciceDeSeance  implements java.io.Serializable {
     }
 
 	
-    public ExerciceDeSeance(ExerciceDeSeanceId id, Exercice exercice, Seance seance, double tempsExSc, int repsExSc, String avisLibre) {
+    public ExerciceDeSeance(ExerciceDeSeanceId id, Exercice exercice, Seance seance, double tempsExSc, int repsExSc, int nbSeries) {
         this.id = id;
         this.exercice = exercice;
         this.seance = seance;
         this.tempsExSc = tempsExSc;
         this.repsExSc = repsExSc;
-        this.avisLibre = avisLibre;
+        this.nbSeries = nbSeries;
     }
-    public ExerciceDeSeance(ExerciceDeSeanceId id, Exercice exercice, Seance seance, double tempsExSc, int repsExSc, String evaluation, String avisLibre) {
+    public ExerciceDeSeance(ExerciceDeSeanceId id, Exercice exercice, Seance seance, double tempsExSc, int repsExSc, int nbSeries, String evaluation, String avisLibre) {
        this.id = id;
        this.exercice = exercice;
        this.seance = seance;
        this.tempsExSc = tempsExSc;
        this.repsExSc = repsExSc;
+       this.nbSeries = nbSeries;
        this.evaluation = evaluation;
        this.avisLibre = avisLibre;
     }
@@ -76,6 +78,13 @@ public class ExerciceDeSeance  implements java.io.Serializable {
     
     public void setRepsExSc(int repsExSc) {
         this.repsExSc = repsExSc;
+    }
+    public int getNbSeries() {
+        return this.nbSeries;
+    }
+    
+    public void setNbSeries(int nbSeries) {
+        this.nbSeries = nbSeries;
     }
     public String getEvaluation() {
         return this.evaluation;

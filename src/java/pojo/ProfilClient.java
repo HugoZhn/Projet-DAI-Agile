@@ -1,5 +1,5 @@
 package pojo;
-// Generated 19 f�vr. 2019 12:38:57 by Hibernate Tools 4.3.1
+// Generated 20 fvr. 2019 11:34:49 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -96,8 +96,6 @@ public class ProfilClient  implements java.io.Serializable {
         }
         return true;
     }
-
-
 
 
 }

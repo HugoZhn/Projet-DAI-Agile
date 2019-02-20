@@ -1,5 +1,8 @@
 package pojo;
-// Generated 19 fvr. 2019 12:38:57 by Hibernate Tools 4.3.1
+// Generated 20 fvr. 2019 11:34:49 by Hibernate Tools 4.3.1
+
+import java.util.Objects;
+
 
 
 
@@ -42,6 +45,31 @@ public class SeanceBilanAppartenir  implements java.io.Serializable {
     
     public void setSeanceBilan(SeanceBilan seanceBilan) {
         this.seanceBilan = seanceBilan;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 53 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final SeanceBilanAppartenir other = (SeanceBilanAppartenir) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
     }
 
 

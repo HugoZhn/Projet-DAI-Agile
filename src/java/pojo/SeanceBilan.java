@@ -1,8 +1,9 @@
 package pojo;
-// Generated 19 fvr. 2019 12:38:57 by Hibernate Tools 4.3.1
+// Generated 20 fvr. 2019 11:34:49 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -142,6 +143,39 @@ public class SeanceBilan  implements java.io.Serializable {
     
     public void setSeanceBilanAppartenirs(Set seanceBilanAppartenirs) {
         this.seanceBilanAppartenirs = seanceBilanAppartenirs;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 67 * hash + Objects.hashCode(this.codeScBilan);
+        hash = 67 * hash + Objects.hashCode(this.age);
+        hash = 67 * hash + Objects.hashCode(this.poids);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final SeanceBilan other = (SeanceBilan) obj;
+        if (!Objects.equals(this.codeScBilan, other.codeScBilan)) {
+            return false;
+        }
+        if (!Objects.equals(this.age, other.age)) {
+            return false;
+        }
+        if (!Objects.equals(this.poids, other.poids)) {
+            return false;
+        }
+        return true;
     }
 
 
