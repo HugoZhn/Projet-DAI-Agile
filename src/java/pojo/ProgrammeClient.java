@@ -29,6 +29,11 @@ public class ProgrammeClient extends Programme{
         this.client = client;
     }
 
+    public ProgrammeClient(Programme programme, Client client) {
+        super(programme.getProfilClient(), programme.getLibellePrgrm(), true, programme.getSeanceBilanAppartenirs(), programme.getSeanceAppartenirs());
+        this.client = client;
+    }
+    
     public Client getClient() {
         return this.client;
     }

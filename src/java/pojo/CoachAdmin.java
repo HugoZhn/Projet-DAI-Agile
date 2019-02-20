@@ -5,46 +5,45 @@
  */
 package pojo;
 
+import java.io.Serializable;
 import java.util.Date;
 
-
 /**
- * Cette classe represente un caoch administrateur de l'applcation.
- * @author hzahn.
+ *
+ * @author hzahn
  */
-public class CoachAdmin extends Utilisateur implements java.io.Serializable{
-    
-     private String mailCoach;
-     private String mailAdmin;
-     
-    public String getMailCoach() {
-        return this.mailCoach;
+public class CoachAdmin extends Utilisateur implements Serializable {
+
+    private String mailCoach;
+    private String mailAdmin;
+
+    public CoachAdmin() {
+        super();
     }
-    
-    public void setMailCoach(String mailCoach) {
-        this.mailCoach = mailCoach;
-    }
-    public String getMailAdmin() {
-        return this.mailAdmin;
-    }
-    
-    public void setMailAdmin(String mailAdmin) {
-        this.mailAdmin = mailAdmin;
-    }
-     
-    
-        public CoachAdmin(){
-    }
-    
+
     public CoachAdmin(String login, String password, Date dateInscritpion) {
         super("coachadmin", login, password, dateInscritpion);
     }
 
-    public CoachAdmin(String nom, String prenom, Date dateNaissance, String mailCoach, String mailAdmin, 
-            String login, String password, String sexe, Date dateInscritpion) {
-
+    public CoachAdmin(String mailCoach, String mailAdmin, String nom, String prenom, Date dateNaissance, String login, String password, String sexe, Date dateInscritpion) {
         super("coachadmin", nom, prenom, dateNaissance, login, password, sexe, dateInscritpion);
-        this.mailAdmin=mailAdmin;
-        this.mailCoach=mailCoach;
+        this.mailCoach = mailCoach;
+        this.mailAdmin = mailAdmin;
+    }
+
+    public String getMailCoach() {
+        return this.mailCoach;
+    }
+
+    public void setMailCoach(String mailCoach) {
+        this.mailCoach = mailCoach;
+    }
+
+    public String getMailAdmin() {
+        return this.mailAdmin;
+    }
+
+    public void setMailAdmin(String mailAdmin) {
+        this.mailAdmin = mailAdmin;
     }
 }

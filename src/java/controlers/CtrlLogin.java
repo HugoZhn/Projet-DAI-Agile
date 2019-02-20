@@ -14,16 +14,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.hibernate.Hibernate;
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import pojo.ProgrammeClient;
+import pojo.Client;
+import pojo.CoachAdmin;
+import pojo.Utilisateur;
+
 
 /**
  *
- * @author hzahn
+ * @author 21408162
  */
-public class CtrlVoirProgrammeClient extends HttpServlet {
+public class CtrlLogin extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,19 +41,51 @@ public class CtrlVoirProgrammeClient extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            Integer codeProgramme = Integer.parseInt(request.getParameter("idProgramme"));
-            
-            Session sessionHibernate = HibernateUtilProjetDAI.getSessionFactory().getCurrentSession();
-            Transaction t = sessionHibernate.beginTransaction();
-            
-            ProgrammeClient programmeCourantClient = (ProgrammeClient) sessionHibernate.get(ProgrammeClient.class, codeProgramme);
-            request.setAttribute("programmeAAfficher", programmeCourantClient);
+        try (PrintWriter out = response.getWriter()){
+
+        //recuperer le login et le mot de passe 
+        String login = request.getParameter("login");
+        String password = request.getParameter("password");
+        
+        // tester la connexion a la base de données 
+        //tester si le login et le mot de passe existe et match 
+        Session sessionHibernate = HibernateUtilProjetDAI.getSessionFactory().getCurrentSession();
+        Transaction t = sessionHibernate.beginTransaction();
+           
+        // requete  
+        Query queryCheckLogin = sessionHibernate.createQuery("from Utilisateur u where u.login = ? and u.password = ?");
+        queryCheckLogin.setString(0, login);
+        queryCheckLogin.setString(1, password);
+        
+        try {
+        // tester le resultat de la requette 
+         if (queryCheckLogin.uniqueResult() != null) {
+         
+            Utilisateur authUser = (Utilisateur) queryCheckLogin.uniqueResult();
+            HttpSession session = request.getSession();
+           
+            if(authUser instanceof Client){
+                    session.setAttribute("clientSession", authUser);
+            }
+            else if (authUser instanceof CoachAdmin){
+                    session.setAttribute("coachadminSession", authUser);
+            }
+            t.commit();
+            RequestDispatcher rs = request.getRequestDispatcher("Index");
+            rs.forward(request, response);
+        }else {
+            // si le test ne marche pas on rest sur la meme page et on affiche un message d'erreur
             
             t.commit();
-            RequestDispatcher rd = request.getRequestDispatcher("afficherProgramme");
-            rd.forward(request, response);
+            
+            request.setAttribute("errorMsg", "Login ou mot de passe incorrect");
+            RequestDispatcher rs = request.getRequestDispatcher("LoginClient");
+            rs.include(request, response);
         }
+        } catch (IOException | HibernateException e) {
+            System.out.println("Problème !" + e.getMessage());
+        } 
+    }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -13,14 +13,6 @@
         <servlet-class>controlers.CtrlListeClients</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>formInscriptionAdminClient</servlet-name>
-        <jsp-file>/JSP/formInscriptionAdminClient.jsp</jsp-file>
-    </servlet>
-    <servlet>
-        <servlet-name>afficherClientsAdmin</servlet-name>
-        <jsp-file>/JSP/afficherClientsAdmin.jsp</jsp-file>
-    </servlet>
-    <servlet>
         <servlet-name>Index</servlet-name>
         <jsp-file>/HTML/index.html</jsp-file>
     </servlet>
@@ -29,16 +21,28 @@
         <jsp-file>/JSP/menuClient.jsp</jsp-file>
     </servlet>
     <servlet>
-        <servlet-name>formBoostrap</servlet-name>
-        <jsp-file>/JSP/formBoostrap.jsp</jsp-file>
+        <servlet-name>afficherProgramme</servlet-name>
+        <jsp-file>/JSP/afficherProgramme.jsp</jsp-file>
     </servlet>
     <servlet>
-        <servlet-name>afficherCLIADM_Filtres</servlet-name>
-        <jsp-file>/JSP/afficherCLIADM_Filtres.jsp</jsp-file>
+        <servlet-name>CtrlLogin</servlet-name>
+        <servlet-class>controlers.CtrlLogin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CtrlLogOut</servlet-name>
+        <servlet-class>controlers.CtrlLogOut</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>loginClient</servlet-name>
+        <jsp-file>/JSP/loginClient.jsp</jsp-file>
     </servlet>
     <servlet>
         <servlet-name>adminAfficherClients</servlet-name>
         <jsp-file>/JSP/adminAfficherClients.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>formBoostrap</servlet-name>
+        <jsp-file>/JSP/formBoostrap.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>CtrlVoirProgrammeClient</servlet-name>
@@ -53,14 +57,6 @@
         <url-pattern>/CtrlListeClients</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>formInscriptionAdminClient</servlet-name>
-        <url-pattern>/formInscriptionAdminClient</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>afficherClientsAdmin</servlet-name>
-        <url-pattern>/afficherClientsAdmin</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>Index</servlet-name>
         <url-pattern>/Index</url-pattern>
     </servlet-mapping>
@@ -69,16 +65,28 @@
         <url-pattern>/menuClient</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>formBoostrap</servlet-name>
-        <url-pattern>/formBoostrap</url-pattern>
+        <servlet-name>afficherProgramme</servlet-name>
+        <url-pattern>/afficherProgramme</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>afficherCLIADM_Filtres</servlet-name>
-        <url-pattern>/afficherCLIADM_Filtres</url-pattern>
+        <servlet-name>CtrlLogin</servlet-name>
+        <url-pattern>/CtrlLogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlLogOut</servlet-name>
+        <url-pattern>/CtrlLogOut</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>loginClient</servlet-name>
+        <url-pattern>/loginClient</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>adminAfficherClients</servlet-name>
         <url-pattern>/adminAfficherClients</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>formBoostrap</servlet-name>
+        <url-pattern>/formBoostrap</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

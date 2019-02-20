@@ -1,6 +1,7 @@
 package pojo;
-// Generated 19 fvr. 2019 12:38:57 by Hibernate Tools 4.3.1
+// Generated 20 fvr. 2019 13:58:26 by Hibernate Tools 4.3.1
 
+import java.util.Objects;
 
 
 /**
@@ -12,14 +13,18 @@ public class SeanceBilanAppartenir  implements java.io.Serializable {
      private SeanceBilanAppartenirId id;
      private Programme programme;
      private SeanceBilan seanceBilan;
+     private boolean active;
+     private boolean fini;
 
     public SeanceBilanAppartenir() {
     }
 
-    public SeanceBilanAppartenir(SeanceBilanAppartenirId id, Programme programme, SeanceBilan seanceBilan) {
+    public SeanceBilanAppartenir(SeanceBilanAppartenirId id, Programme programme, SeanceBilan seanceBilan, boolean active, boolean fini) {
        this.id = id;
        this.programme = programme;
        this.seanceBilan = seanceBilan;
+       this.active = active;
+       this.fini = fini;
     }
    
     public SeanceBilanAppartenirId getId() {
@@ -42,6 +47,45 @@ public class SeanceBilanAppartenir  implements java.io.Serializable {
     
     public void setSeanceBilan(SeanceBilan seanceBilan) {
         this.seanceBilan = seanceBilan;
+    }
+    public boolean isActive() {
+        return this.active;
+    }
+    
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+    public boolean isFini() {
+        return this.fini;
+    }
+    
+    public void setFini(boolean fini) {
+        this.fini = fini;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 37 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final SeanceBilanAppartenir other = (SeanceBilanAppartenir) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
     }
 
 

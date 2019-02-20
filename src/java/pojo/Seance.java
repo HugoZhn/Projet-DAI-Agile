@@ -1,8 +1,9 @@
 package pojo;
-// Generated 19 fvr. 2019 12:38:57 by Hibernate Tools 4.3.1
+// Generated 20 fvr. 2019 13:58:26 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -23,8 +24,7 @@ public class Seance  implements java.io.Serializable {
     }
 
 	
-    public Seance(ProfilClient profilClient, String libelleSc, String recupSc, String echauffement) {
-        this.profilClient = profilClient;
+    public Seance(String libelleSc, String recupSc, String echauffement) {
         this.libelleSc = libelleSc;
         this.recupSc = recupSc;
         this.echauffement = echauffement;
@@ -88,7 +88,34 @@ public class Seance  implements java.io.Serializable {
         this.seanceAppartenirs = seanceAppartenirs;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 53 * hash + Objects.hashCode(this.codeSc);
+        hash = 53 * hash + Objects.hashCode(this.libelleSc);
+        return hash;
+    }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Seance other = (Seance) obj;
+        if (!Objects.equals(this.libelleSc, other.libelleSc)) {
+            return false;
+        }
+        if (!Objects.equals(this.codeSc, other.codeSc)) {
+            return false;
+        }
+        return true;
+    }
 
 
 }

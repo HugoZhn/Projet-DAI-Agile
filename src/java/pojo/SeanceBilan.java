@@ -1,8 +1,9 @@
 package pojo;
-// Generated 19 fvr. 2019 12:38:57 by Hibernate Tools 4.3.1
+// Generated 20 fvr. 2019 13:58:26 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -24,12 +25,13 @@ public class SeanceBilan  implements java.io.Serializable {
      private Double mensHanches;
      private Double mensCuisses;
      private Set exerciceDeBilans = new HashSet(0);
+     private Set utilisateurs = new HashSet(0);
      private Set seanceBilanAppartenirs = new HashSet(0);
 
     public SeanceBilan() {
     }
 
-    public SeanceBilan(Integer age, Double poids, Integer fcCinqminAll, Integer fcTrenteflexions, Integer fcUneminApexAll, Boolean objectifMinceur, Double mensBras, Double mensPoitrine, Double mensTaille, Double mensHanches, Double mensCuisses, Set exerciceDeBilans, Set seanceBilanAppartenirs) {
+    public SeanceBilan(Integer age, Double poids, Integer fcCinqminAll, Integer fcTrenteflexions, Integer fcUneminApexAll, Boolean objectifMinceur, Double mensBras, Double mensPoitrine, Double mensTaille, Double mensHanches, Double mensCuisses, Set exerciceDeBilans, Set utilisateurs, Set seanceBilanAppartenirs) {
        this.age = age;
        this.poids = poids;
        this.fcCinqminAll = fcCinqminAll;
@@ -42,6 +44,7 @@ public class SeanceBilan  implements java.io.Serializable {
        this.mensHanches = mensHanches;
        this.mensCuisses = mensCuisses;
        this.exerciceDeBilans = exerciceDeBilans;
+       this.utilisateurs = utilisateurs;
        this.seanceBilanAppartenirs = seanceBilanAppartenirs;
     }
    
@@ -136,6 +139,13 @@ public class SeanceBilan  implements java.io.Serializable {
     public void setExerciceDeBilans(Set exerciceDeBilans) {
         this.exerciceDeBilans = exerciceDeBilans;
     }
+    public Set getUtilisateurs() {
+        return this.utilisateurs;
+    }
+    
+    public void setUtilisateurs(Set utilisateurs) {
+        this.utilisateurs = utilisateurs;
+    }
     public Set getSeanceBilanAppartenirs() {
         return this.seanceBilanAppartenirs;
     }
@@ -144,7 +154,38 @@ public class SeanceBilan  implements java.io.Serializable {
         this.seanceBilanAppartenirs = seanceBilanAppartenirs;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 67 * hash + Objects.hashCode(this.codeScBilan);
+        hash = 67 * hash + Objects.hashCode(this.age);
+        hash = 67 * hash + Objects.hashCode(this.poids);
+        return hash;
+    }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final SeanceBilan other = (SeanceBilan) obj;
+        if (!Objects.equals(this.codeScBilan, other.codeScBilan)) {
+            return false;
+        }
+        if (!Objects.equals(this.age, other.age)) {
+            return false;
+        }
+        if (!Objects.equals(this.poids, other.poids)) {
+            return false;
+        }
+        return true;
+    }
 
 
 }

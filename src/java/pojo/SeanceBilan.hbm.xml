@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 19 fvr. 2019 12:38:57 by Hibernate Tools 4.3.1 -->
+<!-- Generated 20 fvr. 2019 13:58:27 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="pojo.SeanceBilan" table="SeanceBilan" catalog="db_21400055" optimistic-lock="version">
         <id name="codeScBilan" type="java.lang.Integer">
@@ -46,6 +46,12 @@
                 <column name="CodeScBilan" not-null="true" />
             </key>
             <one-to-many class="pojo.ExerciceDeBilan" />
+        </set>
+        <set name="utilisateurs" table="Utilisateur" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CodePremiereScBilan" />
+            </key>
+            <one-to-many class="pojo.Utilisateur" />
         </set>
         <set name="seanceBilanAppartenirs" table="SeanceBilanAppartenir" inverse="true" lazy="true" fetch="select">
             <key>

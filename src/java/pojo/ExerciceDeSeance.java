@@ -1,9 +1,7 @@
 package pojo;
-// Generated 19 f�vr. 2019 12:38:57 by Hibernate Tools 4.3.1
+// Generated 20 fvr. 2019 13:58:26 by Hibernate Tools 4.3.1
 
 import java.util.Objects;
-
-
 
 
 /**
@@ -15,31 +13,34 @@ public class ExerciceDeSeance  implements java.io.Serializable {
      private ExerciceDeSeanceId id;
      private Exercice exercice;
      private Seance seance;
-     private double tempsExSc;
-     private int repsExSc;
+     private Double tempsExSc;
+     private Integer repsExSc;
+     private int nbSeries;
      private String evaluation;
      private String avisLibre;
+     private boolean fini;
 
     public ExerciceDeSeance() {
     }
 
 	
-    public ExerciceDeSeance(ExerciceDeSeanceId id, Exercice exercice, Seance seance, double tempsExSc, int repsExSc, String avisLibre) {
+    public ExerciceDeSeance(ExerciceDeSeanceId id, Exercice exercice, Seance seance, int nbSeries, boolean fini) {
         this.id = id;
         this.exercice = exercice;
         this.seance = seance;
-        this.tempsExSc = tempsExSc;
-        this.repsExSc = repsExSc;
-        this.avisLibre = avisLibre;
+        this.nbSeries = nbSeries;
+        this.fini = fini;
     }
-    public ExerciceDeSeance(ExerciceDeSeanceId id, Exercice exercice, Seance seance, double tempsExSc, int repsExSc, String evaluation, String avisLibre) {
+    public ExerciceDeSeance(ExerciceDeSeanceId id, Exercice exercice, Seance seance, Double tempsExSc, Integer repsExSc, int nbSeries, String evaluation, String avisLibre, boolean fini) {
        this.id = id;
        this.exercice = exercice;
        this.seance = seance;
        this.tempsExSc = tempsExSc;
        this.repsExSc = repsExSc;
+       this.nbSeries = nbSeries;
        this.evaluation = evaluation;
        this.avisLibre = avisLibre;
+       this.fini = fini;
     }
    
     public ExerciceDeSeanceId getId() {
@@ -63,19 +64,26 @@ public class ExerciceDeSeance  implements java.io.Serializable {
     public void setSeance(Seance seance) {
         this.seance = seance;
     }
-    public double getTempsExSc() {
+    public Double getTempsExSc() {
         return this.tempsExSc;
     }
     
-    public void setTempsExSc(double tempsExSc) {
+    public void setTempsExSc(Double tempsExSc) {
         this.tempsExSc = tempsExSc;
     }
-    public int getRepsExSc() {
+    public Integer getRepsExSc() {
         return this.repsExSc;
     }
     
-    public void setRepsExSc(int repsExSc) {
+    public void setRepsExSc(Integer repsExSc) {
         this.repsExSc = repsExSc;
+    }
+    public int getNbSeries() {
+        return this.nbSeries;
+    }
+    
+    public void setNbSeries(int nbSeries) {
+        this.nbSeries = nbSeries;
     }
     public String getEvaluation() {
         return this.evaluation;
@@ -91,11 +99,18 @@ public class ExerciceDeSeance  implements java.io.Serializable {
     public void setAvisLibre(String avisLibre) {
         this.avisLibre = avisLibre;
     }
+    public boolean isFini() {
+        return this.fini;
+    }
+    
+    public void setFini(boolean fini) {
+        this.fini = fini;
+    }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 29 * hash + Objects.hashCode(this.id);
+        int hash = 5;
+        hash = 37 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -116,6 +131,8 @@ public class ExerciceDeSeance  implements java.io.Serializable {
         }
         return true;
     }
+
+
 
 
 }
