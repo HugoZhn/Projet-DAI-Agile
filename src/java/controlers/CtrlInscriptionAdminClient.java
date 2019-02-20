@@ -51,7 +51,7 @@ public class CtrlInscriptionAdminClient extends HttpServlet {
             Transaction t = s.beginTransaction();
             ProfilClient pc = new ProfilClient(sportProfil);
             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-            Client c = new Client(pc, firstName, lastName, df.parse(birthDay), email, numberPhone, typeAbo, login, passwordClient, sexe, new Date(), null, null);
+            Client c = new Client(pc, null, email, numberPhone, typeAbo, firstName, lastName, df.parse(birthDay), login, passwordClient, sexe, new Date());
             s.save(c);
             t.commit();
             response.sendRedirect("Index");
