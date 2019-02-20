@@ -40,6 +40,18 @@
         <servlet-name>afficherSeanceClient</servlet-name>
         <jsp-file>/JSP/afficherSeanceClient.jsp</jsp-file>
     </servlet>
+    <servlet>
+        <servlet-name>CtrlLogin</servlet-name>
+        <servlet-class>controlers.CtrlLogin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CtrlLogOut</servlet-name>
+        <servlet-class>controlers.CtrlLogOut</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>loginClient</servlet-name>
+        <jsp-file>/JSP/loginClient.jsp</jsp-file>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CtrlVoirProgrammeClient</servlet-name>
         <url-pattern>/CtrlVoirProgrammeClient</url-pattern>
@@ -79,6 +91,18 @@
     <servlet-mapping>
         <servlet-name>afficherSeanceClient</servlet-name>
         <url-pattern>/afficherSeanceClient</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlLogin</servlet-name>
+        <url-pattern>/CtrlLogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlLogOut</servlet-name>
+        <url-pattern>/CtrlLogOut</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>loginClient</servlet-name>
+        <url-pattern>/loginClient</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

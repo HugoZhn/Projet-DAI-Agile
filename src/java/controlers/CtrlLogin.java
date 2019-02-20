@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -40,7 +41,7 @@ public class CtrlLogin extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
+        try (PrintWriter out = response.getWriter()){
 
         //recuperer le login et le mot de passe 
         String login = request.getParameter("login");
@@ -51,15 +52,14 @@ public class CtrlLogin extends HttpServlet {
         Session sessionHibernate = HibernateUtilProjetDAI.getSessionFactory().getCurrentSession();
         Transaction t = sessionHibernate.beginTransaction();
            
-        // requete pour 
+        // requete  
         Query queryCheckLogin = sessionHibernate.createQuery("from Utilisateur u where u.login = ? and u.password = ?");
-        
         queryCheckLogin.setString(0, login);
         queryCheckLogin.setString(1, password);
         
-        
-
-        if (queryCheckLogin.uniqueResult() != null) {
+        try {
+        // tester le resultat de la requette 
+         if (queryCheckLogin.uniqueResult() != null) {
          
             Utilisateur authUser = (Utilisateur) queryCheckLogin.uniqueResult();
             HttpSession session = request.getSession();
@@ -70,10 +70,7 @@ public class CtrlLogin extends HttpServlet {
             else if (authUser instanceof CoachAdmin){
                     session.setAttribute("coachadminSession", authUser);
             }
-            
-            
             t.commit();
-            
             RequestDispatcher rs = request.getRequestDispatcher("Index");
             rs.forward(request, response);
         }else {
@@ -85,7 +82,10 @@ public class CtrlLogin extends HttpServlet {
             RequestDispatcher rs = request.getRequestDispatcher("LoginClient");
             rs.include(request, response);
         }
-         
+        } catch (IOException | HibernateException e) {
+            System.out.println("Problème !" + e.getMessage());
+        } 
+    }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
