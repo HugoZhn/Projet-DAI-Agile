@@ -52,6 +52,14 @@
         <servlet-name>formBoostrap</servlet-name>
         <jsp-file>/JSP/formBoostrap.jsp</jsp-file>
     </servlet>
+    <servlet>
+        <servlet-name>creerSeance</servlet-name>
+        <jsp-file>/JSP/creerSeance.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>CtrlCreationSeance</servlet-name>
+        <servlet-class>controlers.CtrlCreationSeance</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CtrlVoirProgrammeClient</servlet-name>
         <url-pattern>/CtrlVoirProgrammeClient</url-pattern>
@@ -103,6 +111,14 @@
     <servlet-mapping>
         <servlet-name>formBoostrap</servlet-name>
         <url-pattern>/formBoostrap</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>creerSeance</servlet-name>
+        <url-pattern>/creerSeance</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlCreationSeance</servlet-name>
+        <url-pattern>/CtrlCreationSeance</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
