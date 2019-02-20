@@ -1,9 +1,7 @@
 package pojo;
-// Generated 20 fvr. 2019 11:34:49 by Hibernate Tools 4.3.1
+// Generated 20 fvr. 2019 13:58:26 by Hibernate Tools 4.3.1
 
 import java.util.Objects;
-
-
 
 
 /**
@@ -17,22 +15,25 @@ public class ExerciceDeBilan  implements java.io.Serializable {
      private SeanceBilan seanceBilan;
      private Double tempsMax;
      private Integer repsMax;
+     private boolean fini;
 
     public ExerciceDeBilan() {
     }
 
 	
-    public ExerciceDeBilan(ExerciceDeBilanId id, Exercice exercice, SeanceBilan seanceBilan) {
+    public ExerciceDeBilan(ExerciceDeBilanId id, Exercice exercice, SeanceBilan seanceBilan, boolean fini) {
         this.id = id;
         this.exercice = exercice;
         this.seanceBilan = seanceBilan;
+        this.fini = fini;
     }
-    public ExerciceDeBilan(ExerciceDeBilanId id, Exercice exercice, SeanceBilan seanceBilan, Double tempsMax, Integer repsMax) {
+    public ExerciceDeBilan(ExerciceDeBilanId id, Exercice exercice, SeanceBilan seanceBilan, Double tempsMax, Integer repsMax, boolean fini) {
        this.id = id;
        this.exercice = exercice;
        this.seanceBilan = seanceBilan;
        this.tempsMax = tempsMax;
        this.repsMax = repsMax;
+       this.fini = fini;
     }
    
     public ExerciceDeBilanId getId() {
@@ -70,11 +71,18 @@ public class ExerciceDeBilan  implements java.io.Serializable {
     public void setRepsMax(Integer repsMax) {
         this.repsMax = repsMax;
     }
+    public boolean isFini() {
+        return this.fini;
+    }
+    
+    public void setFini(boolean fini) {
+        this.fini = fini;
+    }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 59 * hash + Objects.hashCode(this.id);
+        int hash = 7;
+        hash = 23 * hash + Objects.hashCode(this.id);
         return hash;
     }
 

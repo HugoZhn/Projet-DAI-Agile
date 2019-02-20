@@ -1,5 +1,5 @@
 package pojo;
-// Generated 20 fvr. 2019 11:34:49 by Hibernate Tools 4.3.1
+// Generated 20 fvr. 2019 13:58:26 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -24,8 +24,7 @@ public class Seance  implements java.io.Serializable {
     }
 
 	
-    public Seance(ProfilClient profilClient, String libelleSc, String recupSc, String echauffement) {
-        this.profilClient = profilClient;
+    public Seance(String libelleSc, String recupSc, String echauffement) {
         this.libelleSc = libelleSc;
         this.recupSc = recupSc;
         this.echauffement = echauffement;
@@ -117,8 +116,6 @@ public class Seance  implements java.io.Serializable {
         }
         return true;
     }
-
-
 
 
 }

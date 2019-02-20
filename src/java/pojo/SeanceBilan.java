@@ -1,5 +1,5 @@
 package pojo;
-// Generated 20 fvr. 2019 11:34:49 by Hibernate Tools 4.3.1
+// Generated 20 fvr. 2019 13:58:26 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -25,12 +25,13 @@ public class SeanceBilan  implements java.io.Serializable {
      private Double mensHanches;
      private Double mensCuisses;
      private Set exerciceDeBilans = new HashSet(0);
+     private Set utilisateurs = new HashSet(0);
      private Set seanceBilanAppartenirs = new HashSet(0);
 
     public SeanceBilan() {
     }
 
-    public SeanceBilan(Integer age, Double poids, Integer fcCinqminAll, Integer fcTrenteflexions, Integer fcUneminApexAll, Boolean objectifMinceur, Double mensBras, Double mensPoitrine, Double mensTaille, Double mensHanches, Double mensCuisses, Set exerciceDeBilans, Set seanceBilanAppartenirs) {
+    public SeanceBilan(Integer age, Double poids, Integer fcCinqminAll, Integer fcTrenteflexions, Integer fcUneminApexAll, Boolean objectifMinceur, Double mensBras, Double mensPoitrine, Double mensTaille, Double mensHanches, Double mensCuisses, Set exerciceDeBilans, Set utilisateurs, Set seanceBilanAppartenirs) {
        this.age = age;
        this.poids = poids;
        this.fcCinqminAll = fcCinqminAll;
@@ -43,6 +44,7 @@ public class SeanceBilan  implements java.io.Serializable {
        this.mensHanches = mensHanches;
        this.mensCuisses = mensCuisses;
        this.exerciceDeBilans = exerciceDeBilans;
+       this.utilisateurs = utilisateurs;
        this.seanceBilanAppartenirs = seanceBilanAppartenirs;
     }
    
@@ -137,6 +139,13 @@ public class SeanceBilan  implements java.io.Serializable {
     public void setExerciceDeBilans(Set exerciceDeBilans) {
         this.exerciceDeBilans = exerciceDeBilans;
     }
+    public Set getUtilisateurs() {
+        return this.utilisateurs;
+    }
+    
+    public void setUtilisateurs(Set utilisateurs) {
+        this.utilisateurs = utilisateurs;
+    }
     public Set getSeanceBilanAppartenirs() {
         return this.seanceBilanAppartenirs;
     }
@@ -177,8 +186,6 @@ public class SeanceBilan  implements java.io.Serializable {
         }
         return true;
     }
-
-
 
 
 }

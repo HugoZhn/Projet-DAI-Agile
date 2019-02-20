@@ -4,6 +4,10 @@
     Author     : hzahn
 --%>
 
+<%@page import="java.util.Set"%>
+<%@page import="pojo.SeanceAppartenir"%>
+<%@page import="pojo.Seance"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="org.hibernate.Transaction"%>
 <%@page import="org.hibernate.Session"%>
 <%@page import="hibernateutils.HibernateUtilProjetDAI"%>
@@ -27,7 +31,16 @@
     <body>
         <h1>Programme <%= programmeAAfficher.getLibellePrgrm()%></h1>
         <h2>Mes scéances actives</h2>
-        
+        <%
+            ArrayList<Seance> seancesAAfficher = new ArrayList();
+            
+            for(Object snc : programmeAAfficher.getSeanceAppartenirs()){
+                SeanceAppartenir sncCasted = (SeanceAppartenir)snc;
+                if(sncCasted.isActive()){
+                    seancesAAfficher.add((Seance)sessionHibernate.get(Seance.class, sncCasted.getId().getCodeSc()));
+                }
+            }
+        %>
         <p>TO-DO</p>
     </body>
     <% t.commit(); %>
