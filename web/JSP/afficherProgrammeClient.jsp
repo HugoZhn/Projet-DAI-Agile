@@ -17,7 +17,7 @@
 <html>
     <%
         Programme programmeAAfficher = (Programme) request.getAttribute("programmeAAfficher");
-        
+            
         Session sessionHibernate = HibernateUtilProjetDAI.getSessionFactory().getCurrentSession();
         Transaction t = sessionHibernate.beginTransaction();
         
@@ -29,19 +29,24 @@
         <title>Mon programme</title>
     </head>
     <body>
-        <h1>Programme <%= programmeAAfficher.getLibellePrgrm()%></h1>
+        <h1>Programme <%= programmeAAfficher.getLibellePrgrm() %></h1>
         <h2>Mes scéances actives</h2>
         <%
-            ArrayList<Seance> seancesAAfficher = new ArrayList();
-            
-            for(Object snc : programmeAAfficher.getSeanceAppartenirs()){
-                SeanceAppartenir sncCasted = (SeanceAppartenir)snc;
-                if(sncCasted.isActive()){
-                    seancesAAfficher.add((Seance)sessionHibernate.get(Seance.class, sncCasted.getId().getCodeSc()));
+            ArrayList<SeanceAppartenir> seancesAAfficher = new ArrayList();
+
+            for(Object obj : programmeAAfficher.getSeanceAppartenirs()){
+                SeanceAppartenir objCasted = (SeanceAppartenir)obj;
+                if(objCasted.isActive()){
+                    seancesAAfficher.add( objCasted );
                 }
             }
+            for(SeanceAppartenir snc : seancesAAfficher){
+                Integer ordre = snc.getId().getOrdre();
+                System.out.println(ordre);
+                out.println("<a href=\"CtrlAfficherSeanceClient?noSeance="+snc.getSeance().getCodeSc() + "\">" + ordre.toString() + " - " + snc.getSeance().getLibelleSc() + "</a><br/>");
+            }
+
         %>
-        <p>TO-DO</p>
     </body>
     <% t.commit(); %>
 </html>

@@ -99,5 +99,14 @@ public class Client extends Utilisateur implements Serializable {
     public void setDocumentses(Set documentses) {
         this.documentses = documentses;
     }
+    
+    public ProgrammeClient getCurrentProgramme(){
+        for (ProgrammeClient programme : (Set<ProgrammeClient>) this.programmes){
+            if (!programme.isFini()){
+                return programme;
+            }
+        }
+        return null;
+    }
 
 }
