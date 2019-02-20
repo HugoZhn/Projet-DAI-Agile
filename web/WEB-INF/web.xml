@@ -28,6 +28,18 @@
         <servlet-name>menuClient</servlet-name>
         <jsp-file>/JSP/menuClient.jsp</jsp-file>
     </servlet>
+    <servlet>
+        <servlet-name>formBoostrap</servlet-name>
+        <jsp-file>/JSP/formBoostrap.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>afficherCLIADM_Filtres</servlet-name>
+        <jsp-file>/JSP/afficherCLIADM_Filtres.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>adminAfficherClients</servlet-name>
+        <jsp-file>/JSP/adminAfficherClients.jsp</jsp-file>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CtrlVoirProgrammeClient</servlet-name>
         <url-pattern>/CtrlVoirProgrammeClient</url-pattern>
@@ -55,6 +67,18 @@
     <servlet-mapping>
         <servlet-name>menuClient</servlet-name>
         <url-pattern>/menuClient</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>formBoostrap</servlet-name>
+        <url-pattern>/formBoostrap</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>afficherCLIADM_Filtres</servlet-name>
+        <url-pattern>/afficherCLIADM_Filtres</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>adminAfficherClients</servlet-name>
+        <url-pattern>/adminAfficherClients</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -43,7 +43,7 @@ public class CtrlListeClients extends HttpServlet {
         List<Client> listeClients = (List<Client>) session.createQuery("from Client c order by c.nom asc").list();
         request.setAttribute("listeClients", listeClients);        
         t.commit();        
-        RequestDispatcher rd = request.getRequestDispatcher("afficherClientsAdmin"); //importer requestdispatcher
+        RequestDispatcher rd = request.getRequestDispatcher("adminAfficherClients"); //importer requestdispatcher
         rd.forward(request,response);
         
     }
