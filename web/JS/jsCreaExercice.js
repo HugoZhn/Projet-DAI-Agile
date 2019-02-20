@@ -11,8 +11,6 @@ function verifNomExercice()
 
     // Récupération du mot saisi
     nomExercice = document.getElementById("nomUpdateExercice").value;
-               
-    console.log(nomExercice);
         
     // Élément à mettre à jour
     var elt = document.getElementById("verifExiste");

@@ -7,8 +7,6 @@ package controlers;
 
 import hibernateutils.HibernateUtilProjetDAI;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -58,6 +56,7 @@ public class CtrlVoirExercice extends HttpServlet {
             session.setAttribute("exercice", ex);
             
             RequestDispatcher rd = request.getRequestDispatcher("voirExercice");
+            request.setAttribute("msg_avrt", "Ok");
             rd.forward(request, response);
 
         } catch (IOException | ServletException | HibernateException ex) {
