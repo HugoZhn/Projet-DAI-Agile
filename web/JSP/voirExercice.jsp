@@ -67,9 +67,11 @@
                 out.println("</table>");
 
             %>       
-            <a href = "modifExercice"> Modifier </a>
-        </form> 
         
+        </form> 
+            
+        <a href = "modifExercice"> Modifier </a>
+
         <button id ="boutonDeleteExercice"> Supprimer </button> 
         
         <p id = "phraseSupprimer" hidden = "true">Confirmez-vous la suppression ?<p>

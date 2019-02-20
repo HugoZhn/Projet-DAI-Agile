@@ -12,7 +12,6 @@ import org.hibernate.Transaction;
 import pojo.Client;
 import pojo.ProfilClient;
 import static hibernateutils.HibernateUtilProjetDAI.getSessionFactory;
-import java.io.File;
 import java.text.ParseException;
 import org.hibernate.HibernateException;
 

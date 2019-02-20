@@ -6,8 +6,6 @@
 package controlers;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import static java.lang.System.out;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -37,8 +35,7 @@ public class CtrlLogOut extends HttpServlet {
               
             HttpSession session=request.getSession();  
             session.invalidate();  
-          
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

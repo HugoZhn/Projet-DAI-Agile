@@ -21,7 +21,6 @@ import pojo.Client;
 import pojo.CoachAdmin;
 import pojo.Utilisateur;
 
-
 /**
  *
  * @author 21408162
@@ -56,8 +55,6 @@ public class CtrlLogin extends HttpServlet {
         
         queryCheckLogin.setString(0, login);
         queryCheckLogin.setString(1, password);
-        
-        
 
         if (queryCheckLogin.uniqueResult() != null) {
          
@@ -70,7 +67,6 @@ public class CtrlLogin extends HttpServlet {
             else if (authUser instanceof CoachAdmin){
                     session.setAttribute("coachadminSession", authUser);
             }
-            
             
             t.commit();
             
