@@ -5,18 +5,23 @@
  */
 package controlers;
 
+import hibernateutils.HibernateUtilProjetDAI;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import pojo.Seance;
 
 /**
  *
  * @author hzahn
  */
-public class NewServlet extends HttpServlet {
+public class CtrlAfficherSeanceClient extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,19 +34,20 @@ public class NewServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet NewServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet NewServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        
+       Integer noSeance = Integer.parseInt(request.getParameter("noSeance"));
+       
+        Session sessionHibernate = HibernateUtilProjetDAI.getSessionFactory().getCurrentSession();
+        Transaction t = sessionHibernate.beginTransaction();
+        
+        Seance seanceAAfficher = (Seance) sessionHibernate.get(Seance.class, noSeance);
+        
+        request.setAttribute("seanceAAfficher", seanceAAfficher);
+        
+        t.commit();
+        RequestDispatcher rd = request.getRequestDispatcher("/afficherSeanceClient");
+        rd.forward(request, response);
+       
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

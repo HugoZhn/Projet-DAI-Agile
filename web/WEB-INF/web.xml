@@ -29,8 +29,16 @@
         <jsp-file>/JSP/menuClient.jsp</jsp-file>
     </servlet>
     <servlet>
-        <servlet-name>afficherProgramme</servlet-name>
-        <jsp-file>/JSP/afficherProgramme.jsp</jsp-file>
+        <servlet-name>afficherProgrammeClient</servlet-name>
+        <jsp-file>/JSP/afficherProgrammeClient.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>CtrlAfficherSeanceClient</servlet-name>
+        <servlet-class>controlers.CtrlAfficherSeanceClient</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>afficherSeanceClient</servlet-name>
+        <jsp-file>/JSP/afficherSeanceClient.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>CtrlVoirProgrammeClient</servlet-name>
@@ -61,8 +69,16 @@
         <url-pattern>/menuClient</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>afficherProgramme</servlet-name>
-        <url-pattern>/afficherProgramme</url-pattern>
+        <servlet-name>afficherProgrammeClient</servlet-name>
+        <url-pattern>/afficherProgrammeClient</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlAfficherSeanceClient</servlet-name>
+        <url-pattern>/CtrlAfficherSeanceClient</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>afficherSeanceClient</servlet-name>
+        <url-pattern>/afficherSeanceClient</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
