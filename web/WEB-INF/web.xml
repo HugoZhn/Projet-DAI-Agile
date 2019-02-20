@@ -20,6 +20,22 @@
         <servlet-name>listExercice</servlet-name>
         <jsp-file>/JSP/listExercice.jsp</jsp-file>
     </servlet>
+    <servlet>
+        <servlet-name>CtrlListExercice</servlet-name>
+        <servlet-class>controlers.CtrlListExercice</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CtrlVoirExercice</servlet-name>
+        <servlet-class>controlers.CtrlVoirExercice</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>voirExercice</servlet-name>
+        <jsp-file>/JSP/voirExercice.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>modifExercice</servlet-name>
+        <jsp-file>/JSP/modifExercice.jsp</jsp-file>
+    </servlet>
     <servlet-mapping>
         <servlet-name>NewServlet</servlet-name>
         <url-pattern>/NewServlet</url-pattern>
@@ -39,6 +55,22 @@
     <servlet-mapping>
         <servlet-name>listExercice</servlet-name>
         <url-pattern>/listExercice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlListExercice</servlet-name>
+        <url-pattern>/CtrlListExercice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlVoirExercice</servlet-name>
+        <url-pattern>/CtrlVoirExercice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>voirExercice</servlet-name>
+        <url-pattern>/voirExercice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>modifExercice</servlet-name>
+        <url-pattern>/modifExercice</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

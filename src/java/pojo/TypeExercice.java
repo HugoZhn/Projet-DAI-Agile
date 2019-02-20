@@ -1,5 +1,5 @@
 package pojo;
-// Generated 19 févr. 2019 12:38:57 by Hibernate Tools 4.3.1
+// Generated 19 fï¿½vr. 2019 12:38:57 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -18,7 +18,6 @@ public class TypeExercice  implements java.io.Serializable {
     public TypeExercice() {
     }
 
-	
     public TypeExercice(String libTypeEx) {
         this.libTypeEx = libTypeEx;
     }

@@ -4,6 +4,7 @@
     Author     : 21607860
 --%>
 
+<%@page import="pojo.TypeExercice"%>
 <%@page import="java.util.List"%>
 <%@page import="org.hibernate.Query"%>
 <%@page import="java.io.IOException"%>
@@ -27,15 +28,14 @@
 
         <%
                 // Récupère le message d'avertissement ou d'erreur
-
-                String Confirmation = request.getParameter("msg_avrt");
+                 String Confirmation = request.getParameter("msg_avrt");
 
                 if (Confirmation != null) {
                     if (Confirmation.equals("Ok")) {
 
                         out.println("<br/><p>Votre exercice a bien été enregistré.</p><br/>");
 
-                    } else if (Confirmation != null) {
+                    } else {    
 
                         out.println("<p>" + Confirmation + "</p>");
 
@@ -43,39 +43,29 @@
                 }
 
                 try {
-
-                    Session ses = HibernateUtilProjetDAI.getSessionFactory().getCurrentSession();
-                    Transaction t = ses.beginTransaction();
-
-                    Query q = ses.createQuery("from Exercice");
-
-                    List<Exercice> listeExercice = (List<Exercice>) q.list();
-
-                    t.commit();
                     
+                    List<Exercice> listeExercice = (List<Exercice>) request.getAttribute("listeExercice");
+
                     if (listeExercice.isEmpty()) {
 
                         out.println("<p>Pas d'exerice enregistré.</p>");
 
                     } else {
-                        out.println("<table border = 1>");
+                        out.println("<table >");
                         out.println("<tr>");
-                        out.println("<td>Intitulé</td>");
-                        out.println("<td>Objectif</td>");
+                            out.println("<td>Exercices</td>");
                         out.println("</tr>");
 
                         for (Exercice E : listeExercice) {
                             out.println("<tr>");
-                            out.println("<td>" + E.getNomEx() + "</td>");
-                            out.println("<td>" + E.getObjectifsEx() + "</td>");
+                               out.println("<td><a href = \"CtrlVoirExercice?action=" + E.getCodeEx() + "\">" + E.getNomEx() + " - " + E.getTypeExercice().getLibTypeEx() + " - " + E.getObjectifsEx() + "</a></td>");
                             out.println("</tr>");
                         }
-
                         out.println("</table>");
-
+                        
                     }
                 } catch (Exception ex) {
-
+                    ex.printStackTrace();
                     out.println("<p>Erreur dans l'affichage de la liste. " + ex.getMessage() + "</p>");
                     
                 }

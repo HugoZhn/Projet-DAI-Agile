@@ -8,7 +8,7 @@
             <column name="CodeEx" />
             <generator class="identity" />
         </id>
-        <many-to-one name="typeExercice" class="pojo.TypeExercice" fetch="select">
+        <many-to-one name="typeExercice" class="pojo.TypeExercice" lazy="false" fetch="select">
             <column name="TypeEx" not-null="true" />
         </many-to-one>
         <property name="nomEx" type="string">

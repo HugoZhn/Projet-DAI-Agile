@@ -5,23 +5,27 @@
  */
 package controlers;
 
+import hibernateutils.HibernateUtilProjetDAI;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import hibernateutils.HibernateUtilProjetDAI;
+import javax.servlet.http.HttpSession;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import pojo.Exercice;
-import pojo.TypeExercice;
 
 /**
+ *
  * @author 21607860
  */
-public class CtrlCreationExercice extends HttpServlet {
+public class CtrlVoirExercice extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,45 +36,42 @@ public class CtrlCreationExercice extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String nomEx = request.getParameter("nomEx");
-        Integer typeEx = Integer.parseInt(request.getParameter("typeEx"));
-        String objectifsEx = request.getParameter("objectifsEx");
-        String descriptionEx = request.getParameter("descriptionEx");
-        String ressourceEx = request.getParameter("ressourceEx");
-        String tempsBaseEx = request.getParameter("tempsBaseEx");
-        String repsBaseEx = request.getParameter("repsBaseEx");
-
-        Double tempsBaseExD = null;
-
-        if (!tempsBaseEx.equals("")) {
-            tempsBaseExD = Double.parseDouble(tempsBaseEx);
-        }
+        String codeEx = request.getParameter("action");
+        
+        System.out.println("Action : " + codeEx);
 
         try {
+            
+            System.out.println("Entrée try");
+            
+            Session sessionHibernate = HibernateUtilProjetDAI.getSessionFactory().getCurrentSession();
 
-            Session session = HibernateUtilProjetDAI.getSessionFactory().getCurrentSession();
-            Transaction t = session.beginTransaction();
+            Transaction t = sessionHibernate.beginTransaction();
 
-            TypeExercice typeExercice = (TypeExercice) session.load(TypeExercice.class, typeEx);
-            Exercice newExercice = new Exercice(typeExercice, nomEx, descriptionEx, ressourceEx, tempsBaseExD, repsBaseEx, objectifsEx, null, null);
-            session.save(newExercice);
+            Query q = sessionHibernate.createQuery("from Exercice as ex where ex.codeEx = " + codeEx);
+
+            Exercice ex = (Exercice) q.uniqueResult();
 
             t.commit();
 
-            RequestDispatcher rd = request.getRequestDispatcher("CtrlListExercice");
-            request.setAttribute("msg_avrt", "Ok");
+            RequestDispatcher rd = request.getRequestDispatcher("voirExercice");
+            request.setAttribute("exercice", ex);
             rd.forward(request, response);
 
         } catch (IOException | ServletException | HibernateException ex) {
 
-            RequestDispatcher rd = request.getRequestDispatcher("editionExercice");
+            System.out.println("Entrée catch");
+
+            RequestDispatcher rd = request.getRequestDispatcher("listExercice");
             request.setAttribute("msg_avrt", ex.getMessage());
             rd.forward(request, response);
 
         }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
