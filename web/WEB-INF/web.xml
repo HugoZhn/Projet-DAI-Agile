@@ -108,6 +108,14 @@
         <servlet-name>CtrlSupprimerExercice</servlet-name>
         <servlet-class>controlers.CtrlSupprimerExercice</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CtrlEnvoyerMessageCoachAdmin</servlet-name>
+        <servlet-class>controlers.CtrlEnvoyerMessageCoachAdmin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>envoyerMessageCoachAdmin</servlet-name>
+        <jsp-file>/JSP/envoyerMessageCoachAdmin.jsp</jsp-file>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CtrlVoirProgrammeClient</servlet-name>
         <url-pattern>/CtrlVoirProgrammeClient</url-pattern>
@@ -215,6 +223,14 @@
     <servlet-mapping>
         <servlet-name>Index</servlet-name>
         <url-pattern>/Index</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlEnvoyerMessageCoachAdmin</servlet-name>
+        <url-pattern>/CtrlEnvoyerMessageCoachAdmin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>envoyerMessageCoachAdmin</servlet-name>
+        <url-pattern>/envoyerMessageCoachAdmin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
