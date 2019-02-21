@@ -52,6 +52,30 @@
         <servlet-name>formBoostrap</servlet-name>
         <jsp-file>/JSP/formBoostrap.jsp</jsp-file>
     </servlet>
+    <servlet>
+        <servlet-name>CtrlformBoostrapDetailsProfil</servlet-name>
+        <servlet-class>controlers.CtrlformBoostrapDetailsProfil</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CtrlformBoostrapSupprimer</servlet-name>
+        <servlet-class>controlers.CtrlformBoostrapSupprimer</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>formBoostrapDetailsProfil</servlet-name>
+        <jsp-file>/JSP/formBoostrapDetailsProfil.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>formBoostrapSupprimer</servlet-name>
+        <jsp-file>/JSP/formBoostrapSupprimer.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>formBoostrapModifierProfilClient</servlet-name>
+        <jsp-file>/JSP/formBoostrapModifierProfilClient.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>CtrlModifClient</servlet-name>
+        <servlet-class>controlers.CtrlModifClient</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CtrlVoirProgrammeClient</servlet-name>
         <url-pattern>/CtrlVoirProgrammeClient</url-pattern>
@@ -103,6 +127,30 @@
     <servlet-mapping>
         <servlet-name>formBoostrap</servlet-name>
         <url-pattern>/formBoostrap</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlformBoostrapSupprimer</servlet-name>
+        <url-pattern>/CtrlformBoostrapSupprimer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>formBoostrapSupprimer</servlet-name>
+        <url-pattern>/formBoostrapSupprimer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlformBoostrapDetailsProfil</servlet-name>
+        <url-pattern>/CtrlformBoostrapDetailsProfil</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>formBoostrapModifierProfilClient</servlet-name>
+        <url-pattern>/formBoostrapModifierProfilClient</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlModifClient</servlet-name>
+        <url-pattern>/CtrlModifClient</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>formBoostrapDetailsProfil</servlet-name>
+        <url-pattern>/formBoostrapDetailsProfil</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
