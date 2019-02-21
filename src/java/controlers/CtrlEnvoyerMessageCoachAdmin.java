@@ -49,7 +49,7 @@ public class CtrlEnvoyerMessageCoachAdmin extends HttpServlet {
                 mailClient =  clientConnecte.getMailClient();
             else
                 mailClient =  "VIDE !!";
-            
+           
             
             // recuperation de l'adresse mail du destinatire 
             //Session sessionH = (Session) hibernateutils.HibernateUtilProjetDAI.getSessionFactory();
