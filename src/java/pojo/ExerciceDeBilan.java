@@ -13,7 +13,7 @@ public class ExerciceDeBilan  implements java.io.Serializable {
      private ExerciceDeBilanId id;
      private Exercice exercice;
      private SeanceBilan seanceBilan;
-     private Double tempsMax;
+     private Integer tempsMax;
      private Integer repsMax;
      private boolean fini;
 
@@ -27,7 +27,7 @@ public class ExerciceDeBilan  implements java.io.Serializable {
         this.seanceBilan = seanceBilan;
         this.fini = fini;
     }
-    public ExerciceDeBilan(ExerciceDeBilanId id, Exercice exercice, SeanceBilan seanceBilan, Double tempsMax, Integer repsMax, boolean fini) {
+    public ExerciceDeBilan(ExerciceDeBilanId id, Exercice exercice, SeanceBilan seanceBilan, Integer tempsMax, Integer repsMax, boolean fini) {
        this.id = id;
        this.exercice = exercice;
        this.seanceBilan = seanceBilan;
@@ -57,11 +57,11 @@ public class ExerciceDeBilan  implements java.io.Serializable {
     public void setSeanceBilan(SeanceBilan seanceBilan) {
         this.seanceBilan = seanceBilan;
     }
-    public Double getTempsMax() {
+    public Integer getTempsMax() {
         return this.tempsMax;
     }
     
-    public void setTempsMax(Double tempsMax) {
+    public void setTempsMax(Integer tempsMax) {
         this.tempsMax = tempsMax;
     }
     public Integer getRepsMax() {

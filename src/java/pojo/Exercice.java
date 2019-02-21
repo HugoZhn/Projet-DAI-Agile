@@ -17,7 +17,7 @@ public class Exercice  implements java.io.Serializable {
      private String descriptionEx;
      private String precisionsEx;
      private String ressourceEx;
-     private Double tempsBaseEx;
+     private Integer tempsBaseEx;
      private Integer repsBaseEx;
      private String objectifsEx;
      private Set exerciceDeSeances = new HashSet(0);
@@ -31,7 +31,7 @@ public class Exercice  implements java.io.Serializable {
         this.typeExercice = typeExercice;
         this.nomEx = nomEx;
     }
-    public Exercice(TypeExercice typeExercice, String nomEx, String descriptionEx, String precisionsEx, String ressourceEx, Double tempsBaseEx, Integer repsBaseEx, String objectifsEx, Set exerciceDeSeances, Set exerciceDeBilans) {
+    public Exercice(TypeExercice typeExercice, String nomEx, String descriptionEx, String precisionsEx, String ressourceEx, Integer tempsBaseEx, Integer repsBaseEx, String objectifsEx, Set exerciceDeSeances, Set exerciceDeBilans) {
        this.typeExercice = typeExercice;
        this.nomEx = nomEx;
        this.descriptionEx = descriptionEx;
@@ -86,11 +86,11 @@ public class Exercice  implements java.io.Serializable {
     public void setRessourceEx(String ressourceEx) {
         this.ressourceEx = ressourceEx;
     }
-    public Double getTempsBaseEx() {
+    public Integer getTempsBaseEx() {
         return this.tempsBaseEx;
     }
     
-    public void setTempsBaseEx(Double tempsBaseEx) {
+    public void setTempsBaseEx(Integer tempsBaseEx) {
         this.tempsBaseEx = tempsBaseEx;
     }
     public Integer getRepsBaseEx() {

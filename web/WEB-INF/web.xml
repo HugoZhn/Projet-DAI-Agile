@@ -116,6 +116,22 @@
         <servlet-name>envoyerMessageCoachAdmin</servlet-name>
         <jsp-file>/JSP/envoyerMessageCoachAdmin.jsp</jsp-file>
     </servlet>
+    <servlet>
+        <servlet-name>commencerSeanceClient</servlet-name>
+        <jsp-file>/JSP/commencerSeanceClient.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>FaireSeanceJS</servlet-name>
+        <jsp-file>/JS/jsFaireUneSeance.js</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletEffectuerSeance</servlet-name>
+        <servlet-class>controlers.ServletEffectuerSeance</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>jsAfficherClientTest</servlet-name>
+        <jsp-file>/JS/jsAfficherClientTest.js</jsp-file>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CtrlVoirProgrammeClient</servlet-name>
         <url-pattern>/CtrlVoirProgrammeClient</url-pattern>
@@ -231,6 +247,22 @@
     <servlet-mapping>
         <servlet-name>envoyerMessageCoachAdmin</servlet-name>
         <url-pattern>/envoyerMessageCoachAdmin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>commencerSeanceClient</servlet-name>
+        <url-pattern>/commencerSeanceClient</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FaireSeanceJS</servlet-name>
+        <url-pattern>/FaireSeanceJS</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletEffectuerSeance</servlet-name>
+        <url-pattern>/ServletEffectuerSeance</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>jsAfficherClientTest</servlet-name>
+        <url-pattern>/jsAfficherClientTest</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
