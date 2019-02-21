@@ -32,6 +32,10 @@
         <h1>Seance <%= seanceAAfficher.getLibelleSc()%></h1>
 
         <%
+
+            out.print("Echauffement : " + seanceAAfficher.getEchauffement() + "<br/><br/>");
+            out.print("Récup : " + seanceAAfficher.getRecupSc() + "<br/><br/>");
+
             ArrayList<ExerciceDeSeance> exercicesAAfficher = new ArrayList<>();
 
             for (Object obj : seanceAAfficher.getExerciceDeSeances()) {
@@ -40,49 +44,53 @@
             }
 
             Collections.sort(exercicesAAfficher);
-            
+
             session.setAttribute("exosAEffectuer", exercicesAAfficher);
-            System.out.print(seanceAAfficher);
             session.setAttribute("seanceAEffectuer", seanceAAfficher);
 
             for (ExerciceDeSeance exo : exercicesAAfficher) {
                 out.println("<p>");
+                
+                if(exo.getExercice().getTypeExercice().getLibTypeEx() == "etirement"){
+                    out.println("Etirement : ");
+                }
+                
                 out.println(exo.getExercice().getNomEx() + "<br/>");
 
                 if (exo.getExercice().getDescriptionEx() != null) {
                     out.println(exo.getExercice().getDescriptionEx() + "<br/>");
                 }
-                
+
                 if (exo.getExercice().getPrecisionsEx() != null) {
                     out.println(exo.getExercice().getPrecisionsEx() + "<br/>");
                 }
-                
+
                 if (exo.getExercice().getObjectifsEx() != null) {
                     out.println(exo.getExercice().getObjectifsEx() + "<br/>");
                 }
-                
-                if (exo.getExercice().getRessourceEx()!= null) {
+
+                if (exo.getExercice().getRessourceEx() != null) {
                     out.println(exo.getExercice().getRessourceEx() + "<br/>");
                 }
-                
+
                 if (exo.getNbSeries() != 0) {
                     out.println(exo.getNbSeries() + " x ");
                 }
                 if (exo.getRepsExSc() != 0) {
                     out.println(exo.getRepsExSc() + " répétitions ");
                 }
-                
-                if (exo.getTempsExSc()!= 0) {
+
+                if (exo.getTempsExSc() != 0) {
                     out.println(exo.getTempsExSc() + " secondes ");
                 }
-                
+
                 out.print("</p>");
             }
 
             t.commit();
 
         %>
-        
+
         <a href="commencerSeanceClient">Commencer ma séance</a>
 
     </body>

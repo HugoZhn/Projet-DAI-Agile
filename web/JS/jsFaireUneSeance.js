@@ -64,6 +64,7 @@ function afficherPremierExo() {
         if (xhr.status === 200)
         {
             exosToDo = JSON.parse(xhr.responseText);
+            console.log(exosToDo);
             lancerExoSuivant();
         }
     };
@@ -96,10 +97,10 @@ function lancerExoSuivant() {
             html += currentExo.nbSeries + " x ";
         }
         if (currentExo.repsExo !== "0") {
-            html += currentExo.nbSeries + " repetitions";
+            html += currentExo.repsExo + " repetitions";
         }
         if (currentExo.tmpsEx !== "0") {
-            html += currentExo.nbSeries + " secondes";
+            html += currentExo.tmpsEx + " secondes";
         }
 
         html += "</p>"

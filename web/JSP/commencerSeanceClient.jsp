@@ -23,12 +23,16 @@
     </head>
     <body>
         <h1>Seance <%= seanceAEffectuer.getLibelleSc()%></h1>
-        <div id="main">
+        <div><p>
+            <%
+                out.print("Echauffement : " + seanceAEffectuer.getEchauffement() + "<br/><br/>");
+                out.print("Récup : " + seanceAEffectuer.getRecupSc()+ "<br/><br/>");
+                %>
+            </p></div>
         <div id="AffichageExo"></div>
         <span id="Timer"></span>
         <div id="btnDiv"><button hidden="true" id="btnCommencerSeance" value="<%= seanceAEffectuer.getCodeSc()%>">Fake</button></div>
         <a href="CtrlVoirProgrammeClient?idProgramme=<%= clientSession.getCurrentProgramme().getCodePrgrm()%>" hidden="true" id="back">Finir ma seance</a>
-        </div>
     </body>
     <script type="text/JavaScript" src="FaireSeanceJS" charset="UTF-8"></script>
 </html>
