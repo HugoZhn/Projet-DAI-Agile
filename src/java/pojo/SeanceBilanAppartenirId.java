@@ -1,5 +1,5 @@
 package pojo;
-// Generated 20 fvr. 2019 13:58:26 by Hibernate Tools 4.3.1
+// Generated 21 févr. 2019 10:27:40 by Hibernate Tools 4.3.1
 
 
 
@@ -11,15 +11,15 @@ public class SeanceBilanAppartenirId  implements java.io.Serializable {
 
      private int codeScBilan;
      private int codePrgrm;
-     private int codeSemaine;
+     private int noSemaine;
 
     public SeanceBilanAppartenirId() {
     }
 
-    public SeanceBilanAppartenirId(int codeScBilan, int codePrgrm, int codeSemaine) {
+    public SeanceBilanAppartenirId(int codeScBilan, int codePrgrm, int noSemaine) {
        this.codeScBilan = codeScBilan;
        this.codePrgrm = codePrgrm;
-       this.codeSemaine = codeSemaine;
+       this.noSemaine = noSemaine;
     }
    
     public int getCodeScBilan() {
@@ -36,12 +36,12 @@ public class SeanceBilanAppartenirId  implements java.io.Serializable {
     public void setCodePrgrm(int codePrgrm) {
         this.codePrgrm = codePrgrm;
     }
-    public int getCodeSemaine() {
-        return this.codeSemaine;
+    public int getNoSemaine() {
+        return this.noSemaine;
     }
     
-    public void setCodeSemaine(int codeSemaine) {
-        this.codeSemaine = codeSemaine;
+    public void setNoSemaine(int noSemaine) {
+        this.noSemaine = noSemaine;
     }
 
 
@@ -53,7 +53,7 @@ public class SeanceBilanAppartenirId  implements java.io.Serializable {
          
 		 return (this.getCodeScBilan()==castOther.getCodeScBilan())
  && (this.getCodePrgrm()==castOther.getCodePrgrm())
- && (this.getCodeSemaine()==castOther.getCodeSemaine());
+ && (this.getNoSemaine()==castOther.getNoSemaine());
    }
    
    public int hashCode() {
@@ -61,7 +61,7 @@ public class SeanceBilanAppartenirId  implements java.io.Serializable {
          
          result = 37 * result + this.getCodeScBilan();
          result = 37 * result + this.getCodePrgrm();
-         result = 37 * result + this.getCodeSemaine();
+         result = 37 * result + this.getNoSemaine();
          return result;
    }   
 

@@ -1,5 +1,5 @@
 package pojo;
-// Generated 20 fvr. 2019 13:58:26 by Hibernate Tools 4.3.1
+// Generated 21 fvr. 2019 10:27:40 by Hibernate Tools 4.3.1
 
 import java.util.Objects;
 
@@ -19,19 +19,21 @@ public class ExerciceDeSeance  implements java.io.Serializable {
      private String evaluation;
      private String avisLibre;
      private boolean fini;
+     private int ordre;
 
     public ExerciceDeSeance() {
     }
 
 	
-    public ExerciceDeSeance(ExerciceDeSeanceId id, Exercice exercice, Seance seance, int nbSeries, boolean fini) {
+    public ExerciceDeSeance(ExerciceDeSeanceId id, Exercice exercice, Seance seance, int nbSeries, boolean fini, int ordre) {
         this.id = id;
         this.exercice = exercice;
         this.seance = seance;
         this.nbSeries = nbSeries;
         this.fini = fini;
+        this.ordre = ordre;
     }
-    public ExerciceDeSeance(ExerciceDeSeanceId id, Exercice exercice, Seance seance, Double tempsExSc, Integer repsExSc, int nbSeries, String evaluation, String avisLibre, boolean fini) {
+    public ExerciceDeSeance(ExerciceDeSeanceId id, Exercice exercice, Seance seance, Double tempsExSc, Integer repsExSc, int nbSeries, String evaluation, String avisLibre, boolean fini, int ordre) {
        this.id = id;
        this.exercice = exercice;
        this.seance = seance;
@@ -41,6 +43,7 @@ public class ExerciceDeSeance  implements java.io.Serializable {
        this.evaluation = evaluation;
        this.avisLibre = avisLibre;
        this.fini = fini;
+       this.ordre = ordre;
     }
    
     public ExerciceDeSeanceId getId() {
@@ -106,11 +109,18 @@ public class ExerciceDeSeance  implements java.io.Serializable {
     public void setFini(boolean fini) {
         this.fini = fini;
     }
+    public int getOrdre() {
+        return this.ordre;
+    }
+    
+    public void setOrdre(int ordre) {
+        this.ordre = ordre;
+    }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 37 * hash + Objects.hashCode(this.id);
+        int hash = 3;
+        hash = 23 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
