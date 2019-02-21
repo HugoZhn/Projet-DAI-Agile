@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import pojo.ProgrammeClient;
@@ -38,14 +37,17 @@ public class CtrlVoirProgrammeClient extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+
+            HttpSession session = request.getSession();
+
             Integer codeProgramme = Integer.parseInt(request.getParameter("idProgramme"));
-            
+
             Session sessionHibernate = HibernateUtilProjetDAI.getSessionFactory().getCurrentSession();
             Transaction t = sessionHibernate.beginTransaction();
-            
+
             ProgrammeClient programmeCourantClient = (ProgrammeClient) sessionHibernate.get(ProgrammeClient.class, codeProgramme);
             request.setAttribute("programmeAAfficher", programmeCourantClient);
-            
+
             t.commit();
             RequestDispatcher rd = request.getRequestDispatcher("afficherProgrammeClient");
             rd.forward(request, response);

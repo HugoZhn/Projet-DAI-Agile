@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 20 fvr. 2019 13:58:27 by Hibernate Tools 4.3.1 -->
+<!-- Generated 21 fvr. 2019 10:27:40 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="pojo.SeanceBilan" table="SeanceBilan" catalog="db_21400055" optimistic-lock="version">
         <id name="codeScBilan" type="java.lang.Integer">
@@ -41,6 +41,12 @@
         <property name="mensCuisses" type="java.lang.Double">
             <column name="MensCuisses" precision="22" scale="0" />
         </property>
+        <set name="seanceBilanAppartenirs" table="SeanceBilanAppartenir" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CodeScBilan" not-null="true" />
+            </key>
+            <one-to-many class="pojo.SeanceBilanAppartenir" />
+        </set>
         <set name="exerciceDeBilans" table="ExerciceDeBilan" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="CodeScBilan" not-null="true" />
@@ -52,12 +58,6 @@
                 <column name="CodePremiereScBilan" />
             </key>
             <one-to-many class="pojo.Utilisateur" />
-        </set>
-        <set name="seanceBilanAppartenirs" table="SeanceBilanAppartenir" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="CodeScBilan" not-null="true" />
-            </key>
-            <one-to-many class="pojo.SeanceBilanAppartenir" />
         </set>
     </class>
 </hibernate-mapping>

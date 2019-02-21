@@ -5,28 +5,24 @@
  */
 package controlers;
 
-import hibernateutils.HibernateUtilProjetDAI;
+import static hibernateutils.HibernateUtilProjetDAI.getSessionFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.hibernate.HibernateException;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import pojo.Client;
 import pojo.CoachAdmin;
-import pojo.Utilisateur;
 
 /**
  *
- * @author 21408162
+ * @author 21808985
  */
-public class CtrlLogin extends HttpServlet {
+public class CtrlEnvoyerMessageCoachAdmin extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,52 +36,58 @@ public class CtrlLogin extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()){
+        try (PrintWriter out = response.getWriter()) {
 
-        //recuperer le login et le mot de passe 
-        String login = request.getParameter("login");
-        String password = request.getParameter("password");
-        
-        // tester la connexion a la base de données 
-        //tester si le login et le mot de passe existe et match 
-        Session sessionHibernate = HibernateUtilProjetDAI.getSessionFactory().getCurrentSession();
-        Transaction t = sessionHibernate.beginTransaction();
-           
-        // requete  
-        Query queryCheckLogin = sessionHibernate.createQuery("from Utilisateur u where u.login = ? and u.password = ?");
-        queryCheckLogin.setString(0, login);
-        queryCheckLogin.setString(1, password);
-        
-        try {
-        // tester le resultat de la requette 
-         if (queryCheckLogin.uniqueResult() != null) {
-         
-            Utilisateur authUser = (Utilisateur) queryCheckLogin.uniqueResult();
+            String coachadmin = request.getParameter("jd");
+            String message = request.getParameter("message");
+
+            String destinataire = "";
             HttpSession session = request.getSession();
+            Client clientConnecte  = (Client)session.getAttribute("clientSession");
+            String mailClient = null;
+            if(clientConnecte!= null)
+                mailClient =  clientConnecte.getMailClient();
+            else
+                mailClient =  "VIDE !!";
            
-            if(authUser instanceof Client){
-                    session.setAttribute("clientSession", authUser);
-            }
-            else if (authUser instanceof CoachAdmin){
-                    session.setAttribute("coachadminSession", authUser);
-            }
-
-            t.commit();
-            RequestDispatcher rs = request.getRequestDispatcher("Index");
-            rs.forward(request, response);
-        }else {
-            // si le test ne marche pas on rest sur la meme page et on affiche un message d'erreur
             
-            t.commit();
+            // recuperation de l'adresse mail du destinatire 
+            //Session sessionH = (Session) hibernateutils.HibernateUtilProjetDAI.getSessionFactory();
+            Session s = (Session) getSessionFactory().getCurrentSession();
+            Transaction t = s.beginTransaction();
+            CoachAdmin coachAdmin =null;
+            coachAdmin = (CoachAdmin) s.get(CoachAdmin.class,24 );
             
-            request.setAttribute("errorMsg", "Login ou mot de passe incorrect");
-            RequestDispatcher rs = request.getRequestDispatcher("LoginClient");
-            rs.include(request, response);
+            
+            if (coachadmin.equals("au coach")) {
+                //Do action
+                destinataire = "COACH !!";
+                destinataire = destinataire + coachAdmin.getMailCoach();
+            } else  {
+                //Do other action
+                destinataire = "ADMIN !!";
+                destinataire = destinataire + coachAdmin.getMailAdmin();
+            }
+            if(message.isEmpty())
+                    message =" pas de message";
+  
+          
+            
+            
+            /* TODO output your page here. You may use following sample code.  */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet CtrlEnvoyerMessageCoachAdmin</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet CtrlEnvoyerMessageCoachAdmin at " + request.getContextPath() + "</h1>");
+            out.println("<h1>DESTINATAIRE : " + destinataire + "</h1>");
+            out.println("<h1>MESSAGE : " + message + "</h1>");
+            out.println("<h1>MESSAGE : " + mailClient + "</h1>");
+            out.println("</body>");
+            out.println("</html>"); 
         }
-        } catch (IOException | HibernateException e) {
-            System.out.println("Problème !" + e.getMessage());
-        } 
-    }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

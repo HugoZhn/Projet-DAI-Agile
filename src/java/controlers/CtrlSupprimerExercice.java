@@ -7,26 +7,21 @@ package controlers;
 
 import hibernateutils.HibernateUtilProjetDAI;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import org.hibernate.HibernateException;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import pojo.Client;
-import pojo.CoachAdmin;
-import pojo.Utilisateur;
+import pojo.Exercice;
 
 /**
  *
- * @author 21408162
+ * @author 21607860
  */
-public class CtrlLogin extends HttpServlet {
+public class CtrlSupprimerExercice extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,53 +34,30 @@ public class CtrlLogin extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()){
 
-        //recuperer le login et le mot de passe 
-        String login = request.getParameter("login");
-        String password = request.getParameter("password");
-        
-        // tester la connexion a la base de données 
-        //tester si le login et le mot de passe existe et match 
-        Session sessionHibernate = HibernateUtilProjetDAI.getSessionFactory().getCurrentSession();
-        Transaction t = sessionHibernate.beginTransaction();
-           
-        // requete  
-        Query queryCheckLogin = sessionHibernate.createQuery("from Utilisateur u where u.login = ? and u.password = ?");
-        queryCheckLogin.setString(0, login);
-        queryCheckLogin.setString(1, password);
-        
+        String codeEx = request.getParameter("codeEx");
+
         try {
-        // tester le resultat de la requette 
-         if (queryCheckLogin.uniqueResult() != null) {
-         
-            Utilisateur authUser = (Utilisateur) queryCheckLogin.uniqueResult();
-            HttpSession session = request.getSession();
-           
-            if(authUser instanceof Client){
-                    session.setAttribute("clientSession", authUser);
-            }
-            else if (authUser instanceof CoachAdmin){
-                    session.setAttribute("coachadminSession", authUser);
-            }
 
+            Session sessionHibernate = HibernateUtilProjetDAI.getSessionFactory().getCurrentSession();
+            Transaction t = sessionHibernate.beginTransaction();
+
+            Exercice ex = (Exercice) sessionHibernate.get(Exercice.class, Integer.parseInt(codeEx));
+
+            sessionHibernate.delete(ex);
             t.commit();
-            RequestDispatcher rs = request.getRequestDispatcher("Index");
-            rs.forward(request, response);
-        }else {
-            // si le test ne marche pas on rest sur la meme page et on affiche un message d'erreur
-            
-            t.commit();
-            
-            request.setAttribute("errorMsg", "Login ou mot de passe incorrect");
-            RequestDispatcher rs = request.getRequestDispatcher("LoginClient");
-            rs.include(request, response);
+
+            RequestDispatcher rd = request.getRequestDispatcher("CtrlListExercice");
+            rd.forward(request, response);
+
+        } catch (IOException | HibernateException ex) {
+
+            RequestDispatcher rd = request.getRequestDispatcher("voirExercice");
+            request.setAttribute("msg_avrt", ex.getMessage());
+            rd.forward(request, response);
+
         }
-        } catch (IOException | HibernateException e) {
-            System.out.println("Problème !" + e.getMessage());
-        } 
-    }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -19,7 +19,6 @@ public class TypeExercice  implements java.io.Serializable {
     public TypeExercice() {
     }
 
-	
     public TypeExercice(String libTypeEx) {
         this.libTypeEx = libTypeEx;
     }

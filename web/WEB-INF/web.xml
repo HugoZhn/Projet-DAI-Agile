@@ -76,6 +76,86 @@
         <servlet-name>CtrlModifClient</servlet-name>
         <servlet-class>controlers.CtrlModifClient</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>creerSeance</servlet-name>
+        <jsp-file>/JSP/creerSeance.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>CtrlCreationSeance</servlet-name>
+        <servlet-class>controlers.CtrlCreationSeance</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CtrlCreationExercice</servlet-name>
+        <servlet-class>controlers.CtrlCreationExercice</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>editionExercice</servlet-name>
+        <jsp-file>/JSP/editionExercice.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>listExercice</servlet-name>
+        <jsp-file>/JSP/listExercice.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>CtrlListExercice</servlet-name>
+        <servlet-class>controlers.CtrlListExercice</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CtrlVoirExercice</servlet-name>
+        <servlet-class>controlers.CtrlVoirExercice</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>voirExercice</servlet-name>
+        <jsp-file>/JSP/voirExercice.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>modifExercice</servlet-name>
+        <jsp-file>/JSP/modifExercice.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>CtrlVerifNomExercice</servlet-name>
+        <servlet-class>controlers.CtrlVerifNomExercice</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CtrlModifExercice</servlet-name>
+        <servlet-class>controlers.CtrlModifExercice</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>jsCreaExercice</servlet-name>
+        <jsp-file>/JS/jsCreaExercice.js</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>jsSuppExercice</servlet-name>
+        <jsp-file>/JS/jsSuppExercice.js</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>CtrlSupprimerExercice</servlet-name>
+        <servlet-class>controlers.CtrlSupprimerExercice</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CtrlEnvoyerMessageCoachAdmin</servlet-name>
+        <servlet-class>controlers.CtrlEnvoyerMessageCoachAdmin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>envoyerMessageCoachAdmin</servlet-name>
+        <jsp-file>/JSP/envoyerMessageCoachAdmin.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>commencerSeanceClient</servlet-name>
+        <jsp-file>/JSP/commencerSeanceClient.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>FaireSeanceJS</servlet-name>
+        <jsp-file>/JS/jsFaireUneSeance.js</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletEffectuerSeance</servlet-name>
+        <servlet-class>controlers.ServletEffectuerSeance</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>jsAfficherClientTest</servlet-name>
+        <jsp-file>/JS/jsAfficherClientTest.js</jsp-file>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CtrlVoirProgrammeClient</servlet-name>
         <url-pattern>/CtrlVoirProgrammeClient</url-pattern>
@@ -87,10 +167,6 @@
     <servlet-mapping>
         <servlet-name>CtrlListeClients</servlet-name>
         <url-pattern>/CtrlListeClients</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Index</servlet-name>
-        <url-pattern>/Index</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>menuClient</servlet-name>
@@ -151,6 +227,90 @@
     <servlet-mapping>
         <servlet-name>formBoostrapDetailsProfil</servlet-name>
         <url-pattern>/formBoostrapDetailsProfil</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>creerSeance</servlet-name>
+        <url-pattern>/creerSeance</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlCreationSeance</servlet-name>
+        <url-pattern>/CtrlCreationSeance</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editionExercice</servlet-name>
+        <url-pattern>/editionExercice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>listExercice</servlet-name>
+        <url-pattern>/listExercice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlListExercice</servlet-name>
+        <url-pattern>/CtrlListExercice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlVoirExercice</servlet-name>
+        <url-pattern>/CtrlVoirExercice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>voirExercice</servlet-name>
+        <url-pattern>/voirExercice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>modifExercice</servlet-name>
+        <url-pattern>/modifExercice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlVerifNomExercice</servlet-name>
+        <url-pattern>/CtrlVerifNomExercice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlModifExercice</servlet-name>
+        <url-pattern>/CtrlModifExercice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlCreationExercice</servlet-name>
+        <url-pattern>/CtrlCreationExercice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>jsCreaExercice</servlet-name>
+        <url-pattern>/jsCreaExercice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>jsSuppExercice</servlet-name>
+        <url-pattern>/jsSuppExercice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlSupprimerExercice</servlet-name>
+        <url-pattern>/CtrlSupprimerExercice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Index</servlet-name>
+        <url-pattern>/Index</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlEnvoyerMessageCoachAdmin</servlet-name>
+        <url-pattern>/CtrlEnvoyerMessageCoachAdmin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>envoyerMessageCoachAdmin</servlet-name>
+        <url-pattern>/envoyerMessageCoachAdmin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>commencerSeanceClient</servlet-name>
+        <url-pattern>/commencerSeanceClient</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FaireSeanceJS</servlet-name>
+        <url-pattern>/FaireSeanceJS</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletEffectuerSeance</servlet-name>
+        <url-pattern>/ServletEffectuerSeance</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>jsAfficherClientTest</servlet-name>
+        <url-pattern>/jsAfficherClientTest</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -8,7 +8,7 @@
             <column name="CodeEx" />
             <generator class="identity" />
         </id>
-        <many-to-one name="typeExercice" class="pojo.TypeExercice" fetch="select">
+        <many-to-one name="typeExercice" class="pojo.TypeExercice" lazy="false" fetch="select">
             <column name="TypeEx" not-null="true" />
         </many-to-one>
         <property name="nomEx" type="string">
@@ -23,11 +23,11 @@
         <property name="ressourceEx" type="string">
             <column name="RessourceEx" length="128" />
         </property>
-        <property name="tempsBaseEx" type="java.lang.Double">
-            <column name="TempsBaseEx" precision="22" scale="0" />
+        <property name="tempsBaseEx" type="java.lang.Integer">
+            <column name="TempsBaseEx" not-null="true" />
         </property>
         <property name="repsBaseEx" type="java.lang.Integer">
-            <column name="RepsBaseEx" />
+            <column name="RepsBaseEx" not-null="true" />
         </property>
         <property name="objectifsEx" type="string">
             <column name="ObjectifsEx" length="128" />

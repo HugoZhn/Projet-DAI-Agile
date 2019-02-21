@@ -8,25 +8,21 @@ package controlers;
 import hibernateutils.HibernateUtilProjetDAI;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import pojo.Client;
-import pojo.CoachAdmin;
-import pojo.Utilisateur;
+import pojo.ExerciceDeSeance;
 
 /**
  *
- * @author 21408162
+ * @author hzahn
  */
-public class CtrlLogin extends HttpServlet {
+public class ServletEffectuerSeance extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,56 +35,41 @@ public class CtrlLogin extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()){
 
-        //recuperer le login et le mot de passe 
-        String login = request.getParameter("login");
-        String password = request.getParameter("password");
-        
-        // tester la connexion a la base de données 
-        //tester si le login et le mot de passe existe et match 
+        response.setContentType("application/json;charset=UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        PrintWriter out = response.getWriter();
+
+        Integer noSeanceEffectuee = Integer.parseInt(request.getParameter("noSeanceEffectuee"));
+
+        System.out.println(noSeanceEffectuee);
+
         Session sessionHibernate = HibernateUtilProjetDAI.getSessionFactory().getCurrentSession();
         Transaction t = sessionHibernate.beginTransaction();
-           
-        // requete  
-        Query queryCheckLogin = sessionHibernate.createQuery("from Utilisateur u where u.login = ? and u.password = ?");
-        queryCheckLogin.setString(0, login);
-        queryCheckLogin.setString(1, password);
-        
-        try {
-        // tester le resultat de la requette 
-         if (queryCheckLogin.uniqueResult() != null) {
-         
-            Utilisateur authUser = (Utilisateur) queryCheckLogin.uniqueResult();
-            HttpSession session = request.getSession();
-           
-            if(authUser instanceof Client){
-                    session.setAttribute("clientSession", authUser);
-            }
-            else if (authUser instanceof CoachAdmin){
-                    session.setAttribute("coachadminSession", authUser);
-            }
 
-            t.commit();
-            RequestDispatcher rs = request.getRequestDispatcher("Index");
-            rs.forward(request, response);
-        }else {
-            // si le test ne marche pas on rest sur la meme page et on affiche un message d'erreur
-            
-            t.commit();
-            
-            request.setAttribute("errorMsg", "Login ou mot de passe incorrect");
-            RequestDispatcher rs = request.getRequestDispatcher("LoginClient");
-            rs.include(request, response);
+        Query q = sessionHibernate.createQuery("from ExerciceDeSeance e where e.id.codeSc = ? order by e.ordre");
+        q.setInteger(0, noSeanceEffectuee);
+
+        List<ExerciceDeSeance> exosDeLaSeance = q.list();
+
+        String toOut = "[";
+        for (ExerciceDeSeance exo : exosDeLaSeance) {
+            toOut += "{ \"idEx\" : \"" + exo.getId().getCodeEx() + "\", \"ordre\":\"" + exo.getOrdre() + "\", ";
+            toOut += "\"tmpsEx\" : \"" + exo.getTempsExSc() + "\", \"repsExo\": \"" + exo.getRepsExSc() + "\", ";
+            toOut += "\"nbSeries\" : \"" + exo.getNbSeries() + "\", \"adresseImage\" : \"" + exo.getExercice().getRessourceEx() + "\", ";
+            toOut += "\"descriptionExo\" : \"" + exo.getExercice().getDescriptionEx() + "\", \"infoSupExo\" : \"" + exo.getExercice().getPrecisionsEx() + "\", ";
+            toOut += "\"objExo\" : \"" + exo.getExercice().getObjectifsEx() + "\", \"nomExo\" : \"" + exo.getExercice().getNomEx() + "\"}, ";
         }
-        } catch (IOException | HibernateException e) {
-            System.out.println("Problème !" + e.getMessage());
-        } 
-    }
+        
+        toOut = toOut.substring(0, toOut.length() - 2);
+        toOut += "]";
+
+        out.print(toOut);
+
+        t.commit();
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
