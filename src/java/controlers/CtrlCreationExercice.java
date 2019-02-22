@@ -53,11 +53,13 @@ public class CtrlCreationExercice extends HttpServlet {
         System.out.println(tempsBaseEx);
         System.out.println(repsBaseEx);
 
-        Integer tempsBaseExD = 0;
+        int tempsBaseExInt = 0;
         int repsBaseExInt = 0;
 
         if (!tempsBaseEx.equals("")) {
-            tempsBaseExD = Integer.parseInt(tempsBaseEx);
+
+            tempsBaseExInt = Integer.parseInt(tempsBaseEx);
+
         }
         if (!repsBaseEx.equals("")) {
             repsBaseExInt = Integer.parseInt(repsBaseEx);
@@ -69,7 +71,7 @@ public class CtrlCreationExercice extends HttpServlet {
             Transaction t = session.beginTransaction();
 
             TypeExercice typeExercice = (TypeExercice) session.load(TypeExercice.class, typeEx);
-            Exercice newExercice = new Exercice(typeExercice, nomEx, descriptionEx, precisionsEx, ressourceEx, tempsBaseExD, repsBaseExInt, objectifsEx, null, null);
+            Exercice newExercice = new Exercice(typeExercice, nomEx, descriptionEx, precisionsEx, ressourceEx, tempsBaseExInt, repsBaseExInt, objectifsEx, null, null);
             
             session.save(newExercice);
 

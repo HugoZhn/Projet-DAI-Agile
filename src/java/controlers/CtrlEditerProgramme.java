@@ -8,27 +8,26 @@ package controlers;
 import bd.Bd;
 import hibernateutils.HibernateUtilProjetDAI;
 import java.io.IOException;
-import java.util.List;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import pojo.ExerciceDeSeance;
-import pojo.Seance;
+import pojo.ProfilClient;
+import pojo.Programme;
+
 
 /**
  *
- * @author 21402458
+ * @author 21607860
  */
-@WebServlet(name = "CtrlSupprimerSeance", urlPatterns = {"/CtrlSupprimerSeance"})
-public class CtrlSupprimerSeance extends HttpServlet {
+public class CtrlEditerProgramme extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,30 +40,60 @@ public class CtrlSupprimerSeance extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
-       
-            String codesc = request.getParameter("codesc");
+
+        String libellePrgrm = request.getParameter("libellePrgrm");
+        String codeProfil = request.getParameter("codeProfil");
+        String[] seanceProg = (String[]) request.getParameterValues("seanceProg");
 
         try {
 
+            System.out.println("Entrée try");
             Session sessionHibernate = HibernateUtilProjetDAI.getSessionFactory().getCurrentSession();
             Transaction t = sessionHibernate.beginTransaction();
-   
-            Seance sc = (Seance) sessionHibernate.get(Seance.class, Integer.parseInt(codesc));
-            Bd.supprimerExerciceDeSeance(sc.getCodeSc());
+            
+            System.out.println("Récupération profil client");
+            
+            ProfilClient profilClient = (ProfilClient) sessionHibernate.load(ProfilClient.class, Integer.parseInt(codeProfil));
 
-            sessionHibernate.delete(sc);
+            Programme newProg = new Programme(profilClient, libellePrgrm, false, null, null);
+
+            sessionHibernate.save(newProg);
+
             t.commit();
+            
+            System.out.println("Début boucle");
+            
+            for (String seance : seanceProg) {
 
-            RequestDispatcher rd = request.getRequestDispatcher("listSeance");
+                if (!seance.equals("0")) {
+
+                    String str[] = seance.split(",");
+
+                    Integer codeSemaine = Integer.parseInt(str[0]);
+                    Integer ordre = Integer.parseInt(str[1]);
+                    Integer codeSc = Integer.parseInt(str[2]);
+                    
+                    System.out.println("Requete");
+                    
+                    Bd.enregistrerSeanceAppartenir(codeSc, newProg.getCodePrgrm(), codeSemaine, ordre);
+
+                }
+
+            }
+
+            RequestDispatcher rd = request.getRequestDispatcher("editerProgramme");
+            request.setAttribute("msg_avrt", "Ok");
             rd.forward(request, response);
 
-        } catch (IOException | HibernateException ex) {
+        } catch (IOException | ServletException | HibernateException ex) {
 
-            RequestDispatcher rd = request.getRequestDispatcher("uneSeance");
+            RequestDispatcher rd = request.getRequestDispatcher("editerProgramme");
             request.setAttribute("msg_avrt", ex.getMessage());
+            System.out.println(ex.getMessage());
             rd.forward(request, response);
+
         }
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -82,7 +111,7 @@ public class CtrlSupprimerSeance extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(CtrlSupprimerSeance.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CtrlEditerProgramme.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -100,7 +129,7 @@ public class CtrlSupprimerSeance extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(CtrlSupprimerSeance.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CtrlEditerProgramme.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

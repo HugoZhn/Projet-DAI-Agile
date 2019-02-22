@@ -45,7 +45,7 @@
                     ExerciceDeSeance objCasted = (ExerciceDeSeance) obj;
                     exercicesAAfficher.add(objCasted);
                 }
-                Collections.sort(exercicesAAfficher);
+                //Collections.sort(exercicesAAfficher);
                 
                 out.println(" <h1> Seance "+ nomseance + "</h1>");
 
@@ -119,10 +119,10 @@
         <p id = "phraseSupprimer" hidden = "true"> Confirmez-vous la suppression de cette seance ?<p>
 
         <%
-            //out.println("<form method=\"GET\" action = \"CtrlSupprimerSeance\">");   
+            out.println("<form method=\"GET\" action = \"CtrlSupprimerSeance\">");   
                 out.println("<input hidden = \"true\" type=\"text\" name = \"codeSc\" value ="  + codesc + "></input>");
                 out.println("<button type = \"submit\" id =\"ouiSupprimer\" hidden = \"true\">Oui</button>");
-          //  out.println("</form>");
+            out.println("</form>");
         %>
         
         <button id ="nonSupprimer" hidden = "true"> Non </button> 

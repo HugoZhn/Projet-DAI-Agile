@@ -27,20 +27,18 @@ public class CtrlLogOut extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try {
-            PrintWriter out = response.getWriter();
-            out.println("déconnexion avec succes");
-            HttpSession session = request.getSession(false);
-            
-            session.setAttribute("user",null );
-            
-            session.getMaxInactiveInterval();
-            session.invalidate();
-            request.getRequestDispatcher("loginClient").include(request, response);
-
-        } catch (IOException | HibernateException e) {
-            System.out.println("Problème : " + e.getMessage());
-        }
+         try{
+		PrintWriter out = response.getWriter();
+		out.println("déconnexion avec succes");
+		HttpSession session = request.getSession(false);
+		session.setAttribute("user", null);
+                session.getMaxInactiveInterval();
+		session.invalidate();
+                request.getRequestDispatcher("Index").include(request, response);
+		
+         } catch (IOException | HibernateException e) {
+            System.out.println("Problème ma gueule !" + e.getMessage());
+        }          
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
