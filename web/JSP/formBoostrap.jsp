@@ -21,11 +21,12 @@
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 
     </head>
+    
     <body>
         <div class="container register">
             <div class="row">
                 <div class="col-md-3 register-left">
-                    <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
+<!--                    <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>-->
                     <h3>Plateforme Admin</h3>
                     <p>Inscription Rapide</p>
                     <form action="formBoostrap">
@@ -55,7 +56,8 @@
                                     <center>
                                         <%String message = (String) request.getAttribute("msg_erreur");
                                             if (message != null) {
-                                                out.println("<div class=\"alert alert-danger\" role=\"alert\">" + message + "</div>");
+                                                out.println("<div class=\"alert alert-danger alert-dismissible\" role=\"alert\">"
+                                                        + "<button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button><strong>" + message + "</strong></div>");
                                             }%>  
                                     </center>
                                     <div class="col-md-6">
@@ -178,7 +180,7 @@
 
 <style>
     .register{
-        background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+        background: -webkit-linear-gradient(left, #cabc9d, #90a1a7);
         margin-top: 3%;
         padding: 3%;
     }
@@ -234,7 +236,7 @@
         border: none;
         border-radius: 1.5rem;
         padding: 1%;
-        background: #0062cc;
+        background: #a3b8ce;
         color: #fff;
         font-weight: 600;
         width: 50%;
@@ -243,7 +245,7 @@
     .register .nav-tabs{
         margin-top: 3%;
         border: none;
-        background: #0062cc;
+        background: #a3b8ce;
         border-radius: 1.5rem;
         width: 28%;
         float: right;
@@ -261,8 +263,8 @@
     }
     .register .nav-tabs .nav-link.active{
         width: 100px;
-        color: #0062cc;
-        border: 2px solid #0062cc;
+        color: #040404;
+        border: 2px solid #f09c75;
         border-top-left-radius: 1.5rem;
         border-bottom-left-radius: 1.5rem;
     }

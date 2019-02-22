@@ -8,6 +8,7 @@ package controlers;
 import hibernateutils.HibernateUtilProjetDAI;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -37,55 +38,59 @@ public class CtrlLogin extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()){
+        try (PrintWriter out = response.getWriter()) {
 
-        //recuperer le login et le mot de passe 
-        String login = request.getParameter("login");
-        String password = request.getParameter("password");
-        
-        // tester la connexion a la base de données 
-        //tester si le login et le mot de passe existe et match 
-        Session sessionHibernate = HibernateUtilProjetDAI.getSessionFactory().getCurrentSession();
-        Transaction t = sessionHibernate.beginTransaction();
-           
-        // requete  
-        Query queryCheckLogin = sessionHibernate.createQuery("from Utilisateur u where u.login = ? and u.password = ?");
-        queryCheckLogin.setString(0, login);
-        queryCheckLogin.setString(1, password);
-        
-        try {
-        // tester le resultat de la requette 
-         if (queryCheckLogin.uniqueResult() != null) {
-         
-            Utilisateur authUser = (Utilisateur) queryCheckLogin.uniqueResult();
-            HttpSession session = request.getSession();
-           
-            if(authUser instanceof Client){
-                    session.setAttribute("clientSession", authUser);
-            }
-            else if (authUser instanceof CoachAdmin){
-                    session.setAttribute("coachadminSession", authUser);
-            }
+            //recuperer le login et le mot de passe 
+            String login = request.getParameter("login");
+            String password = request.getParameter("password");
 
-            t.commit();
-            RequestDispatcher rs = request.getRequestDispatcher("Index");
-            rs.forward(request, response);
-        }else {
-            // si le test ne marche pas on rest sur la meme page et on affiche un message d'erreur
-            
-            t.commit();
-            
-            request.setAttribute("errorMsg", "Login ou mot de passe incorrect");
-            RequestDispatcher rs = request.getRequestDispatcher("LoginClient");
-            rs.include(request, response);
+            // tester la connexion a la base de données 
+            //tester si le login et le mot de passe existe et match 
+            Session sessionHibernate = HibernateUtilProjetDAI.getSessionFactory().getCurrentSession();
+            Transaction t = sessionHibernate.beginTransaction();
+
+            // requete  
+            Query queryCheckLogin = sessionHibernate.createQuery("from Utilisateur u where u.login = ? and u.password = ?");
+            queryCheckLogin.setString(0, login);
+            queryCheckLogin.setString(1, password);
+
+            try {
+                // tester le resultat de la requette 
+                if (queryCheckLogin.uniqueResult() != null) {
+
+                    Utilisateur authUser = (Utilisateur) queryCheckLogin.uniqueResult();
+                    HttpSession session = request.getSession();
+                    try{
+                        if (authUser instanceof Client) {
+                        session.setAttribute("clientSession", authUser);
+                         t.commit();                    
+                    RequestDispatcher rs = request.getRequestDispatcher("accueilClient");
+                    rs.forward(request, response);
+                    } else if (authUser instanceof CoachAdmin) {
+                        session.setAttribute("coachadminSession", authUser);
+                         t.commit();                    
+                    RequestDispatcher rs = request.getRequestDispatcher("accueilCoach");
+                    rs.forward(request, response);
+                    }
+                    }catch(Exception e){
+                        e.getMessage();
+                    }                  
+                   
+                } else {
+                    // si le test ne marche pas on rest sur la meme page et on affiche un message d'erreur
+                    t.commit();
+                    request.setAttribute("errorMsg", "Login ou mot de passe incorrect");
+                    RequestDispatcher rs = request.getRequestDispatcher("loginClient");
+                    rs.include(request, response);
+                }
+            } catch (IOException | HibernateException e) {
+                System.out.println("Problème !" + e.getMessage());
+            }
         }
-        } catch (IOException | HibernateException e) {
-            System.out.println("Problème !" + e.getMessage());
-        } 
-    }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

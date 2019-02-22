@@ -22,6 +22,7 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     </head>
     <body>
 
@@ -79,40 +80,50 @@
                             <div class="row register-form">
                                 <center>
                                     <%String message = (String) request.getAttribute("msg_erreur");
-                                        if (message != null) {
-                                            out.println("<div class=\"alert alert-danger\" role=\"alert\">" + message + "</div>");
-                                        }%>  
+                                            if (message != null) {
+                                                out.println("<div class=\"alert alert-danger alert-dismissible\" role=\"alert\">"
+                                                        + "<button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button><strong>" + message + "</strong></div>");
+                                            }%>                                        
                                 </center>
                                 <div class="col-md-6">
                                     <div class="form-group">
+                                        <label>Identifiant</label>
                                         <input type="text" name="login" class="form-control" placeholder="Identifiant *" value="<%= login%>" disabled/>
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" name="passwordClient" id="passwordClient" placeholder="Mot de passe *" value="<%= password%>" disabled />
+                                        <label>Mot de passe</label>
+                                        <input type="text" class="form-control" name="passwordClient" id="passwordClient" placeholder="Mot de passe *" value="<%= password%>" disabled />
                                     </div>                                        
                                     <div class="form-group">
+                                        <label>Nom de famille</label>
                                         <input type="text" class="form-control" name="firstName" placeholder="Nom de Famille *" value="<%= firstName%>" disabled />
                                     </div>
                                     <div class="form-group">
+                                        <label>Prénom</label>
                                         <input type="text" class="form-control" name="lastName" placeholder="Prénom *" value=" <%= lastName%>" disabled/>
                                     </div>                                    
                                     <div class="form-group">
+                                        <label>Date de Naissance</label>
                                         <input type="date" class="form-control" id="exampleInputDOB1" name="birthDay" placeholder="Date de Naissance *" value="<%= birthDay%>" disabled/>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
+                                        <label>Email</label>
                                         <input type="email" class="form-control" name="email" placeholder="Email *" value="<%= mail%>" disabled />
                                     </div>
                                     <div class="form-group">
+                                        <label>Téléphone</label>
                                         <input type="tel" minlength="10" maxlength="10" pattern="[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{2}" class="form-control" name="numberPhone" placeholder="N° Téléphone *" value="<%= phone%>" disabled/>
                                     </div>
                                     <div class="form-group">
+                                        <label>Type Abonnement</label>
                                         <select class="form-control" name="typeAbo" disabled>
                                             <option class="hidden"  selected disabled><%= typeAbo%></option>
                                         </select>
                                     </div>
                                     <div class="form-group">
+                                        <label>Profil Sportif</label>
                                         <select class="form-control" name="sportProfil" disabled >
                                             <option class="hidden"  selected disabled><%= nameSportProfil%></option>                                             
                                         </select>
@@ -132,37 +143,42 @@
                                     <%     }--%>
                                 </div>
                             </div>-->
-                                    <form action="formBoostrapModifierProfilClient"><input type="submit" class="btnRegister"  value="Modifier"/></form>
-                                    <form action="CtrlformBoostrapSupprimer" onsubmit='return confirm("Souhaitez-vous confirmer la suppression de ce client ?")' >
-                                        <input hidden = "true" type="hidden" name = "loginAsupp" value ="<%= theClient.getLogin()%>"></input>
-                                        <input hidden = "true" type="hidden" name = "idAsupp" value ="<%= theClient.getNumUser()%>"></input>
-                                        <input type="submit" class="btnRegister"  value="Supprimer"/>
-                                    </form>
+                                    <div class="btn-group">
+                                        <form action="formBoostrapModifierProfilClient">
+                                            <button type="submit" class="btn btn-outline-secondary"/><span class="fa fa-cog" aria-hidden="true"></span> Modifier</button> 
+                                        </form>
+                                        <form action="CtrlformBoostrapSupprimer" >
+                                            <input hidden = "true" type="hidden" name = "loginAsupp" value ="<%= theClient.getLogin()%>"></input>
+                                            <input hidden = "true" type="hidden" name = "idAsupp" value ="<%= theClient.getNumUser()%>"></input>
+                                            <button type="button" class="btn btn-outline-danger" data-toggle="collapse" data-target="#confirm"> <span class="fa fa-times" aria-hidden="true"></span> Supprimer</button>
+                                    </div>
+
+
                                 </div>
-                                <div class="alert alert-danger" role="alert">
-                                    <strong>Erreur ! <% out.print(erreur);%>  </strong> 
+                                <div class="alert alert-warning alert-dismissible collapse" id="confirm">
+                                    <button type="button" class="close" data-toggle="collapse" data-target="#confirm">&times;</button>
+                                    <strong>Attention!</strong> voulez vous confirmer la suppression des messages?<br>
+                                    <button type="submit" class="btn btn-outline-danger"> <span class="fa fa-times" aria-hidden="true"></span> Confirmer</button>
+                                    <button type="button" class="btn btn-outline-info" onclick="window.location.href = 'Index'"><span class="fa fa-home" aria-hidden="true"></span>Annuler</button>
                                 </div>
+                                </form>
+                                <% if (erreur != null) {%>
+                                <div class="alert alert-danger" role="alert"> 
+                                    <strong>Erreur ! <%= erreur%>  </strong> 
+                                </div>
+                                <%}%>
+
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
-
         </div>
-        %>
-
-        <%
-
-        %>
-
     </body>
 </html>
-
-
 <style>
     .register{
-        background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+        background: -webkit-linear-gradient(left, #cabc9d, #90a1a7);
         margin-top: 3%;
         padding: 3%;
     }
@@ -218,7 +234,7 @@
         border: none;
         border-radius: 1.5rem;
         padding: 1%;
-        background: #0062cc;
+        background: #a3b8ce;
         color: #fff;
         font-weight: 600;
         width: 50%;
@@ -227,7 +243,7 @@
     .register .nav-tabs{
         margin-top: 3%;
         border: none;
-        background: #0062cc;
+        background: #a3b8ce;
         border-radius: 1.5rem;
         width: 28%;
         float: right;
@@ -245,8 +261,8 @@
     }
     .register .nav-tabs .nav-link.active{
         width: 100px;
-        color: #0062cc;
-        border: 2px solid #0062cc;
+        color: #040404;
+        border: 2px solid #f09c75;
         border-top-left-radius: 1.5rem;
         border-bottom-left-radius: 1.5rem;
     }

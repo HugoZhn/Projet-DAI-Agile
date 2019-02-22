@@ -28,7 +28,7 @@ function verifNomExercice()
             verification = verification.firstChild.nodeValue;
 
             if (verification === "Vrai") {
-                elt.innerHTML = "Nom déjà utilisé.";
+                elt.innerHTML = "Nom Existant !";
                 document.getElementById("exerciceUpdate").disabled = true;
             } else
             {

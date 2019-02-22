@@ -43,6 +43,15 @@ public class CtrlCreationExercice extends HttpServlet {
         String ressourceEx = request.getParameter("ressourceEx");
         String tempsBaseEx = request.getParameter("tempsBaseEx");
         String repsBaseEx = request.getParameter("repsBaseEx");
+        
+        System.out.println(nomEx);
+        System.out.println(typeEx);
+        System.out.println(objectifsEx);
+        System.out.println(descriptionEx);
+        System.out.println(precisionsEx);
+        System.out.println(ressourceEx);
+        System.out.println(tempsBaseEx);
+        System.out.println(repsBaseEx);
 
         Integer tempsBaseExD = 0;
         int repsBaseExInt = 0;

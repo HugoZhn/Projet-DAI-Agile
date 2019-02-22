@@ -147,8 +147,9 @@
 
                                         </div>
                                     </div>
-                            </div>
-                            </form>                      
+                            
+                            </form> 
+                            </div>                     
                         </div>
                     </div>
                 </div>
@@ -160,7 +161,7 @@
 
 <style>
     .register{
-        background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+        background: -webkit-linear-gradient(left, #cabc9d, #90a1a7);
         margin-top: 3%;
         padding: 3%;
     }
@@ -216,7 +217,7 @@
         border: none;
         border-radius: 1.5rem;
         padding: 1%;
-        background: #0062cc;
+        background: #a3b8ce;
         color: #fff;
         font-weight: 600;
         width: 50%;
@@ -225,7 +226,7 @@
     .register .nav-tabs{
         margin-top: 3%;
         border: none;
-        background: #0062cc;
+        background: #a3b8ce;
         border-radius: 1.5rem;
         width: 28%;
         float: right;
@@ -243,8 +244,8 @@
     }
     .register .nav-tabs .nav-link.active{
         width: 100px;
-        color: #0062cc;
-        border: 2px solid #0062cc;
+        color: #040404;
+        border: 2px solid #f09c75;
         border-top-left-radius: 1.5rem;
         border-bottom-left-radius: 1.5rem;
     }

@@ -49,6 +49,17 @@ public class CtrlInscriptionAdminClient extends HttpServlet {
         String uploadFiles = request.getParameter("uploadFiles");
         String passwordClient = request.getParameter("passwordClient");
         String passwordClient_Conf = request.getParameter("passwordClient_Conf");
+        
+        System.out.println(login);
+        System.out.println(firstName);
+        System.out.println(lastName);
+        System.out.println(birthDay);
+        System.out.println(email);
+        System.out.println(numberPhone);
+        System.out.println(sexe);
+        System.out.println(sportProfil);
+        System.out.println(typeAbo);
+        System.out.println(passwordClient);
 
         try {
                    if (!passwordClient.equals(passwordClient_Conf)) {
@@ -65,11 +76,11 @@ public class CtrlInscriptionAdminClient extends HttpServlet {
                     if (q.uniqueResult() != null) {
                         sortie = "formBoostrap";
                     } else {
-                        ProfilClient pc = new ProfilClient(sportProfil);
+                        ProfilClient pc = (ProfilClient)s.get(ProfilClient.class,Integer.parseInt(sportProfil));
                         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
                         Client c = new Client(pc, null,email, numberPhone, typeAbo, firstName, lastName, df.parse(birthDay), login, passwordClient, sexe, new Date());
                         s.save(c);
-                        sortie = "Index";
+                        sortie = "accueilCoach";
                     }
                     t.commit();
                     //on revient à la page saisir car l'enregistrement dans la BD n'a pas fonctionné

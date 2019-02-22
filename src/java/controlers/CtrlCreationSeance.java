@@ -23,6 +23,7 @@ import static hibernateutils.HibernateUtilProjetDAI.getSessionFactory;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.servlet.RequestDispatcher;
 import org.hibernate.HibernateException;
 import pojo.Client;
 /**
@@ -45,18 +46,12 @@ public class CtrlCreationSeance extends HttpServlet {
       
            
         // récupération des éléments inscrits dans le formulaire
-        
         String profilClientSeance =request.getParameter("profilClientSeance");
         String nameSeance = request.getParameter("nameSeance");
         String recupSeance = request.getParameter("recupSeance");
         String echauffementSeance = request.getParameter("echauffementSeance");
 
                 try {
-                    //pour tester si on récupère tout
-//                    System.out.println(profilClientSeance);
-//                    System.out.println(nameSeance);
-//                    System.out.println(recupSeance);
-//                    System.out.println(echauffementSeance);
 
                    Session ses = (Session) HibernateUtilProjetDAI.getSessionFactory().getCurrentSession();
                    Integer g = Integer.parseInt(profilClientSeance); //convertir string récupérer du formulaire en integer vu que c'est un code
@@ -68,10 +63,15 @@ public class CtrlCreationSeance extends HttpServlet {
                    ses.save(s1);
                    tc.commit(); // Commit et flush automatique de la session       
 
+                    //redirection vers la liste des seances une fois finie
+                    RequestDispatcher rd = request.getRequestDispatcher("listSeance");
+                    rd.forward(request, response);
+                    
                     } 
-                    catch (HibernateException e){
+                    catch (HibernateException e)
+                    {
                     System.out.println("Problème :" + e.getMessage());
-                      }
+                    }
             }     
     //}
     

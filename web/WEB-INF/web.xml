@@ -81,10 +81,6 @@
         <jsp-file>/JSP/creerSeance.jsp</jsp-file>
     </servlet>
     <servlet>
-        <servlet-name>CtrlCreationSeance</servlet-name>
-        <servlet-class>controlers.CtrlCreationSeance</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>CtrlCreationExercice</servlet-name>
         <servlet-class>controlers.CtrlCreationExercice</servlet-class>
     </servlet>
@@ -155,6 +151,42 @@
     <servlet>
         <servlet-name>jsAfficherClientTest</servlet-name>
         <jsp-file>/JS/jsAfficherClientTest.js</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>accueilClient</servlet-name>
+        <jsp-file>/JSP/accueilClient.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>accueilCoach</servlet-name>
+        <jsp-file>/JSP/accueilCoach.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>accueilAdminCoach</servlet-name>
+        <jsp-file>/JSP/accueilAdminCoach.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>contact</servlet-name>
+        <jsp-file>/JSP/contact.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>listSeance</servlet-name>
+        <jsp-file>/JSP/listSeance.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>CtrlVoirSeance</servlet-name>
+        <servlet-class>controlers.CtrlVoirSeance</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>uneSeance</servlet-name>
+        <jsp-file>/JSP/uneSeance.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>CtrlSupprimerSeance</servlet-name>
+        <servlet-class>controlers.CtrlSupprimerSeance</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CtrlCreationSeance</servlet-name>
+        <servlet-class>controlers.CtrlCreationSeance</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CtrlVoirProgrammeClient</servlet-name>
@@ -233,10 +265,6 @@
         <url-pattern>/creerSeance</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>CtrlCreationSeance</servlet-name>
-        <url-pattern>/CtrlCreationSeance</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>editionExercice</servlet-name>
         <url-pattern>/editionExercice</url-pattern>
     </servlet-mapping>
@@ -311,6 +339,42 @@
     <servlet-mapping>
         <servlet-name>jsAfficherClientTest</servlet-name>
         <url-pattern>/jsAfficherClientTest</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>accueilClient</servlet-name>
+        <url-pattern>/accueilClient</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>accueilCoach</servlet-name>
+        <url-pattern>/accueilCoach</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>accueilAdminCoach</servlet-name>
+        <url-pattern>/accueilAdminCoach</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>contact</servlet-name>
+        <url-pattern>/contact</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>listSeance</servlet-name>
+        <url-pattern>/listSeance</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlVoirSeance</servlet-name>
+        <url-pattern>/CtrlVoirSeance</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>uneSeance</servlet-name>
+        <url-pattern>/uneSeance</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlSupprimerSeance</servlet-name>
+        <url-pattern>/CtrlSupprimerSeance</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlCreationSeance</servlet-name>
+        <url-pattern>/CtrlCreationSeance</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
