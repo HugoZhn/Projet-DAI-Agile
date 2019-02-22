@@ -47,11 +47,11 @@ public class CtrlModifExercice extends HttpServlet {
         String tempsBaseEx = request.getParameter("tempsBaseEx");
         String repsBaseEx = request.getParameter("repsBaseEx");
 
-        Double tempsBaseExD = null;
+        int tempsBaseExInt = 0;
         int repsBaseExInt = 0;
 
         if (!tempsBaseEx.equals("")) {
-            tempsBaseExD = Double.parseDouble(tempsBaseEx);
+            tempsBaseExInt = Integer.parseInt(tempsBaseEx);
         }
         if (!repsBaseEx.equals("")) {
             repsBaseExInt = Integer.parseInt(repsBaseEx);
@@ -71,7 +71,7 @@ public class CtrlModifExercice extends HttpServlet {
             ex.setPrecisionsEx(precisionsEx);
             ex.setDescriptionEx(descriptionEx);
             ex.setRessourceEx(ressourceEx);
-            ex.setTempsBaseEx(tempsBaseExD);
+            ex.setTempsBaseEx(tempsBaseExInt);
             ex.setRepsBaseEx(repsBaseExInt);
 
             sessionHibernate.update(ex);

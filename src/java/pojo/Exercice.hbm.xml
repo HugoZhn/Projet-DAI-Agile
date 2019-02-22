@@ -23,8 +23,8 @@
         <property name="ressourceEx" type="string">
             <column name="RessourceEx" length="128" />
         </property>
-        <property name="tempsBaseEx" type="java.lang.Double">
-            <column name="TempsBaseEx" precision="22" scale="0" />
+        <property name="tempsBaseEx" type="java.lang.Integer">
+            <column name="TempsBaseEx" />
         </property>
         <property name="repsBaseEx" type="java.lang.Integer">
             <column name="RepsBaseEx" />

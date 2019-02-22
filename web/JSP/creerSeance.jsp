@@ -4,6 +4,7 @@
     Author     : 21402458
 --%>
 
+<%@page import="pojo.Exercice"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.List"%>
 <%@page import="pojo.ProfilClient"%>
@@ -34,20 +35,25 @@
                 
                 <%
                     
-    Session ses = HibernateUtilProjetDAI.getSessionFactory().getCurrentSession();
-    Transaction t = ses.beginTransaction();
-    Query q = ses.createQuery("from ProfilClient"); //récupération des profilclient de la BD
-    List<ProfilClient> listeProfilClient = (List<ProfilClient>) q.list();
-    
-    t.commit();
-    
-    //On peut sélectionner chaque ProfilClient de la BD
-    for (ProfilClient pc : listeProfilClient){
-        out.println("<td>");
-        out.println("<input type=\"radio\" name=\"profilClientSeance\" value="+ pc.getCodeProfil() + " required>" + pc.getNomProfil()); 
-        out.println("</td>");
-        }%>
-       
+                Session ses = HibernateUtilProjetDAI.getSessionFactory().getCurrentSession();
+                Transaction t = ses.beginTransaction();
+                
+                Query qPC = ses.createQuery("from ProfilClient"); //récupération des profilclient de la BD
+                List<ProfilClient> listeProfilClient = (List<ProfilClient>) qPC.list();
+                
+                Query qEx = ses.createQuery("from Exercice"); //récupération des ex de la BD
+                List<Exercice> listeExercice = (List<Exercice>) qEx.list();
+
+                
+                t.commit();
+
+                //On peut sélectionner chaque ProfilClient de la BD
+                for (ProfilClient pc : listeProfilClient){
+                    out.println("<td>");
+                    out.println("<input type=\"radio\" name=\"profilClientSeance\" value="+ pc.getCodeProfil() + " required>" + pc.getNomProfil()); 
+                    out.println("</td>");
+                }
+                %>
             </tr>
             <tr>
                 <td> Nom </td> <td> <input type="text" name="nameSeance" required >
@@ -58,6 +64,80 @@
             <tr>
                  <td> Echauffement </td> <td> <input type="text" name="echauffementSeance" required>
             </tr>
+                        <%
+            out.println("<tr>");
+                out.println("<td id =\"ligne11\">Exercice 1 : <select name=\"exerciceProg\" >");
+                    out.println("<option value= \"0\">   </option>");
+                        for (Exercice ex : listeExercice) {
+                            out.println("<option value=\"1," + ex.getCodeEx()+ "\" > " + ex.getNomEx() + "</option>");
+                             }
+                    out.println("</select>");
+                out.println("</td>");
+            out.println("</tr>"); 
+            out.println("<tr>");
+                out.println("<td id =\"ligne11\">Exercice 2 : <select name=\"exerciceProg\" >");
+                    out.println("<option value= \"0\">   </option>");
+                        for (Exercice ex : listeExercice) {
+                            out.println("<option value=\"2," + ex.getCodeEx()+ "\" > " + ex.getNomEx() + "</option>");
+                             }
+                    out.println("</select>");
+                out.println("</td>");
+            out.println("</tr>");
+            out.println("<tr>");
+                out.println("<td id =\"ligne11\">Exercice 3 : <select name=\"exerciceProg\" >");
+                    out.println("<option value= \"0\">   </option>");
+                        for (Exercice ex : listeExercice) {
+                            out.println("<option value=\"3," + ex.getCodeEx()+ "\" > " + ex.getNomEx() + "</option>");
+                             }
+                    out.println("</select>");
+                out.println("</td>");
+            out.println("</tr>");
+            out.println("<tr>");
+                out.println("<td id =\"ligne11\">Exercice 4 : <select name=\"exerciceProg\" >");
+                    out.println("<option value= \"0\">   </option>");
+                        for (Exercice ex : listeExercice) {
+                            out.println("<option value=\"4," + ex.getCodeEx()+ "\" > " + ex.getNomEx() + "</option>");
+                             }
+                    out.println("</select>");
+                out.println("</td>");
+            out.println("</tr>");
+            out.println("<tr>");
+                out.println("<td id =\"ligne11\">Exercice 5 : <select name=\"exerciceProg\" >");
+                    out.println("<option value= \"0\">   </option>");
+                        for (Exercice ex : listeExercice) {
+                            out.println("<option value=\"5," + ex.getCodeEx()+ "\" > " + ex.getNomEx() + "</option>");
+                             }
+                    out.println("</select>");
+                out.println("</td>");
+            out.println("</tr>");
+            out.println("<tr>");
+                out.println("<td id =\"ligne11\">Exercice 6 : <select name=\"exerciceProg\" >");
+                    out.println("<option value= \"0\">   </option>");
+                        for (Exercice ex : listeExercice) {
+                            out.println("<option value=\"6," + ex.getCodeEx()+ "\" > " + ex.getNomEx() + "</option>");
+                             }
+                    out.println("</select>");
+                out.println("</td>");
+            out.println("</tr>");
+            out.println("<tr>");
+                out.println("<td id =\"ligne11\">Exercice 7 : <select name=\"exerciceProg\" >");
+                    out.println("<option value= \"0\">   </option>");
+                        for (Exercice ex : listeExercice) {
+                            out.println("<option value=\"7," + ex.getCodeEx()+ "\" > " + ex.getNomEx() + "</option>");
+                             }
+                    out.println("</select>");
+                out.println("</td>");
+            out.println("</tr>");
+                        out.println("<tr>");
+                out.println("<td id =\"ligne11\">Exercice 8 : <select name=\"exerciceProg\" >");
+                    out.println("<option value= \"0\">   </option>");
+                        for (Exercice ex : listeExercice) {
+                            out.println("<option value=\"8," + ex.getCodeEx()+ "\" > " + ex.getNomEx() + "</option>");
+                             }
+                    out.println("</select>");
+                out.println("</td>");
+            out.println("</tr>");
+            %>
         </table>
         <input type="submit" value="Créer">
         </form>

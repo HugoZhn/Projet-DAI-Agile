@@ -18,7 +18,7 @@
         <many-to-one name="seanceBilan" class="pojo.SeanceBilan" update="false" insert="false" fetch="select">
             <column name="CodeScBilan" not-null="true" />
         </many-to-one>
-        <property name="tempsMax" type="java.lang.Double">
+        <property name="tempsMax" type="java.lang.Integer">
             <column name="TempsMax" precision="22" scale="0" />
         </property>
         <property name="repsMax" type="java.lang.Integer">

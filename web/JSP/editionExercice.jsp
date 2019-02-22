@@ -23,19 +23,6 @@
 
         <h1>Création exercice</h1>
 
-        <%
-            // Récupère le message d'avertissement ou d'erreur
-
-            String Confirmation = request.getParameter("msg_avrt");
-
-            if (Confirmation != null) {
-
-                out.println("<p>" + Confirmation + "</p>");
-
-            }
-
-        %>
-
         <form action ="CtrlCreationExercice" method = "GET">
             <table>
                 <tr>
@@ -92,7 +79,7 @@
                 </tr>
                 <tr>                        
                     <td>Durée :</td>
-                    <td><input type="double" name = "tempsBaseEx"></td>
+                    <td><input type="int" name = "tempsBaseEx"></td>
                 </tr>
                 <tr>                        
                     <td>Répétitions :</td>

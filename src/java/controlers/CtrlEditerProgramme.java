@@ -5,23 +5,29 @@
  */
 package controlers;
 
+import bd.Bd;
+import hibernateutils.HibernateUtilProjetDAI;
 import java.io.IOException;
+import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import hibernateutils.HibernateUtilProjetDAI;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import pojo.Exercice;
-import pojo.TypeExercice;
+import pojo.ProfilClient;
+import pojo.Programme;
+
 
 /**
+ *
  * @author 21607860
  */
-public class CtrlCreationExercice extends HttpServlet {
+public class CtrlEditerProgramme extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,50 +39,61 @@ public class CtrlCreationExercice extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, Exception {
 
-        String nomEx = request.getParameter("nomEx");
-        Integer typeEx = Integer.parseInt(request.getParameter("typeEx"));
-        String objectifsEx = request.getParameter("objectifsEx");
-        String descriptionEx = request.getParameter("descriptionEx");
-        String precisionsEx = request.getParameter("precisionEx");
-        String ressourceEx = request.getParameter("ressourceEx");
-        String tempsBaseEx = request.getParameter("tempsBaseEx");
-        String repsBaseEx = request.getParameter("repsBaseEx");
-
-        int tempsBaseExInt = 0;
-        int repsBaseExInt = 0;
-
-        if (!tempsBaseEx.equals("")) {
-            tempsBaseExInt = Integer.parseInt(tempsBaseEx);
-        }
-        if (!repsBaseEx.equals("")) {
-            repsBaseExInt = Integer.parseInt(repsBaseEx);
-        }
+        String libellePrgrm = request.getParameter("libellePrgrm");
+        String codeProfil = request.getParameter("codeProfil");
+        String[] seanceProg = (String[]) request.getParameterValues("seanceProg");
 
         try {
 
-            Session session = HibernateUtilProjetDAI.getSessionFactory().getCurrentSession();
-            Transaction t = session.beginTransaction();
-
-            TypeExercice typeExercice = (TypeExercice) session.load(TypeExercice.class, typeEx);
-            Exercice newExercice = new Exercice(typeExercice, nomEx, descriptionEx, precisionsEx, ressourceEx, tempsBaseExInt, repsBaseExInt, objectifsEx, null, null);
+            System.out.println("Entrée try");
+            Session sessionHibernate = HibernateUtilProjetDAI.getSessionFactory().getCurrentSession();
+            Transaction t = sessionHibernate.beginTransaction();
             
-            session.save(newExercice);
+            System.out.println("Récupération profil client");
+            
+            ProfilClient profilClient = (ProfilClient) sessionHibernate.load(ProfilClient.class, Integer.parseInt(codeProfil));
+
+            Programme newProg = new Programme(profilClient, libellePrgrm, false, null, null);
+
+            sessionHibernate.save(newProg);
 
             t.commit();
+            
+            System.out.println("Début boucle");
+            
+            for (String seance : seanceProg) {
 
-            RequestDispatcher rd = request.getRequestDispatcher("CtrlListExercice");
+                if (!seance.equals("0")) {
+
+                    String str[] = seance.split(",");
+
+                    Integer codeSemaine = Integer.parseInt(str[0]);
+                    Integer ordre = Integer.parseInt(str[1]);
+                    Integer codeSc = Integer.parseInt(str[2]);
+                    
+                    System.out.println("Requete");
+                    
+                    Bd.enregistrerSeanceAppartenir(codeSc, newProg.getCodePrgrm(), codeSemaine, ordre);
+
+                }
+
+            }
+
+            RequestDispatcher rd = request.getRequestDispatcher("editerProgramme");
             request.setAttribute("msg_avrt", "Ok");
             rd.forward(request, response);
 
         } catch (IOException | ServletException | HibernateException ex) {
 
-            RequestDispatcher rd = request.getRequestDispatcher("editionExercice");
+            RequestDispatcher rd = request.getRequestDispatcher("editerProgramme");
             request.setAttribute("msg_avrt", ex.getMessage());
+            System.out.println(ex.getMessage());
             rd.forward(request, response);
 
         }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -91,7 +108,11 @@ public class CtrlCreationExercice extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(CtrlEditerProgramme.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -105,7 +126,11 @@ public class CtrlCreationExercice extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(CtrlEditerProgramme.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

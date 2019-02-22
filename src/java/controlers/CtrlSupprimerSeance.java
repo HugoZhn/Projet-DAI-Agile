@@ -5,20 +5,30 @@
  */
 package controlers;
 
+import bd.Bd;
+import hibernateutils.HibernateUtilProjetDAI;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import pojo.ExerciceDeSeance;
+import pojo.Seance;
 
 /**
  *
- * @author 21408162
+ * @author 21402458
  */
-public class CtrlLogOut extends HttpServlet {
+@WebServlet(name = "CtrlSupprimerSeance", urlPatterns = {"/CtrlSupprimerSeance"})
+public class CtrlSupprimerSeance extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,20 +40,31 @@ public class CtrlLogOut extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-         try{
-		PrintWriter out = response.getWriter();
-		out.println("déconnexion avec succes");
-		HttpSession session = request.getSession(false);
-		session.setAttribute("user", null);
-                session.getMaxInactiveInterval();
-		session.invalidate();
-                request.getRequestDispatcher("Index").include(request, response);
-		
-         } catch (IOException | HibernateException e) {
-            System.out.println("Problème ma gueule !" + e.getMessage());
-        }          
+            throws ServletException, IOException, Exception {
+       
+            String codesc = request.getParameter("codesc");
+
+        try {
+
+            Session sessionHibernate = HibernateUtilProjetDAI.getSessionFactory().getCurrentSession();
+            Transaction t = sessionHibernate.beginTransaction();
+   
+            Seance sc = (Seance) sessionHibernate.get(Seance.class, Integer.parseInt(codesc));
+            Bd.supprimerExerciceDeSeance(sc.getCodeSc());
+
+            sessionHibernate.delete(sc);
+            t.commit();
+
+            RequestDispatcher rd = request.getRequestDispatcher("listSeance");
+            rd.forward(request, response);
+
+        } catch (IOException | HibernateException ex) {
+
+            RequestDispatcher rd = request.getRequestDispatcher("uneSeance");
+            request.setAttribute("msg_avrt", ex.getMessage());
+            rd.forward(request, response);
+        }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -58,7 +79,11 @@ public class CtrlLogOut extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(CtrlSupprimerSeance.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -72,7 +97,11 @@ public class CtrlLogOut extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(CtrlSupprimerSeance.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

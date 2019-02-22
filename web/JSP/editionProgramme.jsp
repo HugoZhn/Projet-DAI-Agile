@@ -3,29 +3,21 @@
     Created on : 20 févr. 2019, 22:50:28
     Author     : David
 --%>
-
+<%@page import="pojo.Seance"%>
+<%@page import="org.hibernate.Session"%>
+<%@page import="java.util.List"%>
+<%@page import="org.hibernate.Query"%>
+<%@page import="org.hibernate.Transaction"%>
+<%@page import="hibernateutils.HibernateUtilProjetDAI"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 
 <html>
+    <link rel="stylesheet" type="text/css" href="CSS/cssEditionProgramme.css"/>
     <head>
-        <style>
-            #div0 {
-                width: 100px;
-                height: 20px;
-                padding: 10px;
-                border: 1px solid #aaaaaa;
-                background : gainsboro;
-            }
-            #div1 {
-                width: 100px;
-                height: 70px;
-                padding: 10px;
-                border: 1px solid #aaaaaa;
-                background : ghostwhite;
-            }
-        </style>
         <script>
+
             function allowDrop(ev) {
                 ev.preventDefault();
             }
@@ -37,84 +29,47 @@
                 var data = ev.dataTransfer.getData("text");
                 ev.target.appendChild(document.getElementById(data));
             }
+
         </script>
     </head>
     <body>
-        
-        <table>
-            <tr>
-                <td><div id="div0" >Semaine 1</div></td>  
-                <td><div id="div0" >Semaine 2</div></td>  
-                <td><div id="div0" >Semaine 3</div></td>  
-                <td><div id="div0" >Semaine 4</div></td>  
-                <td><div id="div0" >Semaine 5</div></td>  
-                <td><div id="div0" >Semaine 6</div></td>  
-                <td><div id="div0" >Semaine 7</div></td>   
-                <td><div id="div0" >Semaine 8</div></td>  
-                <td><div id="div0" >Semaine 9</div></td>  
-                <td><div id="div0" >Semaine 10</div></td>   
-                <td><div id="div0" >Semaine 11</div></td>  
-                <td><div id="div0" >Semaine 12</div></td>    
-            </tr>
-            <tr>
-                <td><div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>  
-                <td><div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>  
-                <td><div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>  
-                <td><div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
-                <td><div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>  
-                <td><div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>  
-                <td><div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>  
-                <td><div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
-                <td><div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>  
-                <td><div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>  
-                <td><div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>  
-                <td><div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>                   
-            </tr>
-            <tr>
-                <td><div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>  
-                <td><div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>  
-                <td><div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>  
-                <td><div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
-                <td><div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>  
-                <td><div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>  
-                <td><div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>  
-                <td><div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
-                <td><div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>  
-                <td><div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>  
-                <td><div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>  
-                <td><div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>     
-            </tr>   
+        <%
+            Session sessionHibernate = HibernateUtilProjetDAI.getSessionFactory().getCurrentSession();
+            Transaction t = sessionHibernate.beginTransaction();
 
+            Query q = sessionHibernate.createQuery("from Seance");
 
-        </table>
+            List<Seance> listeSeance = (List<Seance>) q.list();
 
-        <div id="drag1"  draggable="true" ondragstart="drag(event)">
-            <a href="Index">
-                <div>Séance n°1</div>
-                <div>Informations 1</div>       
-                <div>Informations 2</div>   
-            </a>
-        </div>
-        <div id="drag2"  draggable="true" ondragstart="drag(event)">
-            <a href="Index">
-                <div>Séance n°2</div>
-                <div>Informations 1</div>       
-                <div>Informations 2</div>   
-            </a>
-        </div>
-        <div id="drag3"  draggable="true" ondragstart="drag(event)">
-            <a href="Index">
-                <div>Séance n°3</div>
-                <div>Informations 1</div>       
-                <div>Informations 2</div>   
-            </a>
-        </div>
-        <div id="drag4"  draggable="true" ondragstart="drag(event)">
-            <a href="Index">
-                <div>Séance n°4</div>
-                <div>Informations 1</div>       
-                <div>Informations 2</div>   
-            </a>
-        </div>
+            t.commit();
+
+            int nbSemaine = 1;
+
+            //out.println("<form>");
+            out.println("<div id=\"Semaine0\" hidden=\"true\">");
+            out.println("<table class = \"tabSeances\" id = \"tabSeances\">");
+            out.println("<tr id =\"listeSemaines\">");
+            out.println("<td ><div id=\"nomSemaine\"> Semaine 1 </div></td>");
+            out.println("<td><button id =\"boutonAjouterSemaine\"> + </button></td>");
+            out.println("</tr>");
+            out.print("<tr id =\"listeSeances\">");
+            out.println("<td id =\"ajoutSeance\"><div id=\"ordreSeance\" hidden = true>1</div><select id =\"seance_1\">");
+            for (Seance E : listeSeance) {
+                out.println("<option><div>" + E.getLibelleSc() + "</div></option>");
+            }
+            out.println("</select></td>");
+            out.println("</tr>");
+
+            out.println("<tr>");
+            out.println("<td><button id =\"boutonAjouterSeance\" value=\"0\"> + </button></td>");
+            out.println("</tr>");
+            out.println("</table>");
+
+            out.println("</table>");
+            out.println("</div>");
+
+            //out.println("</form>");
+%>
+        <script type="text/JavaScript" charset="utf-8" src="jsEditionProgramme"></script>
     </body>
 </html>

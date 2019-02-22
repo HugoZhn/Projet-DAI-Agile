@@ -108,6 +108,34 @@
         <servlet-name>CtrlCreationExercice</servlet-name>
         <servlet-class>controlers.CtrlCreationExercice</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>jsEditionProgramme</servlet-name>
+        <jsp-file>/JS/jsEditionProgramme.js</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>editionProgramme</servlet-name>
+        <jsp-file>/JSP/editionProgramme.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>CtrlEditerProgramme</servlet-name>
+        <servlet-class>controlers.CtrlEditerProgramme</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>editerProgramme</servlet-name>
+        <jsp-file>/JSP/editerProgramme.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>listSeance</servlet-name>
+        <jsp-file>/JSP/listSeance.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>uneSeance</servlet-name>
+        <jsp-file>/JSP/uneSeance.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>CtrlSupprimerSeance</servlet-name>
+        <servlet-class>controlers.CtrlSupprimerSeance</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CtrlVoirProgrammeClient</servlet-name>
         <url-pattern>/CtrlVoirProgrammeClient</url-pattern>
@@ -215,6 +243,34 @@
     <servlet-mapping>
         <servlet-name>CtrlCreationExercice</servlet-name>
         <url-pattern>/CtrlCreationExercice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>jsEditionProgramme</servlet-name>
+        <url-pattern>/jsEditionProgramme</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editionProgramme</servlet-name>
+        <url-pattern>/editionProgramme</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlEditerProgramme</servlet-name>
+        <url-pattern>/CtrlEditerProgramme</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editerProgramme</servlet-name>
+        <url-pattern>/editerProgramme</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>listSeance</servlet-name>
+        <url-pattern>/listSeance</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>uneSeance</servlet-name>
+        <url-pattern>/uneSeance</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlSupprimerSeance</servlet-name>
+        <url-pattern>/CtrlSupprimerSeance</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

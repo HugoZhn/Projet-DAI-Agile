@@ -9,7 +9,6 @@ import java.util.Objects;
  */
 public class SeanceAppartenir  implements java.io.Serializable {
 
-
      private SeanceAppartenirId id;
      private Programme programme;
      private Seance seance;
@@ -27,6 +26,16 @@ public class SeanceAppartenir  implements java.io.Serializable {
        this.fini = fini;
     }
    
+    public SeanceAppartenir( int codePrgrm, int codeSc, int codeSemaine, int ordre, Programme programme, Seance seance, boolean active, boolean fini) {
+       
+       SeanceAppartenirId sAId = new SeanceAppartenirId(codePrgrm, codeSc, codeSemaine, ordre);
+        
+       this.id = sAId;
+       this.programme = programme;
+       this.seance = seance;
+       this.active = active;
+       this.fini = fini;
+    }
     public SeanceAppartenirId getId() {
         return this.id;
     }
