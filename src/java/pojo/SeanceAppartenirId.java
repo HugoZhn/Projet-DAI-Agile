@@ -1,5 +1,5 @@
 package pojo;
-// Generated 20 fvr. 2019 13:58:26 by Hibernate Tools 4.3.1
+// Generated 21 fvr. 2019 10:27:40 by Hibernate Tools 4.3.1
 
 
 
@@ -9,28 +9,21 @@ package pojo;
 public class SeanceAppartenirId  implements java.io.Serializable {
 
 
-     private int codePrgrm;
      private int codeSc;
-     private int codeSemaine;
+     private int codePrgrm;
+     private int noSemaine;
      private int ordre;
 
     public SeanceAppartenirId() {
     }
 
-    public SeanceAppartenirId(int codePrgrm, int codeSc, int codeSemaine, int ordre) {
-       this.codePrgrm = codePrgrm;
+    public SeanceAppartenirId(int codeSc, int codePrgrm, int noSemaine, int ordre) {
        this.codeSc = codeSc;
-       this.codeSemaine = codeSemaine;
+       this.codePrgrm = codePrgrm;
+       this.noSemaine = noSemaine;
        this.ordre = ordre;
     }
    
-    public int getCodePrgrm() {
-        return this.codePrgrm;
-    }
-    
-    public void setCodePrgrm(int codePrgrm) {
-        this.codePrgrm = codePrgrm;
-    }
     public int getCodeSc() {
         return this.codeSc;
     }
@@ -38,12 +31,19 @@ public class SeanceAppartenirId  implements java.io.Serializable {
     public void setCodeSc(int codeSc) {
         this.codeSc = codeSc;
     }
-    public int getCodeSemaine() {
-        return this.codeSemaine;
+    public int getCodePrgrm() {
+        return this.codePrgrm;
     }
     
-    public void setCodeSemaine(int codeSemaine) {
-        this.codeSemaine = codeSemaine;
+    public void setCodePrgrm(int codePrgrm) {
+        this.codePrgrm = codePrgrm;
+    }
+    public int getNoSemaine() {
+        return this.noSemaine;
+    }
+    
+    public void setNoSemaine(int noSemaine) {
+        this.noSemaine = noSemaine;
     }
     public int getOrdre() {
         return this.ordre;
@@ -60,18 +60,18 @@ public class SeanceAppartenirId  implements java.io.Serializable {
 		 if ( !(other instanceof SeanceAppartenirId) ) return false;
 		 SeanceAppartenirId castOther = ( SeanceAppartenirId ) other; 
          
-		 return (this.getCodePrgrm()==castOther.getCodePrgrm())
- && (this.getCodeSc()==castOther.getCodeSc())
- && (this.getCodeSemaine()==castOther.getCodeSemaine())
+		 return (this.getCodeSc()==castOther.getCodeSc())
+ && (this.getCodePrgrm()==castOther.getCodePrgrm())
+ && (this.getNoSemaine()==castOther.getNoSemaine())
  && (this.getOrdre()==castOther.getOrdre());
    }
    
    public int hashCode() {
          int result = 17;
          
-         result = 37 * result + this.getCodePrgrm();
          result = 37 * result + this.getCodeSc();
-         result = 37 * result + this.getCodeSemaine();
+         result = 37 * result + this.getCodePrgrm();
+         result = 37 * result + this.getNoSemaine();
          result = 37 * result + this.getOrdre();
          return result;
    }   

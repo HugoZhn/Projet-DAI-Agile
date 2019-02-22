@@ -5,10 +5,9 @@
  */
 package controlers;
 
-import hibernateutils.HibernateUtilProjetDAI;
+import static hibernateutils.HibernateUtilProjetDAI.getSessionFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,13 +15,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import pojo.ProgrammeClient;
+import pojo.Client;
+import pojo.CoachAdmin;
 
 /**
  *
- * @author hzahn
+ * @author 21808985
  */
-public class CtrlVoirProgrammeClient extends HttpServlet {
+public class CtrlEnvoyerMessageCoachAdmin extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,19 +38,55 @@ public class CtrlVoirProgrammeClient extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
+            String coachadmin = request.getParameter("jd");
+            String message = request.getParameter("message");
+
+            String destinataire = "";
             HttpSession session = request.getSession();
-
-            Integer codeProgramme = Integer.parseInt(request.getParameter("idProgramme"));
-
-            Session sessionHibernate = HibernateUtilProjetDAI.getSessionFactory().getCurrentSession();
-            Transaction t = sessionHibernate.beginTransaction();
-
-            ProgrammeClient programmeCourantClient = (ProgrammeClient) sessionHibernate.get(ProgrammeClient.class, codeProgramme);
-            request.setAttribute("programmeAAfficher", programmeCourantClient);
-
-            t.commit();
-            RequestDispatcher rd = request.getRequestDispatcher("afficherProgrammeClient");
-            rd.forward(request, response);
+            Client clientConnecte  = (Client)session.getAttribute("clientSession");
+            String mailClient = null;
+            if(clientConnecte!= null)
+                mailClient =  clientConnecte.getMailClient();
+            else
+                mailClient =  "VIDE !!";
+           
+            
+            // recuperation de l'adresse mail du destinatire 
+            //Session sessionH = (Session) hibernateutils.HibernateUtilProjetDAI.getSessionFactory();
+            Session s = (Session) getSessionFactory().getCurrentSession();
+            Transaction t = s.beginTransaction();
+            CoachAdmin coachAdmin =null;
+            coachAdmin = (CoachAdmin) s.get(CoachAdmin.class,24 );
+            
+            
+            if (coachadmin.equals("au coach")) {
+                //Do action
+                destinataire = "COACH !!";
+                destinataire = destinataire + coachAdmin.getMailCoach();
+            } else  {
+                //Do other action
+                destinataire = "ADMIN !!";
+                destinataire = destinataire + coachAdmin.getMailAdmin();
+            }
+            if(message.isEmpty())
+                    message =" pas de message";
+  
+          
+            
+            
+            /* TODO output your page here. You may use following sample code.  */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet CtrlEnvoyerMessageCoachAdmin</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet CtrlEnvoyerMessageCoachAdmin at " + request.getContextPath() + "</h1>");
+            out.println("<h1>DESTINATAIRE : " + destinataire + "</h1>");
+            out.println("<h1>MESSAGE : " + message + "</h1>");
+            out.println("<h1>MESSAGE : " + mailClient + "</h1>");
+            out.println("</body>");
+            out.println("</html>"); 
         }
     }
 

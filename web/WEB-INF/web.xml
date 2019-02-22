@@ -53,6 +53,30 @@
         <jsp-file>/JSP/formBoostrap.jsp</jsp-file>
     </servlet>
     <servlet>
+        <servlet-name>CtrlformBoostrapDetailsProfil</servlet-name>
+        <servlet-class>controlers.CtrlformBoostrapDetailsProfil</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CtrlformBoostrapSupprimer</servlet-name>
+        <servlet-class>controlers.CtrlformBoostrapSupprimer</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>formBoostrapDetailsProfil</servlet-name>
+        <jsp-file>/JSP/formBoostrapDetailsProfil.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>formBoostrapSupprimer</servlet-name>
+        <jsp-file>/JSP/formBoostrapSupprimer.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>formBoostrapModifierProfilClient</servlet-name>
+        <jsp-file>/JSP/formBoostrapModifierProfilClient.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>CtrlModifClient</servlet-name>
+        <servlet-class>controlers.CtrlModifClient</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>creerSeance</servlet-name>
         <jsp-file>/JSP/creerSeance.jsp</jsp-file>
     </servlet>
@@ -136,6 +160,30 @@
         <servlet-name>CtrlSupprimerSeance</servlet-name>
         <servlet-class>controlers.CtrlSupprimerSeance</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CtrlEnvoyerMessageCoachAdmin</servlet-name>
+        <servlet-class>controlers.CtrlEnvoyerMessageCoachAdmin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>envoyerMessageCoachAdmin</servlet-name>
+        <jsp-file>/JSP/envoyerMessageCoachAdmin.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>commencerSeanceClient</servlet-name>
+        <jsp-file>/JSP/commencerSeanceClient.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>FaireSeanceJS</servlet-name>
+        <jsp-file>/JS/jsFaireUneSeance.js</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletEffectuerSeance</servlet-name>
+        <servlet-class>controlers.ServletEffectuerSeance</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>jsAfficherClientTest</servlet-name>
+        <jsp-file>/JS/jsAfficherClientTest.js</jsp-file>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CtrlVoirProgrammeClient</servlet-name>
         <url-pattern>/CtrlVoirProgrammeClient</url-pattern>
@@ -183,6 +231,30 @@
     <servlet-mapping>
         <servlet-name>formBoostrap</servlet-name>
         <url-pattern>/formBoostrap</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlformBoostrapSupprimer</servlet-name>
+        <url-pattern>/CtrlformBoostrapSupprimer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>formBoostrapSupprimer</servlet-name>
+        <url-pattern>/formBoostrapSupprimer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlformBoostrapDetailsProfil</servlet-name>
+        <url-pattern>/CtrlformBoostrapDetailsProfil</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>formBoostrapModifierProfilClient</servlet-name>
+        <url-pattern>/formBoostrapModifierProfilClient</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlModifClient</servlet-name>
+        <url-pattern>/CtrlModifClient</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>formBoostrapDetailsProfil</servlet-name>
+        <url-pattern>/formBoostrapDetailsProfil</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>creerSeance</servlet-name>
@@ -239,6 +311,30 @@
     <servlet-mapping>
         <servlet-name>Index</servlet-name>
         <url-pattern>/Index</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CtrlEnvoyerMessageCoachAdmin</servlet-name>
+        <url-pattern>/CtrlEnvoyerMessageCoachAdmin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>envoyerMessageCoachAdmin</servlet-name>
+        <url-pattern>/envoyerMessageCoachAdmin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>commencerSeanceClient</servlet-name>
+        <url-pattern>/commencerSeanceClient</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FaireSeanceJS</servlet-name>
+        <url-pattern>/FaireSeanceJS</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletEffectuerSeance</servlet-name>
+        <url-pattern>/ServletEffectuerSeance</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>jsAfficherClientTest</servlet-name>
+        <url-pattern>/jsAfficherClientTest</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CtrlCreationExercice</servlet-name>

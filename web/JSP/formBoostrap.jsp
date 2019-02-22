@@ -50,14 +50,14 @@
                         <div class="tab-pane fade show active" id="client" role="tabpanel" aria-labelledby="home-tab">
                             <form action="CtrlInscriptionAdminClient">
                                 <h3 class="register-heading">Formulaire Client</h3>                                
-                                                                                                  
+
                                 <div class="row register-form">
                                     <center>
-                                    <%String message = (String) request.getAttribute("msg_erreur");
-                                        if (message != null) {
-                                            out.println("<div class=\"alert alert-danger\" role=\"alert\">"+message+"</div>");
-                                        }%>  
-                                        </center>
+                                        <%String message = (String) request.getAttribute("msg_erreur");
+                                            if (message != null) {
+                                                out.println("<div class=\"alert alert-danger\" role=\"alert\">" + message + "</div>");
+                                            }%>  
+                                    </center>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <input type="text" name="login" class="form-control" placeholder="Identifiant *" value="" required/>
@@ -94,18 +94,18 @@
                                                 <option>Abonnement 3</option>
                                             </select>
                                         </div>
-                                        <% Session ses = HibernateUtilProjetDAI.getSessionFactory().getCurrentSession(); 
-                                        Transaction t = ses.beginTransaction();
-                                        Query q = ses.createQuery("from ProfilClient");
-                                        List<ProfilClient> listeProfilClient = (List<ProfilClient>) q.list();
-                                        t.commit();
+                                        <% Session ses = HibernateUtilProjetDAI.getSessionFactory().getCurrentSession();
+                                            Transaction t = ses.beginTransaction();
+                                            Query q = ses.createQuery("from ProfilClient");
+                                            List<ProfilClient> listeProfilClient = (List<ProfilClient>) q.list();
+                                            t.commit();
                                         %>
                                         <div class="form-group">
                                             <select class="form-control" name="sportProfil" required >
                                                 <option class="hidden"  selected disabled>Quel est votre profil sportif ?</option>
-                                                <%for(ProfilClient pc : listeProfilClient){
-                                                out.println("<option value ="+pc.getNomProfil()+">"+pc.getNomProfil()+"</option>");
-                                                }%>                                                
+                                                <%for (ProfilClient pc : listeProfilClient) {
+                                                        out.println("<option value =" + pc.getCodeProfil() + ">" + pc.getNomProfil() + "</option>");
+                                                    }%>                                                
                                             </select>
                                         </div>
                                         <div class="form-group">

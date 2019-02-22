@@ -24,10 +24,10 @@
             <column name="RessourceEx" length="128" />
         </property>
         <property name="tempsBaseEx" type="java.lang.Integer">
-            <column name="TempsBaseEx" />
+            <column name="TempsBaseEx" not-null="true" />
         </property>
         <property name="repsBaseEx" type="java.lang.Integer">
-            <column name="RepsBaseEx" />
+            <column name="RepsBaseEx" not-null="true" />
         </property>
         <property name="objectifsEx" type="string">
             <column name="ObjectifsEx" length="128" />

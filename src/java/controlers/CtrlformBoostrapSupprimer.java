@@ -1,27 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controlers;
 
+import hibernateutils.HibernateUtilProjetDAI;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import hibernateutils.HibernateUtilProjetDAI;
+import javax.servlet.http.HttpSession;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import pojo.Exercice;
-import pojo.TypeExercice;
+import pojo.Client;
 
 /**
- * @author 21607860
+ *
+ * @author fhamzaoui
  */
-public class CtrlCreationExercice extends HttpServlet {
+public class CtrlformBoostrapSupprimer extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,52 +28,26 @@ public class CtrlCreationExercice extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-        String nomEx = request.getParameter("nomEx");
-        Integer typeEx = Integer.parseInt(request.getParameter("typeEx"));
-        String objectifsEx = request.getParameter("objectifsEx");
-        String descriptionEx = request.getParameter("descriptionEx");
-        String precisionsEx = request.getParameter("precisionEx");
-        String ressourceEx = request.getParameter("ressourceEx");
-        String tempsBaseEx = request.getParameter("tempsBaseEx");
-        String repsBaseEx = request.getParameter("repsBaseEx");
-
-        int tempsBaseExInt = 0;
-        int repsBaseExInt = 0;
-
-        if (!tempsBaseEx.equals("")) {
-
-            tempsBaseExInt = Integer.parseInt(tempsBaseEx);
-
-        }
-        if (!repsBaseEx.equals("")) {
-            repsBaseExInt = Integer.parseInt(repsBaseEx);
-        }
-
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+        String loginClient = request.getParameter("loginAsupp");
+        String idClient = request.getParameter("idAsupp");
+        System.out.println("idClient "+loginClient);
+        System.out.println("loginClient "+idClient);
         try {
-
-            Session session = HibernateUtilProjetDAI.getSessionFactory().getCurrentSession();
-            Transaction t = session.beginTransaction();
-
-            TypeExercice typeExercice = (TypeExercice) session.load(TypeExercice.class, typeEx);
-            Exercice newExercice = new Exercice(typeExercice, nomEx, descriptionEx, precisionsEx, ressourceEx, tempsBaseExInt, repsBaseExInt, objectifsEx, null, null);
-            
-            session.save(newExercice);
-
+            HttpSession session =request.getSession();
+            Session sessionHibernate = HibernateUtilProjetDAI.getSessionFactory().getCurrentSession();
+            Transaction t = sessionHibernate.beginTransaction();            
+            Client theClient = (Client) sessionHibernate.get(Client.class, Integer.parseInt(idClient));
+            sessionHibernate.delete(theClient);
             t.commit();
-
-            RequestDispatcher rd = request.getRequestDispatcher("CtrlListExercice");
-            request.setAttribute("msg_avrt", "Ok");
+            RequestDispatcher rd = request.getRequestDispatcher("CtrlListeClients");
             rd.forward(request, response);
-
-        } catch (IOException | ServletException | HibernateException ex) {
-
-            RequestDispatcher rd = request.getRequestDispatcher("editionExercice");
+        } catch (IOException | HibernateException ex) {
+            RequestDispatcher rd = request.getRequestDispatcher("formBoostrapDetailsProfil");
             request.setAttribute("msg_avrt", ex.getMessage());
+            request.setAttribute("msg_erreur", "La suppression de l'utilisateur ayant pour login "+loginClient+" a echouée. Réessayer Ulterieurement !");
             rd.forward(request, response);
-
         }
     }
 

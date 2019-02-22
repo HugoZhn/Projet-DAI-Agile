@@ -1,5 +1,5 @@
 package pojo;
-// Generated 20 fvr. 2019 13:58:26 by Hibernate Tools 4.3.1
+// Generated 21 fvr. 2019 10:27:40 by Hibernate Tools 4.3.1
 
 import java.util.Objects;
 
@@ -87,8 +87,6 @@ public class SeanceBilanAppartenir  implements java.io.Serializable {
         }
         return true;
     }
-
-
 
 
 }

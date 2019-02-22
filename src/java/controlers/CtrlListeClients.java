@@ -6,9 +6,7 @@
 package controlers;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,7 +21,6 @@ import pojo.Client;
  *
  * @author fhamzaoui
  */
-@WebServlet(name = "CtrlListeClients", urlPatterns = {"/CtrlListeClients"})
 public class CtrlListeClients extends HttpServlet {
 
     /**
@@ -41,11 +38,11 @@ public class CtrlListeClients extends HttpServlet {
         Session session = (Session) HibernateUtilProjetDAI.getSessionFactory().getCurrentSession();
         Transaction t = session.beginTransaction();
         List<Client> listeClients = (List<Client>) session.createQuery("from Client c order by c.nom asc").list();
-        request.setAttribute("listeClients", listeClients);        
+        request.setAttribute("listeClients", listeClients);
+        System.out.println(" taille liste client : " + listeClients.size());
         t.commit();        
         RequestDispatcher rd = request.getRequestDispatcher("adminAfficherClients"); //importer requestdispatcher
-        rd.forward(request,response);
-        
+        rd.forward(request,response);        
     }
 
 

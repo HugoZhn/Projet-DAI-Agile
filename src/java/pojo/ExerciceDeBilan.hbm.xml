@@ -19,10 +19,10 @@
             <column name="CodeScBilan" not-null="true" />
         </many-to-one>
         <property name="tempsMax" type="java.lang.Integer">
-            <column name="TempsMax" precision="22" scale="0" />
+            <column name="TempsMax" not-null="true" />
         </property>
         <property name="repsMax" type="java.lang.Integer">
-            <column name="RepsMax" />
+            <column name="RepsMax" not-null="true" />
         </property>
         <property name="fini" type="boolean">
             <column name="Fini" not-null="true" />

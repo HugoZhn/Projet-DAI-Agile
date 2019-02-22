@@ -1,80 +1,46 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controlers;
 
+import static hibernateutils.HibernateUtilProjetDAI.getSessionFactory;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import hibernateutils.HibernateUtilProjetDAI;
+import javax.servlet.http.HttpSession;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import pojo.Exercice;
-import pojo.TypeExercice;
+import pojo.Client;
 
 /**
- * @author 21607860
+ *
+ * @author fhamzaoui
  */
-public class CtrlCreationExercice extends HttpServlet {
+public class CtrlformBoostrapDetailsProfil extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String nomEx = request.getParameter("nomEx");
-        Integer typeEx = Integer.parseInt(request.getParameter("typeEx"));
-        String objectifsEx = request.getParameter("objectifsEx");
-        String descriptionEx = request.getParameter("descriptionEx");
-        String precisionsEx = request.getParameter("precisionEx");
-        String ressourceEx = request.getParameter("ressourceEx");
-        String tempsBaseEx = request.getParameter("tempsBaseEx");
-        String repsBaseEx = request.getParameter("repsBaseEx");
-
-        int tempsBaseExInt = 0;
-        int repsBaseExInt = 0;
-
-        if (!tempsBaseEx.equals("")) {
-
-            tempsBaseExInt = Integer.parseInt(tempsBaseEx);
-
-        }
-        if (!repsBaseEx.equals("")) {
-            repsBaseExInt = Integer.parseInt(repsBaseEx);
-        }
+        String loggin = request.getParameter("action");
 
         try {
-
-            Session session = HibernateUtilProjetDAI.getSessionFactory().getCurrentSession();
-            Transaction t = session.beginTransaction();
-
-            TypeExercice typeExercice = (TypeExercice) session.load(TypeExercice.class, typeEx);
-            Exercice newExercice = new Exercice(typeExercice, nomEx, descriptionEx, precisionsEx, ressourceEx, tempsBaseExInt, repsBaseExInt, objectifsEx, null, null);
-            
-            session.save(newExercice);
-
+            Session sessionHibernate = getSessionFactory().getCurrentSession();
+            Transaction t = sessionHibernate.beginTransaction();
+            Query q = sessionHibernate.createQuery("from Client c where c.login=? ");
+            q.setString(0, loggin);
+            Client theClient = (Client) q.uniqueResult();            
+            theClient.getProfilClient();
             t.commit();
-
-            RequestDispatcher rd = request.getRequestDispatcher("CtrlListExercice");
+            HttpSession session = request.getSession(true);
+            session.setAttribute("theClient", theClient);
+            RequestDispatcher rd = request.getRequestDispatcher("formBoostrapDetailsProfil");
             request.setAttribute("msg_avrt", "Ok");
             rd.forward(request, response);
-
         } catch (IOException | ServletException | HibernateException ex) {
-
-            RequestDispatcher rd = request.getRequestDispatcher("editionExercice");
+            System.out.println("erreur : "+ex.getMessage() );
+            RequestDispatcher rd = request.getRequestDispatcher("adminAfficherClients");
             request.setAttribute("msg_avrt", ex.getMessage());
             rd.forward(request, response);
 

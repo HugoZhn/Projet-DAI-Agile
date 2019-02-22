@@ -5,23 +5,24 @@
  */
 package controlers;
 
+import hibernateutils.HibernateUtilProjetDAI;
 import java.io.IOException;
-import javax.servlet.RequestDispatcher;
+import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import hibernateutils.HibernateUtilProjetDAI;
-import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import pojo.Exercice;
-import pojo.TypeExercice;
+import pojo.ExerciceDeSeance;
 
 /**
- * @author 21607860
+ *
+ * @author hzahn
  */
-public class CtrlCreationExercice extends HttpServlet {
+public class ServletEffectuerSeance extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,53 +36,40 @@ public class CtrlCreationExercice extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String nomEx = request.getParameter("nomEx");
-        Integer typeEx = Integer.parseInt(request.getParameter("typeEx"));
-        String objectifsEx = request.getParameter("objectifsEx");
-        String descriptionEx = request.getParameter("descriptionEx");
-        String precisionsEx = request.getParameter("precisionEx");
-        String ressourceEx = request.getParameter("ressourceEx");
-        String tempsBaseEx = request.getParameter("tempsBaseEx");
-        String repsBaseEx = request.getParameter("repsBaseEx");
+        response.setContentType("application/json;charset=UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        PrintWriter out = response.getWriter();
 
-        int tempsBaseExInt = 0;
-        int repsBaseExInt = 0;
+        Integer noSeanceEffectuee = Integer.parseInt(request.getParameter("noSeanceEffectuee"));
 
-        if (!tempsBaseEx.equals("")) {
+        System.out.println(noSeanceEffectuee);
 
-            tempsBaseExInt = Integer.parseInt(tempsBaseEx);
+        Session sessionHibernate = HibernateUtilProjetDAI.getSessionFactory().getCurrentSession();
+        Transaction t = sessionHibernate.beginTransaction();
 
+        Query q = sessionHibernate.createQuery("from ExerciceDeSeance e where e.id.codeSc = ? order by e.ordre");
+        q.setInteger(0, noSeanceEffectuee);
+
+        List<ExerciceDeSeance> exosDeLaSeance = q.list();
+
+        String toOut = "[";
+        for (ExerciceDeSeance exo : exosDeLaSeance) {
+            toOut += "{ \"idEx\" : \"" + exo.getId().getCodeEx() + "\", \"ordre\":\"" + exo.getOrdre() + "\", ";
+            toOut += "\"tmpsEx\" : \"" + exo.getTempsExSc() + "\", \"repsExo\": \"" + exo.getRepsExSc() + "\", ";
+            toOut += "\"nbSeries\" : \"" + exo.getNbSeries() + "\", \"adresseImage\" : \"" + exo.getExercice().getRessourceEx() + "\", ";
+            toOut += "\"descriptionExo\" : \"" + exo.getExercice().getDescriptionEx() + "\", \"infoSupExo\" : \"" + exo.getExercice().getPrecisionsEx() + "\", ";
+            toOut += "\"objExo\" : \"" + exo.getExercice().getObjectifsEx() + "\", \"nomExo\" : \"" + exo.getExercice().getNomEx() + "\"}, ";
         }
-        if (!repsBaseEx.equals("")) {
-            repsBaseExInt = Integer.parseInt(repsBaseEx);
-        }
+        
+        toOut = toOut.substring(0, toOut.length() - 2);
+        toOut += "]";
 
-        try {
+        out.print(toOut);
 
-            Session session = HibernateUtilProjetDAI.getSessionFactory().getCurrentSession();
-            Transaction t = session.beginTransaction();
-
-            TypeExercice typeExercice = (TypeExercice) session.load(TypeExercice.class, typeEx);
-            Exercice newExercice = new Exercice(typeExercice, nomEx, descriptionEx, precisionsEx, ressourceEx, tempsBaseExInt, repsBaseExInt, objectifsEx, null, null);
-            
-            session.save(newExercice);
-
-            t.commit();
-
-            RequestDispatcher rd = request.getRequestDispatcher("CtrlListExercice");
-            request.setAttribute("msg_avrt", "Ok");
-            rd.forward(request, response);
-
-        } catch (IOException | ServletException | HibernateException ex) {
-
-            RequestDispatcher rd = request.getRequestDispatcher("editionExercice");
-            request.setAttribute("msg_avrt", ex.getMessage());
-            rd.forward(request, response);
-
-        }
+        t.commit();
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
